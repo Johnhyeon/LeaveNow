@@ -10,6 +10,7 @@ private struct Lap: Identifiable {
 struct MeasureView: View {
     @Environment(\.modelContext) private var context
     @AppStorage("direction") private var directionRaw = Direction.up.rawValue
+    @AppStorage("stationCode") private var stationCode = TimetableStore.defaultStationCode
 
     @State private var sessionStart: Date?
     @State private var segmentStart: Date?
@@ -63,7 +64,7 @@ struct MeasureView: View {
             Section {
                 Picker("방향", selection: $directionRaw) {
                     ForEach(Direction.allCases) { d in
-                        Text(d.title).tag(d.rawValue)
+                        Text(TimetableStore.shared.directionTitle(stationCode: stationCode, direction: d)).tag(d.rawValue)
                     }
                 }
                 .pickerStyle(.segmented)

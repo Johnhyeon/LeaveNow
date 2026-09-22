@@ -6,6 +6,7 @@ struct ManualEntryView: View {
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
     @AppStorage("direction") private var directionRaw = Direction.up.rawValue
+    @AppStorage("stationCode") private var stationCode = TimetableStore.defaultStationCode
 
     @State private var date = Date.now
     @State private var minutes: [SegmentKind: Int] = [:]
@@ -18,7 +19,7 @@ struct ManualEntryView: View {
                     DatePicker("일시", selection: $date)
                     Picker("방향", selection: $directionRaw) {
                         ForEach(Direction.allCases) { d in
-                            Text(d.title).tag(d.rawValue)
+                            Text(TimetableStore.shared.directionTitle(stationCode: stationCode, direction: d)).tag(d.rawValue)
                         }
                     }
                 }

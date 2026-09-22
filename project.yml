@@ -27,6 +27,9 @@ targets:
             swopenapi.seoul.go.kr:
               NSExceptionAllowsInsecureHTTPLoads: true
               NSIncludesSubdomains: true
+            openapi.seoul.go.kr:
+              NSExceptionAllowsInsecureHTTPLoads: true
+              NSIncludesSubdomains: true
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.drimaes.LeaveNow

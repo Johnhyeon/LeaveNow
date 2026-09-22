@@ -4,6 +4,7 @@ import SwiftData
 struct HistoryView: View {
     @Environment(\.modelContext) private var context
     @Query(sort: \TripRecord.date, order: .reverse) private var records: [TripRecord]
+    @AppStorage("stationCode") private var stationCode = TimetableStore.defaultStationCode
 
     var body: some View {
         NavigationStack {
@@ -20,7 +21,7 @@ struct HistoryView: View {
                         VStack(alignment: .leading, spacing: 3) {
                             Text(Fmt.dateTime.string(from: record.date))
                             HStack(spacing: 8) {
-                                Text(record.direction.title)
+                                Text(TimetableStore.shared.directionTitle(stationCode: stationCode, direction: record.direction))
                                 Text("이동 \(Fmt.duration(record.travelTotal))")
                                 if let wait = record.duration(for: .platformWait) {
                                     Text("대기 \(Fmt.duration(wait))")
@@ -47,12 +48,13 @@ struct HistoryView: View {
 
 struct RecordDetailView: View {
     let record: TripRecord
+    @AppStorage("stationCode") private var stationCode = TimetableStore.defaultStationCode
 
     var body: some View {
         List {
             Section {
                 LabeledContent("일시", value: Fmt.dateTime.string(from: record.date))
-                LabeledContent("방향", value: record.direction.title)
+                LabeledContent("방향", value: TimetableStore.shared.directionTitle(stationCode: stationCode, direction: record.direction))
                 LabeledContent("이동 시간 (승강장 대기 제외)", value: Fmt.duration(record.travelTotal))
                 LabeledContent("전체", value: Fmt.duration(record.total))
             }

@@ -6,7 +6,7 @@ import datetime, json, pathlib, re, sys, urllib.parse, urllib.request
 
 LIST_URL = "https://www.metro9.co.kr/prog/subwayTm/kor/sub01_02/list.do"
 AJAX_URL = "https://www.metro9.co.kr/prog/subwayTm/kor/sub01_02/subwayTmAjax.do"
-OUT = pathlib.Path(__file__).resolve().parent.parent / "LeaveNow" / "Resources" / "timetable.json"
+OUT = pathlib.Path(__file__).resolve().parent.parent / "LeaveNow" / "Resources" / "timetable_09.json"
 UA = {"User-Agent": "Mozilla/5.0"}
 
 def get(url, data=None):

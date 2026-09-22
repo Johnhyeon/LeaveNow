@@ -3,3 +3,4 @@ build/
 xcuserdata/
 .DS_Store
 LeaveNow/Resources/Secrets.plist
+scripts/cache/

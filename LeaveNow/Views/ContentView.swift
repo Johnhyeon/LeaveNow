@@ -1,6 +1,8 @@
 import SwiftUI
 
 struct ContentView: View {
+    @AppStorage("hasCompletedSetup") private var hasCompletedSetup = false
+
     var body: some View {
         TabView {
             HomeView()
@@ -11,6 +13,12 @@ struct ContentView: View {
                 .tabItem { Label("기록", systemImage: "list.bullet.clipboard") }
             SettingsView()
                 .tabItem { Label("설정", systemImage: "gearshape") }
+        }
+        .fullScreenCover(isPresented: Binding(
+            get: { !hasCompletedSetup },
+            set: { if !$0 { hasCompletedSetup = true } }
+        )) {
+            OnboardingView()
         }
     }
 }

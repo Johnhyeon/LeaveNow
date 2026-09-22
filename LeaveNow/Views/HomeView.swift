@@ -4,41 +4,45 @@ import SwiftData
 struct HomeView: View {
     @Environment(\.scenePhase) private var scenePhase
     @Query(sort: \TripRecord.date, order: .reverse) private var records: [TripRecord]
+    private let store = TimetableStore.shared
     private let notifier = NotificationManager.shared
     private let realtime = RealtimeService.shared
-    @AppStorage("applyRealtimeDelay") private var applyRealtimeDelay = true
-    @AppStorage("leadMinutes") private var leadMinutes = 5
+
     @AppStorage("direction") private var directionRaw = Direction.up.rawValue
-    @AppStorage("stationCode") private var stationCode = Timetable.defaultStationCode
-    @AppStorage("exitLabel") private var exitLabel = "10번 출구"
+    @AppStorage("stationCode") private var stationCode = TimetableStore.defaultStationCode
+    @AppStorage("exitLabel") private var exitLabel = ""
     @AppStorage("bufferMinutes") private var bufferMinutes = 4
     @AppStorage("estimateMode") private var estimateModeRaw = EstimateMode.safe.rawValue
     @AppStorage("includePrep") private var includePrep = true
+    @AppStorage("leadMinutes") private var leadMinutes = 5
+    @AppStorage("applyRealtimeDelay") private var applyRealtimeDelay = true
     @State private var showBreakdown = false
 
     private var direction: Direction { Direction.parse(directionRaw) }
-    private var stationName: String { Timetable.shared.station(code: stationCode)?.name ?? "?" }
     private var mode: EstimateMode { EstimateMode(rawValue: estimateModeRaw) ?? .safe }
+    private var stationName: String { store.stationName(stationCode) }
+    private var line: Line? { store.line(ofStation: stationCode) }
 
     var body: some View {
         NavigationStack {
             TimelineView(.periodic(from: .now, by: 15)) { context in
                 content(now: context.date)
             }
-            .navigationTitle("\(stationName)역 \(exitLabel)")
+            .navigationTitle(exitLabel.isEmpty ? "\(stationName)역" : "\(stationName)역 \(exitLabel)")
             .navigationBarTitleDisplayMode(.inline)
-            .task { await syncNotifications() }
             .task(id: stationCode) {
+                await store.ensureLoaded(stationCode: stationCode)
+                await syncNotifications()
                 // 화면이 떠 있는 동안 30초마다 실시간 도착 정보 갱신
                 while !Task.isCancelled {
-                    await realtime.refresh(stationName: stationName)
+                    await refreshRealtime()
                     try? await Task.sleep(for: .seconds(30))
                 }
             }
             .onChange(of: scenePhase) { _, phase in
                 if phase == .active {
                     Task { await syncNotifications() }
-                    Task { await realtime.refresh(stationName: stationName) }
+                    Task { await refreshRealtime() }
                 }
             }
             .onChange(of: records.count) { _, _ in
@@ -47,10 +51,16 @@ struct HomeView: View {
         }
     }
 
-    /// 대기 중 알림 상태를 읽고, 평일 출근 알림을 현재 추정치로 다시 예약
     private func syncNotifications() async {
         await notifier.refresh()
         await RoutineSync.resync(records: records)
+    }
+
+    private func refreshRealtime() async {
+        guard let line else { return }
+        await realtime.refresh(stationName: stationName,
+                               lineRealtimeId: line.realtimeId,
+                               lineStations: line.stations.map(\.name))
     }
 
     @ViewBuilder
@@ -58,7 +68,9 @@ struct HomeView: View {
         let estimates = Estimator.estimates(records: records, mode: mode)
         let travel = Estimator.travelSeconds(estimates, includePrep: includePrep)
         let buffer = Double(bufferMinutes * 60)
-        let scheduled = Planner.options(now: now, stationCode: stationCode, direction: direction, bufferSeconds: buffer, travelSeconds: travel)
+        let dayType = DayType.of(now)
+        let trains = store.trains(stationCode: stationCode, direction: direction, dayType: dayType)
+        let scheduled = Planner.options(now: now, trains: trains, bufferSeconds: buffer, travelSeconds: travel)
         let delays = realtime.isConfigured ? RealtimeMatcher.delays(options: scheduled, arrivals: realtime.arrivals, direction: direction) : [:]
         let options = scheduled.map { opt -> TrainOption in
             guard applyRealtimeDelay, let d = delays[opt.id] else { return opt }
@@ -70,10 +82,27 @@ struct HomeView: View {
             Section {
                 Picker("방향", selection: $directionRaw) {
                     ForEach(Direction.allCases) { d in
-                        Text(d.title).tag(d.rawValue)
+                        Text(store.directionTitle(stationCode: stationCode, direction: d)).tag(d.rawValue)
                     }
                 }
                 .pickerStyle(.segmented)
+            }
+
+            if !store.isLoaded(stationCode) {
+                Section {
+                    if let err = store.errors[stationCode] {
+                        Text(err).font(.footnote).foregroundStyle(.red)
+                        Button("다시 시도") {
+                            Task { await store.refresh(stationCode: stationCode) }
+                        }
+                    } else {
+                        HStack(spacing: 10) {
+                            ProgressView()
+                            Text("\(stationName)역 시간표를 불러오는 중…")
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                }
             }
 
             Section("지금 나가면") {
@@ -91,7 +120,7 @@ struct HomeView: View {
                             .font(.headline)
                             .foregroundStyle(.tint)
                         Divider()
-                        infoRow("탈 열차", "\(Fmt.time.string(from: next.departure)) \(next.train.type.rawValue)")
+                        infoRow("탈 열차", "\(Fmt.time.string(from: next.departure)) \(next.train.type.rawValue)\(next.train.note.map { " · \($0)행" } ?? "")")
                         infoRow("승강장 도착 목표", "\(Fmt.time.string(from: next.platformArrival)) (\(bufferMinutes)분 전)")
                         infoRow("이동 시간", Fmt.duration(travel))
                         if next.delay != 0 {
@@ -99,7 +128,7 @@ struct HomeView: View {
                         }
                     }
                     .padding(.vertical, 4)
-                } else {
+                } else if store.isLoaded(stationCode) {
                     Text("오늘 남은 열차가 없습니다.")
                         .foregroundStyle(.secondary)
                 }
@@ -138,7 +167,7 @@ struct HomeView: View {
                         Text("갱신 \(Fmt.timeWithSeconds.string(from: t))")
                     }
                     Button {
-                        Task { await realtime.refresh(stationName: stationName) }
+                        Task { await refreshRealtime() }
                     } label: {
                         Image(systemName: "arrow.clockwise")
                     }
@@ -146,8 +175,8 @@ struct HomeView: View {
                 }
             }
 
-            Section("다음 열차 · \(DayType.of(now).title)") {
-                if options.isEmpty {
+            Section("다음 열차 · \(dayType.title)") {
+                if options.isEmpty && store.isLoaded(stationCode) {
                     Text("시간표에 열차가 없습니다.").foregroundStyle(.secondary)
                 }
                 ForEach(options) { option in

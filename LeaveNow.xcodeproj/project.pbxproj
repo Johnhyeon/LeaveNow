@@ -14,15 +14,19 @@
 		2C29DFB0D75AF26A93BDBB78 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3099350243901A33CFD9ADD8 /* ContentView.swift */; };
 		3FB4EA8BAB98B8ECED2507A5 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AA670A701E8F65196A7BA1E /* Secrets.plist */; };
 		48057B0307AE0AB1DA92470D /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32748146DF672E3D79195414 /* HistoryView.swift */; };
+		56FEB8A7CBD0E41150653BCE /* timetable_09.json in Resources */ = {isa = PBXBuildFile; fileRef = B0AE2DCFA7993F4A7A83760D /* timetable_09.json */; };
 		68B40B31F87C00C043C3F785 /* ManualEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D88F8F88A071B35BD1727E3 /* ManualEntryView.swift */; };
 		75D91554B54851EBFD3EAD7F /* TripRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9E3975B7CD91C731B9457 /* TripRecord.swift */; };
 		77C22B8168B67B480DB0285C /* Fmt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65A17556F3CCD89FA5C7E06 /* Fmt.swift */; };
-		8A87134E945D6B23CE7D0126 /* timetable.json in Resources */ = {isa = PBXBuildFile; fileRef = EAF1DF02BE1B0B3FFD8F731A /* timetable.json */; };
+		7CBE9A6B4FA68577948D9DB1 /* StationPickerSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4DA30303EBC281A5C01F10 /* StationPickerSection.swift */; };
+		95D58B7E86A30D0BB49219C6 /* SeoulMetroAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A612E3E61DE945F0D9C81AE6 /* SeoulMetroAPI.swift */; };
 		97777CB4E2164A897A3C6112 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EFFC6B2481BD9A3F24D49E /* HomeView.swift */; };
 		978A74A1F3DAC83949B0AAFA /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68DAB6F37EE41E213D050FE /* NotificationManager.swift */; };
+		AE0AE6A2A0E465B147855600 /* lines.json in Resources */ = {isa = PBXBuildFile; fileRef = 00BED392C92F04FB084B21CC /* lines.json */; };
 		B4B35C9614565066E9A5CD5D /* Secrets.example.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2C521C24713A3C217304B5C /* Secrets.example.plist */; };
 		BFA6E055D0EFE399675EE6FE /* LeaveNowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE88F84D5AE2A209F7927B53 /* LeaveNowApp.swift */; };
 		C4DCCF1AB07607B4E3B02365 /* Planner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43136D8D41C7B1DA0FC71F56 /* Planner.swift */; };
+		C7C3BD60951C6E52F6F3BE20 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B171E0BCADA1C8937903F5A /* OnboardingView.swift */; };
 		C7D6E980C8B8001A7C626410 /* RoutineSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A06491E020E5BCD634944 /* RoutineSync.swift */; };
 		C844D44ABC93D2BBBB7FF0E5 /* Estimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E30F3CD32879F43BAFE4328 /* Estimator.swift */; };
 		E6E09E6795491EEA9D3EAD8C /* Timetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7884101EB53F3E3F0DFCB02 /* Timetable.swift */; };
@@ -31,7 +35,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		00BED392C92F04FB084B21CC /* lines.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = lines.json; sourceTree = "<group>"; };
 		0D88F8F88A071B35BD1727E3 /* ManualEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualEntryView.swift; sourceTree = "<group>"; };
+		2B171E0BCADA1C8937903F5A /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		2F4CA1178BF4307A5905F75C /* SignalCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalCycleView.swift; sourceTree = "<group>"; };
 		3099350243901A33CFD9ADD8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		32748146DF672E3D79195414 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
@@ -45,13 +51,15 @@
 		5E30F3CD32879F43BAFE4328 /* Estimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Estimator.swift; sourceTree = "<group>"; };
 		6DBC54FBA782A119A41E8C3A /* Segment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
 		A5EFFC6B2481BD9A3F24D49E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A612E3E61DE945F0D9C81AE6 /* SeoulMetroAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulMetroAPI.swift; sourceTree = "<group>"; };
 		A68DAB6F37EE41E213D050FE /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		AE88F84D5AE2A209F7927B53 /* LeaveNowApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveNowApp.swift; sourceTree = "<group>"; };
+		B0AE2DCFA7993F4A7A83760D /* timetable_09.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = timetable_09.json; sourceTree = "<group>"; };
 		B888F0C471F302B94D915332 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C65A17556F3CCD89FA5C7E06 /* Fmt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fmt.swift; sourceTree = "<group>"; };
 		C7884101EB53F3E3F0DFCB02 /* Timetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timetable.swift; sourceTree = "<group>"; };
 		C85B62204D829775439D778A /* RealtimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeService.swift; sourceTree = "<group>"; };
-		EAF1DF02BE1B0B3FFD8F731A /* timetable.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = timetable.json; sourceTree = "<group>"; };
+		DE4DA30303EBC281A5C01F10 /* StationPickerSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationPickerSection.swift; sourceTree = "<group>"; };
 		F2C521C24713A3C217304B5C /* Secrets.example.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Secrets.example.plist; sourceTree = "<group>"; };
 		F3BE02A09DFF2070FB9C3629 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -60,9 +68,10 @@
 		29C46544AAC604ABF63BF1B7 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				00BED392C92F04FB084B21CC /* lines.json */,
 				F2C521C24713A3C217304B5C /* Secrets.example.plist */,
 				4AA670A701E8F65196A7BA1E /* Secrets.plist */,
-				EAF1DF02BE1B0B3FFD8F731A /* timetable.json */,
+				B0AE2DCFA7993F4A7A83760D /* timetable_09.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -87,6 +96,7 @@
 				C85B62204D829775439D778A /* RealtimeService.swift */,
 				4A9A06491E020E5BCD634944 /* RoutineSync.swift */,
 				F3BE02A09DFF2070FB9C3629 /* Secrets.swift */,
+				A612E3E61DE945F0D9C81AE6 /* SeoulMetroAPI.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -128,8 +138,10 @@
 				A5EFFC6B2481BD9A3F24D49E /* HomeView.swift */,
 				0D88F8F88A071B35BD1727E3 /* ManualEntryView.swift */,
 				36DDBDF90581D09B1FFAC3A8 /* MeasureView.swift */,
+				2B171E0BCADA1C8937903F5A /* OnboardingView.swift */,
 				44F6F1D9C8DD9F4AA0072706 /* SettingsView.swift */,
 				2F4CA1178BF4307A5905F75C /* SignalCycleView.swift */,
+				DE4DA30303EBC281A5C01F10 /* StationPickerSection.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -196,7 +208,8 @@
 			files = (
 				B4B35C9614565066E9A5CD5D /* Secrets.example.plist in Resources */,
 				3FB4EA8BAB98B8ECED2507A5 /* Secrets.plist in Resources */,
-				8A87134E945D6B23CE7D0126 /* timetable.json in Resources */,
+				AE0AE6A2A0E465B147855600 /* lines.json in Resources */,
+				56FEB8A7CBD0E41150653BCE /* timetable_09.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,13 +229,16 @@
 				68B40B31F87C00C043C3F785 /* ManualEntryView.swift in Sources */,
 				FD4CD7683E3871CE194F5CD1 /* MeasureView.swift in Sources */,
 				978A74A1F3DAC83949B0AAFA /* NotificationManager.swift in Sources */,
+				C7C3BD60951C6E52F6F3BE20 /* OnboardingView.swift in Sources */,
 				C4DCCF1AB07607B4E3B02365 /* Planner.swift in Sources */,
 				197397AA916BCB59258C7A7A /* RealtimeService.swift in Sources */,
 				C7D6E980C8B8001A7C626410 /* RoutineSync.swift in Sources */,
 				0CB93DE46F7E01C3360DB309 /* Secrets.swift in Sources */,
 				EE1AD0E09E917D4C901A0AE6 /* Segment.swift in Sources */,
+				95D58B7E86A30D0BB49219C6 /* SeoulMetroAPI.swift in Sources */,
 				200DC3E1DABAC4450143C3E7 /* SettingsView.swift in Sources */,
 				1A8F9AE428F9A39EAC290077 /* SignalCycleView.swift in Sources */,
+				7CBE9A6B4FA68577948D9DB1 /* StationPickerSection.swift in Sources */,
 				E6E09E6795491EEA9D3EAD8C /* Timetable.swift in Sources */,
 				75D91554B54851EBFD3EAD7F /* TripRecord.swift in Sources */,
 			);

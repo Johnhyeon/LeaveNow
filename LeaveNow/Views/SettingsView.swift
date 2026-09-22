@@ -4,38 +4,38 @@ import SwiftData
 struct SettingsView: View {
     @Environment(\.modelContext) private var context
     @Query private var records: [TripRecord]
+    private let store = TimetableStore.shared
     private let notifier = NotificationManager.shared
+
+    @AppStorage("hasCompletedSetup") private var hasCompletedSetup = false
+    @AppStorage("stationCode") private var stationCode = TimetableStore.defaultStationCode
+    @AppStorage("exitLabel") private var exitLabel = ""
+    @AppStorage("bufferMinutes") private var bufferMinutes = 4
+    @AppStorage("estimateMode") private var estimateModeRaw = EstimateMode.safe.rawValue
+    @AppStorage("includePrep") private var includePrep = true
     @AppStorage("leadMinutes") private var leadMinutes = 5
     @AppStorage("routineEnabled") private var routineEnabled = false
     @AppStorage("routineTargetMinutes") private var routineTargetMinutes = 8 * 60
     @AppStorage("routineDirection") private var routineDirectionRaw = Direction.up.rawValue
-    @AppStorage("stationCode") private var stationCode = Timetable.defaultStationCode
-    @AppStorage("exitLabel") private var exitLabel = "10번 출구"
     @AppStorage("applyRealtimeDelay") private var applyRealtimeDelay = true
-    @AppStorage("bufferMinutes") private var bufferMinutes = 4
-    @AppStorage("estimateMode") private var estimateModeRaw = EstimateMode.safe.rawValue
-    @AppStorage("includePrep") private var includePrep = true
-    @State private var defaults: [SegmentKind: Double] = SegmentDefaults.load()
-    @State private var showDeleteConfirm = false
     @AppStorage("crosswalkRedSeconds") private var crosswalkRed = 0.0
     @AppStorage("crosswalkGreenSeconds") private var crosswalkGreen = 0.0
 
-    private var timetable: Timetable { .shared }
+    @State private var lineId = ""
+    @State private var defaults: [SegmentKind: Double] = SegmentDefaults.load()
+    @State private var showDeleteConfirm = false
 
     var body: some View {
         NavigationStack {
             Form {
                 Section {
-                    Picker("출발역", selection: $stationCode) {
-                        ForEach(timetable.stations) { st in
-                            Text(st.isExpressStop ? "\(st.name) (급행)" : st.name).tag(st.code)
-                        }
-                    }
-                    TextField("출구 (표시용)", text: $exitLabel)
+                    StationPickerSection(lineId: $lineId, stationCode: $stationCode)
+                    TextField("출구 (표시용, 선택)", text: $exitLabel)
+                    timetableStatus
                 } header: {
-                    Text("역")
+                    Text("출발역")
                 } footer: {
-                    Text("\(timetable.line) 전 역을 지원합니다. 급행 정차역은 (급행)으로 표시됩니다. 역을 바꾸면 측정 기록은 그대로 두고 시간표만 바뀝니다.")
+                    Text("1~8호선은 역을 고르면 그 역 시간표만 받아와 기기에 저장합니다. 9호선은 앱에 내장된 공식 시각표를 씁니다. 역을 바꿔도 측정 기록은 그대로 유지됩니다.")
                 }
 
                 Section {
@@ -59,7 +59,7 @@ struct SettingsView: View {
                     if routineEnabled {
                         Picker("방향", selection: $routineDirectionRaw) {
                             ForEach(Direction.allCases) { d in
-                                Text(d.title).tag(d.rawValue)
+                                Text(store.directionTitle(stationCode: stationCode, direction: d)).tag(d.rawValue)
                             }
                         }
                         DatePicker("타고 싶은 열차", selection: routineTargetBinding, displayedComponents: .hourAndMinute)
@@ -107,40 +107,52 @@ struct SettingsView: View {
                 } header: {
                     Text("실시간 도착 정보")
                 } footer: {
-                    Text("서울 열린데이터광장 인증키를 프로젝트의 LeaveNow/Resources/Secrets.plist 에 넣고 다시 설치하면 켜집니다. 실시간 정보와 시간표 열차를 대응시켜 지연된 만큼 출발 시각을 늦춥니다.")
+                    Text("서울 열린데이터광장 인증키를 프로젝트의 LeaveNow/Resources/Secrets.plist 에 넣고 다시 설치하면 켜집니다. 1~8호선 시간표 내려받기와 실시간 도착 정보 모두 이 키를 씁니다.")
                 }
 
                 Section {
-                    LabeledContent("노선", value: "\(timetable.line) · \(timetable.stations.count)개 역")
-                    LabeledContent("출처", value: timetable.source)
-                    ForEach(Direction.allCases) { d in
-                        let weekday = timetable.trains(stationCode: stationCode, direction: d, dayType: .weekday).count
-                        let weekend = timetable.trains(stationCode: stationCode, direction: d, dayType: .weekend).count
-                        LabeledContent(d.title, value: "평일 \(weekday)편 · 주말 \(weekend)편")
-                    }
-                } header: {
-                    Text("시간표")
-                } footer: {
-                    Text("시간표를 갱신하려면 프로젝트에서 scripts/fetch_timetable.py 를 실행하면 됩니다.")
-                }
-
-                Section {
-                    Button("측정 기록 전체 삭제", role: .destructive) {
-                        showDeleteConfirm = true
-                    }
+                    Button("초기 설정 다시 하기") { hasCompletedSetup = false }
+                    Button("측정 기록 전체 삭제", role: .destructive) { showDeleteConfirm = true }
                 }
             }
             .navigationTitle("설정")
+            .onAppear { lineId = store.line(ofStation: stationCode)?.id ?? "" }
+            .onChange(of: stationCode) { _, _ in
+                Task {
+                    await store.ensureLoaded(stationCode: stationCode)
+                    await RoutineSync.resync(records: records)
+                }
+            }
             .onChange(of: routineEnabled) { _, _ in resync() }
             .onChange(of: routineTargetMinutes) { _, _ in resync() }
             .onChange(of: routineDirectionRaw) { _, _ in resync() }
-            .onChange(of: stationCode) { _, _ in resync() }
             .onChange(of: leadMinutes) { _, _ in resync() }
             .onChange(of: bufferMinutes) { _, _ in resync() }
             .onChange(of: estimateModeRaw) { _, _ in resync() }
             .onChange(of: includePrep) { _, _ in resync() }
             .confirmationDialog("모든 측정 기록을 삭제할까요?", isPresented: $showDeleteConfirm, titleVisibility: .visible) {
                 Button("전체 삭제", role: .destructive) { deleteAll() }
+            }
+        }
+    }
+
+    @ViewBuilder
+    private var timetableStatus: some View {
+        if let line = store.line(ofStation: stationCode) {
+            if store.loading.contains(stationCode) {
+                HStack(spacing: 10) { ProgressView(); Text("시간표 불러오는 중…").foregroundStyle(.secondary) }
+            } else if let err = store.errors[stationCode] {
+                Text(err).font(.footnote).foregroundStyle(.red)
+                Button("다시 시도") { Task { await store.refresh(stationCode: stationCode) } }
+            } else if let tt = store.meta[stationCode] {
+                let weekday = store.trains(stationCode: stationCode, direction: .up, dayType: .weekday).count
+                    + store.trains(stationCode: stationCode, direction: .down, dayType: .weekday).count
+                LabeledContent("시간표", value: line.isBundled ? "내장 · 평일 \(weekday)편" : "받음 · 평일 \(weekday)편")
+                if let fetched = tt.fetchedAt {
+                    LabeledContent("받은 날짜", value: Fmt.dateTime.string(from: fetched))
+                    Button("시간표 다시 받기") { Task { await store.refresh(stationCode: stationCode) } }
+                }
+                LabeledContent("출처", value: tt.source).font(.footnote)
             }
         }
     }
