@@ -8,8 +8,19 @@ struct TrainOption: Identifiable {
     let leaveBy: Date
     /// 승강장 도착 목표 시각 (열차 시각 - 여유)
     let platformArrival: Date
+    /// 실시간 지연(초). 0이면 시간표 그대로
+    var delay: TimeInterval = 0
 
     var id: String { train.id }
+
+    /// 지연을 반영한 새 계획
+    func applying(delay: TimeInterval) -> TrainOption {
+        TrainOption(train: train,
+                    departure: departure.addingTimeInterval(delay),
+                    leaveBy: leaveBy.addingTimeInterval(delay),
+                    platformArrival: platformArrival.addingTimeInterval(delay),
+                    delay: delay)
+    }
 
     func isCatchable(at now: Date) -> Bool { leaveBy >= now }
 }

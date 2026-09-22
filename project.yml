@@ -22,6 +22,11 @@ targets:
         CFBundleDevelopmentRegion: ko
         UILaunchScreen: {}
         UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+        NSAppTransportSecurity:
+          NSExceptionDomains:
+            swopenAPI.seoul.go.kr:
+              NSExceptionAllowsInsecureHTTPLoads: true
+              NSIncludesSubdomains: true
     settings:
       base:
         PRODUCT_BUNDLE_IDENTIFIER: com.drimaes.LeaveNow

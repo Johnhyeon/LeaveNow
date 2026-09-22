@@ -5,6 +5,8 @@ struct HomeView: View {
     @Environment(\.scenePhase) private var scenePhase
     @Query(sort: \TripRecord.date, order: .reverse) private var records: [TripRecord]
     private let notifier = NotificationManager.shared
+    private let realtime = RealtimeService.shared
+    @AppStorage("applyRealtimeDelay") private var applyRealtimeDelay = true
     @AppStorage("leadMinutes") private var leadMinutes = 5
     @AppStorage("direction") private var directionRaw = Direction.up.rawValue
     @AppStorage("stationCode") private var stationCode = Timetable.defaultStationCode
@@ -26,8 +28,18 @@ struct HomeView: View {
             .navigationTitle("\(stationName)역 \(exitLabel)")
             .navigationBarTitleDisplayMode(.inline)
             .task { await syncNotifications() }
+            .task(id: stationCode) {
+                // 화면이 떠 있는 동안 30초마다 실시간 도착 정보 갱신
+                while !Task.isCancelled {
+                    await realtime.refresh(stationName: stationName)
+                    try? await Task.sleep(for: .seconds(30))
+                }
+            }
             .onChange(of: scenePhase) { _, phase in
-                if phase == .active { Task { await syncNotifications() } }
+                if phase == .active {
+                    Task { await syncNotifications() }
+                    Task { await realtime.refresh(stationName: stationName) }
+                }
             }
             .onChange(of: records.count) { _, _ in
                 Task { await syncNotifications() }
@@ -46,7 +58,12 @@ struct HomeView: View {
         let estimates = Estimator.estimates(records: records, mode: mode)
         let travel = Estimator.travelSeconds(estimates, includePrep: includePrep)
         let buffer = Double(bufferMinutes * 60)
-        let options = Planner.options(now: now, stationCode: stationCode, direction: direction, bufferSeconds: buffer, travelSeconds: travel)
+        let scheduled = Planner.options(now: now, stationCode: stationCode, direction: direction, bufferSeconds: buffer, travelSeconds: travel)
+        let delays = realtime.isConfigured ? RealtimeMatcher.delays(options: scheduled, arrivals: realtime.arrivals, direction: direction) : [:]
+        let options = scheduled.map { opt -> TrainOption in
+            guard applyRealtimeDelay, let d = delays[opt.id] else { return opt }
+            return opt.applying(delay: d)
+        }
         let next = options.first { $0.isCatchable(at: now) }
 
         List {
@@ -77,11 +94,55 @@ struct HomeView: View {
                         infoRow("탈 열차", "\(Fmt.time.string(from: next.departure)) \(next.train.type.rawValue)")
                         infoRow("승강장 도착 목표", "\(Fmt.time.string(from: next.platformArrival)) (\(bufferMinutes)분 전)")
                         infoRow("이동 시간", Fmt.duration(travel))
+                        if next.delay != 0 {
+                            infoRow("실시간 반영", delayText(next.delay))
+                        }
                     }
                     .padding(.vertical, 4)
                 } else {
                     Text("오늘 남은 열차가 없습니다.")
                         .foregroundStyle(.secondary)
+                }
+            }
+
+            Section {
+                if !realtime.isConfigured {
+                    Text("설정 탭의 안내대로 API 키 파일을 넣으면 실시간 도착 정보가 표시됩니다.")
+                        .font(.footnote)
+                        .foregroundStyle(.secondary)
+                } else if let err = realtime.errorText {
+                    Text(err).font(.footnote).foregroundStyle(.red)
+                } else {
+                    let mine = realtime.arrivals.filter { $0.direction == direction }.prefix(4)
+                    if mine.isEmpty {
+                        Text(realtime.lastUpdated == nil ? "불러오는 중…" : "이 방향으로 접근 중인 열차 정보가 없습니다.")
+                            .font(.footnote)
+                            .foregroundStyle(.secondary)
+                    }
+                    ForEach(Array(mine)) { arrival in
+                        HStack {
+                            TypeBadge(type: arrival.type)
+                            Text("\(arrival.destination)행")
+                            Spacer()
+                            Text(arrival.message)
+                                .font(.subheadline)
+                                .foregroundStyle(.secondary)
+                        }
+                    }
+                }
+            } header: {
+                HStack {
+                    Text("실시간 도착")
+                    Spacer()
+                    if let t = realtime.lastUpdated {
+                        Text("갱신 \(Fmt.timeWithSeconds.string(from: t))")
+                    }
+                    Button {
+                        Task { await realtime.refresh(stationName: stationName) }
+                    } label: {
+                        Image(systemName: "arrow.clockwise")
+                    }
+                    .disabled(!realtime.isConfigured || realtime.isLoading)
                 }
             }
 
@@ -128,6 +189,12 @@ struct HomeView: View {
         } message: {
             Text("iOS 설정 > 출발시각 > 알림 에서 알림을 허용해야 출발 알림을 받을 수 있습니다.")
         }
+    }
+
+    private func delayText(_ delay: TimeInterval) -> String {
+        let minutes = Int((delay / 60).rounded())
+        if minutes == 0 { return "정시" }
+        return minutes > 0 ? "+\(minutes)분 지연" : "\(minutes)분 빠름"
     }
 
     private func infoRow(_ label: String, _ value: String) -> some View {
@@ -177,9 +244,17 @@ private struct TrainRow: View {
                 Text("출발 \(Fmt.time.string(from: option.leaveBy))")
                     .monospacedDigit()
                     .fontWeight(isArmed ? .semibold : .regular)
-                Text(Fmt.relative(option.leaveBy, from: now))
-                    .font(.caption)
-                    .foregroundStyle(catchable ? Color.secondary : Color.red)
+                HStack(spacing: 4) {
+                    if option.delay != 0 {
+                        let m = Int((option.delay / 60).rounded())
+                        Text(m > 0 ? "+\(m)분" : "\(m)분")
+                            .font(.caption2.weight(.bold))
+                            .foregroundStyle(m > 0 ? .red : .green)
+                    }
+                    Text(Fmt.relative(option.leaveBy, from: now))
+                        .font(.caption)
+                        .foregroundStyle(catchable ? Color.secondary : Color.red)
+                }
             }
         }
         .opacity(catchable ? 1 : 0.45)

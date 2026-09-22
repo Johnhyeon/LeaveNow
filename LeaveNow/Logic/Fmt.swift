@@ -24,6 +24,13 @@ enum Fmt {
         return f
     }()
 
+    static let timeWithSeconds: DateFormatter = {
+        let f = DateFormatter()
+        f.locale = Locale(identifier: "ko_KR")
+        f.dateFormat = "HH:mm:ss"
+        return f
+    }()
+
     static let dateTime: DateFormatter = {
         let f = DateFormatter()
         f.locale = Locale(identifier: "ko_KR")

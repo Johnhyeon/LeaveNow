@@ -11,6 +11,7 @@ struct SettingsView: View {
     @AppStorage("routineDirection") private var routineDirectionRaw = Direction.up.rawValue
     @AppStorage("stationCode") private var stationCode = Timetable.defaultStationCode
     @AppStorage("exitLabel") private var exitLabel = "10번 출구"
+    @AppStorage("applyRealtimeDelay") private var applyRealtimeDelay = true
     @AppStorage("bufferMinutes") private var bufferMinutes = 4
     @AppStorage("estimateMode") private var estimateModeRaw = EstimateMode.safe.rawValue
     @AppStorage("includePrep") private var includePrep = true
@@ -97,6 +98,16 @@ struct SettingsView: View {
                     Text("구간 테스트 값")
                 } footer: {
                     Text("측정 기록이 \(Estimator.minimumSamples)회 미만인 구간에 쓰는 임시 값입니다. 실측이 쌓이면 자동으로 무시됩니다.")
+                }
+
+                Section {
+                    LabeledContent("API 키", value: RealtimeService.shared.isConfigured ? "설정됨" : "없음")
+                    Toggle("실시간 지연을 출발 시각에 반영", isOn: $applyRealtimeDelay)
+                        .disabled(!RealtimeService.shared.isConfigured)
+                } header: {
+                    Text("실시간 도착 정보")
+                } footer: {
+                    Text("서울 열린데이터광장 인증키를 프로젝트의 LeaveNow/Resources/Secrets.plist 에 넣고 다시 설치하면 켜집니다. 실시간 정보와 시간표 열차를 대응시켜 지연된 만큼 출발 시각을 늦춥니다.")
                 }
 
                 Section {
