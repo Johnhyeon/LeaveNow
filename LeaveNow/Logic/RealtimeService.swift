@@ -47,7 +47,7 @@ final class RealtimeService {
         defer { isLoading = false }
 
         let encoded = stationName.addingPercentEncoding(withAllowedCharacters: .urlPathAllowed) ?? stationName
-        guard let url = URL(string: "http://swopenAPI.seoul.go.kr/api/subway/\(key)/json/realtimeStationArrival/0/30/\(encoded)") else { return }
+        guard let url = URL(string: "http://swopenapi.seoul.go.kr/api/subway/\(key)/json/realtimeStationArrival/0/30/\(encoded)") else { return }
 
         do {
             let (data, _) = try await URLSession.shared.data(from: url)
@@ -67,7 +67,7 @@ final class RealtimeService {
                     let (destination, next) = Self.parseLineName(row.trainLineNm ?? "")
                     return RealtimeArrival(
                         id: "\(row.btrainNo ?? "")-\(row.statnId ?? "")-\(row.updnLine ?? "")",
-                        direction: Self.direction(currentStation: stationName, nextStation: next, destination: destination),
+                        direction: Self.direction(currentStation: stationName, nextStation: next, destination: destination, updnLine: row.updnLine),
                         type: (row.btrainSttus ?? "").contains("급행") ? .express : .local,
                         destination: destination,
                         nextStation: next,
@@ -83,16 +83,25 @@ final class RealtimeService {
         }
     }
 
-    /// "중앙보훈병원행 - 증미방면" → ("중앙보훈병원", "증미")
+    /// "중앙보훈병원행 - 증미방면 (급행)" → ("중앙보훈병원", "증미")
     static func parseLineName(_ text: String) -> (destination: String, next: String) {
-        let parts = text.components(separatedBy: " - ")
-        let dest = parts.first?.replacingOccurrences(of: "행", with: "").trimmingCharacters(in: .whitespaces) ?? ""
-        let next = parts.count > 1 ? parts[1].replacingOccurrences(of: "방면", with: "").trimmingCharacters(in: .whitespaces) : ""
+        // 괄호 안 부가 정보("(급행)" 등) 제거
+        let cleaned = text.replacingOccurrences(of: "\\s*\\([^)]*\\)", with: "", options: .regularExpression)
+        let parts = cleaned.components(separatedBy: " - ")
+        let dest = parts.first.map { $0.hasSuffix("행") ? String($0.dropLast()) : $0 }?.trimmingCharacters(in: .whitespaces) ?? ""
+        let next = parts.count > 1
+            ? parts[1].replacingOccurrences(of: "방면", with: "").trimmingCharacters(in: .whitespaces)
+            : ""
         return (dest, next)
     }
 
-    /// 시간표의 역 순서(개화 → 중앙보훈병원)에서 다음 역이 뒤쪽이면 상행(up)
-    static func direction(currentStation: String, nextStation: String, destination: String) -> Direction? {
+    /// 방향 판별. API의 상행/하행 값을 우선 쓰고(9호선: 상행 = 중앙보훈병원 방면),
+    /// 없으면 시간표의 역 순서(개화 → 중앙보훈병원)에서 다음 역 위치로 판단한다.
+    static func direction(currentStation: String, nextStation: String, destination: String, updnLine: String? = nil) -> Direction? {
+        if let updn = updnLine {
+            if updn.contains("상행") { return .up }
+            if updn.contains("하행") { return .down }
+        }
         let names = Timetable.shared.stations.map(\.name)
         guard let cur = names.firstIndex(of: currentStation) else { return nil }
         if let next = names.firstIndex(of: nextStation) {

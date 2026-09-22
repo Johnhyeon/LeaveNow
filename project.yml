@@ -24,7 +24,7 @@ targets:
         UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
         NSAppTransportSecurity:
           NSExceptionDomains:
-            swopenAPI.seoul.go.kr:
+            swopenapi.seoul.go.kr:
               NSExceptionAllowsInsecureHTTPLoads: true
               NSIncludesSubdomains: true
     settings:
