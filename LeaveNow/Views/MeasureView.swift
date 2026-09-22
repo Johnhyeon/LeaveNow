@@ -9,7 +9,7 @@ private struct Lap: Identifiable {
 
 struct MeasureView: View {
     @Environment(\.modelContext) private var context
-    @AppStorage("direction") private var directionRaw = Direction.bohun.rawValue
+    @AppStorage("direction") private var directionRaw = Direction.up.rawValue
 
     @State private var sessionStart: Date?
     @State private var segmentStart: Date?
@@ -63,7 +63,7 @@ struct MeasureView: View {
             Section {
                 Picker("방향", selection: $directionRaw) {
                     ForEach(Direction.allCases) { d in
-                        Text(d.rawValue).tag(d.rawValue)
+                        Text(d.title).tag(d.rawValue)
                     }
                 }
                 .pickerStyle(.segmented)
@@ -209,7 +209,7 @@ struct MeasureView: View {
     }
 
     private func save() {
-        let direction = Direction(rawValue: directionRaw) ?? .bohun
+        let direction = Direction.parse(directionRaw)
         let record = TripRecord(date: sessionStart ?? .now,
                                 direction: direction,
                                 durations: laps.map(\.seconds))

@@ -5,7 +5,7 @@ import SwiftData
 struct ManualEntryView: View {
     @Environment(\.modelContext) private var context
     @Environment(\.dismiss) private var dismiss
-    @AppStorage("direction") private var directionRaw = Direction.bohun.rawValue
+    @AppStorage("direction") private var directionRaw = Direction.up.rawValue
 
     @State private var date = Date.now
     @State private var minutes: [SegmentKind: Int] = [:]
@@ -18,7 +18,7 @@ struct ManualEntryView: View {
                     DatePicker("일시", selection: $date)
                     Picker("방향", selection: $directionRaw) {
                         ForEach(Direction.allCases) { d in
-                            Text(d.rawValue).tag(d.rawValue)
+                            Text(d.title).tag(d.rawValue)
                         }
                     }
                 }
@@ -75,7 +75,7 @@ struct ManualEntryView: View {
     }
 
     private func save() {
-        let direction = Direction(rawValue: directionRaw) ?? .bohun
+        let direction = Direction.parse(directionRaw)
         let durations = SegmentKind.allCases.map { total(for: $0) }
         context.insert(TripRecord(date: date, direction: direction, durations: durations, note: "직접 입력"))
         dismiss()

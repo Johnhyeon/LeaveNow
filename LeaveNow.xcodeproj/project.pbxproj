@@ -16,8 +16,10 @@
 		77C22B8168B67B480DB0285C /* Fmt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65A17556F3CCD89FA5C7E06 /* Fmt.swift */; };
 		8A87134E945D6B23CE7D0126 /* timetable.json in Resources */ = {isa = PBXBuildFile; fileRef = EAF1DF02BE1B0B3FFD8F731A /* timetable.json */; };
 		97777CB4E2164A897A3C6112 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EFFC6B2481BD9A3F24D49E /* HomeView.swift */; };
+		978A74A1F3DAC83949B0AAFA /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68DAB6F37EE41E213D050FE /* NotificationManager.swift */; };
 		BFA6E055D0EFE399675EE6FE /* LeaveNowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE88F84D5AE2A209F7927B53 /* LeaveNowApp.swift */; };
 		C4DCCF1AB07607B4E3B02365 /* Planner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 43136D8D41C7B1DA0FC71F56 /* Planner.swift */; };
+		C7D6E980C8B8001A7C626410 /* RoutineSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A06491E020E5BCD634944 /* RoutineSync.swift */; };
 		C844D44ABC93D2BBBB7FF0E5 /* Estimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E30F3CD32879F43BAFE4328 /* Estimator.swift */; };
 		E6E09E6795491EEA9D3EAD8C /* Timetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7884101EB53F3E3F0DFCB02 /* Timetable.swift */; };
 		EE1AD0E09E917D4C901A0AE6 /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBC54FBA782A119A41E8C3A /* Segment.swift */; };
@@ -32,11 +34,13 @@
 		36DDBDF90581D09B1FFAC3A8 /* MeasureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureView.swift; sourceTree = "<group>"; };
 		43136D8D41C7B1DA0FC71F56 /* Planner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planner.swift; sourceTree = "<group>"; };
 		44F6F1D9C8DD9F4AA0072706 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		4A9A06491E020E5BCD634944 /* RoutineSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineSync.swift; sourceTree = "<group>"; };
 		4CF121D705C92F572B90B29D /* LeaveNow.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = LeaveNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CA9E3975B7CD91C731B9457 /* TripRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripRecord.swift; sourceTree = "<group>"; };
 		5E30F3CD32879F43BAFE4328 /* Estimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Estimator.swift; sourceTree = "<group>"; };
 		6DBC54FBA782A119A41E8C3A /* Segment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
 		A5EFFC6B2481BD9A3F24D49E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		A68DAB6F37EE41E213D050FE /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		AE88F84D5AE2A209F7927B53 /* LeaveNowApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveNowApp.swift; sourceTree = "<group>"; };
 		B888F0C471F302B94D915332 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C65A17556F3CCD89FA5C7E06 /* Fmt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fmt.swift; sourceTree = "<group>"; };
@@ -68,7 +72,9 @@
 			children = (
 				5E30F3CD32879F43BAFE4328 /* Estimator.swift */,
 				C65A17556F3CCD89FA5C7E06 /* Fmt.swift */,
+				A68DAB6F37EE41E213D050FE /* NotificationManager.swift */,
 				43136D8D41C7B1DA0FC71F56 /* Planner.swift */,
+				4A9A06491E020E5BCD634944 /* RoutineSync.swift */,
 			);
 			path = Logic;
 			sourceTree = "<group>";
@@ -147,6 +153,7 @@
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
 					BB271E4184E0968CC4BD61FF = {
+						DevelopmentTeam = PADG9BS9NP;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -194,7 +201,9 @@
 				BFA6E055D0EFE399675EE6FE /* LeaveNowApp.swift in Sources */,
 				68B40B31F87C00C043C3F785 /* ManualEntryView.swift in Sources */,
 				FD4CD7683E3871CE194F5CD1 /* MeasureView.swift in Sources */,
+				978A74A1F3DAC83949B0AAFA /* NotificationManager.swift in Sources */,
 				C4DCCF1AB07607B4E3B02365 /* Planner.swift in Sources */,
+				C7D6E980C8B8001A7C626410 /* RoutineSync.swift in Sources */,
 				EE1AD0E09E917D4C901A0AE6 /* Segment.swift in Sources */,
 				200DC3E1DABAC4450143C3E7 /* SettingsView.swift in Sources */,
 				1A8F9AE428F9A39EAC290077 /* SignalCycleView.swift in Sources */,
@@ -270,6 +279,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PADG9BS9NP;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = LeaveNow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -353,6 +363,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer";
 				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PADG9BS9NP;
 				GENERATE_INFOPLIST_FILE = NO;
 				INFOPLIST_FILE = LeaveNow/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (

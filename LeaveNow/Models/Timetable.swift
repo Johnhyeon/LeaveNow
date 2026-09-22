@@ -1,9 +1,22 @@
 import Foundation
 
+/// 노선의 상·하행. 표시 이름은 시간표 파일의 directions 에서 가져온다.
 enum Direction: String, CaseIterable, Codable, Identifiable {
-    case bohun = "중앙보훈병원행"
-    case gimpo = "김포공항행"
+    case up
+    case down
+
     var id: String { rawValue }
+
+    var title: String { Timetable.shared.directionTitles[rawValue] ?? rawValue }
+
+    /// 예전 저장값("중앙보훈병원행", "김포공항행")도 읽을 수 있게 한다
+    static func parse(_ raw: String?) -> Direction {
+        switch raw {
+        case "up", "중앙보훈병원행": return .up
+        case "down", "김포공항행": return .down
+        default: return .up
+        }
+    }
 }
 
 enum TrainType: String, Codable {
@@ -24,13 +37,14 @@ enum DayType: String, Codable, CaseIterable {
 }
 
 struct Train: Identifiable, Hashable {
+    let stationCode: String
     let direction: Direction
     let dayType: DayType
     let minutesOfDay: Int
     let type: TrainType
     let note: String?
 
-    var id: String { "\(direction.rawValue)-\(dayType.rawValue)-\(minutesOfDay)-\(type.rawValue)" }
+    var id: String { "\(stationCode)-\(direction.rawValue)-\(dayType.rawValue)-\(minutesOfDay)-\(type.rawValue)" }
 
     var timeString: String { String(format: "%02d:%02d", minutesOfDay / 60, minutesOfDay % 60) }
 
@@ -40,54 +54,80 @@ struct Train: Identifiable, Hashable {
     }
 }
 
+struct Station: Identifiable, Hashable {
+    let code: String
+    let name: String
+    let isExpressStop: Bool
+    let isTransfer: Bool
+    let trains: [Train]
+
+    var id: String { code }
+}
+
 /// Resources/timetable.json 의 형식
 struct TimetableFile: Codable {
     struct Entry: Codable {
-        let direction: String
-        let dayType: String
-        let time: String   // "HH:mm"
-        let type: String   // "일반" | "급행"
-        let note: String?  // 중간 종착역 등 (예: "신논현")
+        let direction: String  // "up" | "down"
+        let dayType: String    // "weekday" | "weekend"
+        let time: String       // "HH:mm"
+        let type: String       // "일반" | "급행"
+        let note: String?      // 중간 종착역 등
     }
-    let station: String
-    let exit: String
+    struct StationEntry: Codable {
+        let code: String
+        let name: String
+        let express: Bool
+        let transfer: Bool
+        let entries: [Entry]
+    }
+    let line: String
     let source: String
-    let entries: [Entry]
+    let directions: [String: String]
+    let stations: [StationEntry]
 }
 
 final class Timetable {
     static let shared = Timetable()
+    static let defaultStationCode = "4107"   // 가양
 
-    let station: String
-    let exit: String
+    let line: String
     let source: String
-    let trains: [Train]
+    let directionTitles: [String: String]
+    let stations: [Station]
 
     private init() {
         guard let url = Bundle.main.url(forResource: "timetable", withExtension: "json"),
               let data = try? Data(contentsOf: url),
               let file = try? JSONDecoder().decode(TimetableFile.self, from: data) else {
-            station = "?"
-            exit = ""
+            line = "?"
             source = "시간표 파일을 읽지 못했습니다"
-            trains = []
+            directionTitles = [:]
+            stations = []
             return
         }
-        station = file.station
-        exit = file.exit
+        line = file.line
         source = file.source
-        trains = file.entries.compactMap { e -> Train? in
-            guard let d = Direction(rawValue: e.direction),
-                  let dt = DayType(rawValue: e.dayType),
-                  let t = TrainType(rawValue: e.type) else { return nil }
-            let parts = e.time.split(separator: ":").compactMap { Int($0) }
-            guard parts.count == 2 else { return nil }
-            return Train(direction: d, dayType: dt, minutesOfDay: parts[0] * 60 + parts[1], type: t, note: e.note)
+        directionTitles = file.directions
+        stations = file.stations.map { st in
+            let trains = st.entries.compactMap { e -> Train? in
+                guard let d = Direction(rawValue: e.direction),
+                      let dt = DayType(rawValue: e.dayType),
+                      let t = TrainType(rawValue: e.type) else { return nil }
+                let parts = e.time.split(separator: ":").compactMap { Int($0) }
+                guard parts.count == 2 else { return nil }
+                return Train(stationCode: st.code, direction: d, dayType: dt,
+                             minutesOfDay: parts[0] * 60 + parts[1], type: t, note: e.note)
+            }
+            .sorted { $0.minutesOfDay < $1.minutesOfDay }
+            return Station(code: st.code, name: st.name, isExpressStop: st.express, isTransfer: st.transfer, trains: trains)
         }
-        .sorted { $0.minutesOfDay < $1.minutesOfDay }
     }
 
-    func trains(direction: Direction, dayType: DayType) -> [Train] {
-        trains.filter { $0.direction == direction && $0.dayType == dayType }
+    func station(code: String) -> Station? {
+        stations.first { $0.code == code } ?? stations.first { $0.code == Self.defaultStationCode } ?? stations.first
+    }
+
+    func trains(stationCode: String, direction: Direction, dayType: DayType) -> [Train] {
+        station(code: stationCode)?.trains.filter { $0.direction == direction && $0.dayType == dayType } ?? []
     }
 }

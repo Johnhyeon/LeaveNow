@@ -20,7 +20,7 @@ struct HistoryView: View {
                         VStack(alignment: .leading, spacing: 3) {
                             Text(Fmt.dateTime.string(from: record.date))
                             HStack(spacing: 8) {
-                                Text(record.direction.rawValue)
+                                Text(record.direction.title)
                                 Text("이동 \(Fmt.duration(record.travelTotal))")
                                 if let wait = record.duration(for: .platformWait) {
                                     Text("대기 \(Fmt.duration(wait))")
@@ -52,7 +52,7 @@ struct RecordDetailView: View {
         List {
             Section {
                 LabeledContent("일시", value: Fmt.dateTime.string(from: record.date))
-                LabeledContent("방향", value: record.direction.rawValue)
+                LabeledContent("방향", value: record.direction.title)
                 LabeledContent("이동 시간 (승강장 대기 제외)", value: Fmt.duration(record.travelTotal))
                 LabeledContent("전체", value: Fmt.duration(record.total))
             }

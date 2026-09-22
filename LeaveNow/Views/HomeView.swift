@@ -2,14 +2,20 @@ import SwiftUI
 import SwiftData
 
 struct HomeView: View {
+    @Environment(\.scenePhase) private var scenePhase
     @Query(sort: \TripRecord.date, order: .reverse) private var records: [TripRecord]
-    @AppStorage("direction") private var directionRaw = Direction.bohun.rawValue
+    private let notifier = NotificationManager.shared
+    @AppStorage("leadMinutes") private var leadMinutes = 5
+    @AppStorage("direction") private var directionRaw = Direction.up.rawValue
+    @AppStorage("stationCode") private var stationCode = Timetable.defaultStationCode
+    @AppStorage("exitLabel") private var exitLabel = "10번 출구"
     @AppStorage("bufferMinutes") private var bufferMinutes = 4
     @AppStorage("estimateMode") private var estimateModeRaw = EstimateMode.safe.rawValue
     @AppStorage("includePrep") private var includePrep = true
     @State private var showBreakdown = false
 
-    private var direction: Direction { Direction(rawValue: directionRaw) ?? .bohun }
+    private var direction: Direction { Direction.parse(directionRaw) }
+    private var stationName: String { Timetable.shared.station(code: stationCode)?.name ?? "?" }
     private var mode: EstimateMode { EstimateMode(rawValue: estimateModeRaw) ?? .safe }
 
     var body: some View {
@@ -17,9 +23,22 @@ struct HomeView: View {
             TimelineView(.periodic(from: .now, by: 15)) { context in
                 content(now: context.date)
             }
-            .navigationTitle("\(Timetable.shared.station) \(Timetable.shared.exit)")
+            .navigationTitle("\(stationName)역 \(exitLabel)")
             .navigationBarTitleDisplayMode(.inline)
+            .task { await syncNotifications() }
+            .onChange(of: scenePhase) { _, phase in
+                if phase == .active { Task { await syncNotifications() } }
+            }
+            .onChange(of: records.count) { _, _ in
+                Task { await syncNotifications() }
+            }
         }
+    }
+
+    /// 대기 중 알림 상태를 읽고, 평일 출근 알림을 현재 추정치로 다시 예약
+    private func syncNotifications() async {
+        await notifier.refresh()
+        await RoutineSync.resync(records: records)
     }
 
     @ViewBuilder
@@ -27,14 +46,14 @@ struct HomeView: View {
         let estimates = Estimator.estimates(records: records, mode: mode)
         let travel = Estimator.travelSeconds(estimates, includePrep: includePrep)
         let buffer = Double(bufferMinutes * 60)
-        let options = Planner.options(now: now, direction: direction, bufferSeconds: buffer, travelSeconds: travel)
+        let options = Planner.options(now: now, stationCode: stationCode, direction: direction, bufferSeconds: buffer, travelSeconds: travel)
         let next = options.first { $0.isCatchable(at: now) }
 
         List {
             Section {
                 Picker("방향", selection: $directionRaw) {
                     ForEach(Direction.allCases) { d in
-                        Text(d.rawValue).tag(d.rawValue)
+                        Text(d.title).tag(d.rawValue)
                     }
                 }
                 .pickerStyle(.segmented)
@@ -71,7 +90,12 @@ struct HomeView: View {
                     Text("시간표에 열차가 없습니다.").foregroundStyle(.secondary)
                 }
                 ForEach(options) { option in
-                    TrainRow(option: option, now: now, isNext: option.id == next?.id)
+                    TrainRow(option: option,
+                             now: now,
+                             isNext: option.id == next?.id,
+                             isArmed: notifier.armedTrainIds.contains(option.id)) {
+                        Task { await notifier.toggleTrainAlarm(option, leadMinutes: leadMinutes) }
+                    }
                 }
             }
 
@@ -91,6 +115,19 @@ struct HomeView: View {
                 Text("측정 기록이 \(Estimator.minimumSamples)회 이상 쌓인 구간은 실측값을, 그 전까지는 설정의 테스트 값을 사용합니다.")
             }
         }
+        .alert("알림이 꺼져 있습니다", isPresented: Binding(
+            get: { notifier.authorizationDenied },
+            set: { if !$0 { notifier.authorizationDenied = false } }
+        )) {
+            Button("설정 열기") {
+                if let url = URL(string: UIApplication.openSettingsURLString) {
+                    UIApplication.shared.open(url)
+                }
+            }
+            Button("닫기", role: .cancel) {}
+        } message: {
+            Text("iOS 설정 > 출발시각 > 알림 에서 알림을 허용해야 출발 알림을 받을 수 있습니다.")
+        }
     }
 
     private func infoRow(_ label: String, _ value: String) -> some View {
@@ -107,10 +144,21 @@ private struct TrainRow: View {
     let option: TrainOption
     let now: Date
     let isNext: Bool
+    let isArmed: Bool
+    let onToggleAlarm: () -> Void
 
     var body: some View {
         let catchable = option.isCatchable(at: now)
         HStack {
+            if catchable {
+                Button(action: onToggleAlarm) {
+                    Image(systemName: isArmed ? "bell.fill" : "bell")
+                        .foregroundStyle(isArmed ? Color.accentColor : Color.secondary)
+                        .frame(width: 28)
+                }
+                .buttonStyle(.borderless)
+                .accessibilityLabel(isArmed ? "출발 알림 해제" : "출발 알림 설정")
+            }
             VStack(alignment: .leading, spacing: 2) {
                 Text(Fmt.time.string(from: option.departure))
                     .font(.title3.weight(.semibold))
@@ -128,6 +176,7 @@ private struct TrainRow: View {
             VStack(alignment: .trailing, spacing: 2) {
                 Text("출발 \(Fmt.time.string(from: option.leaveBy))")
                     .monospacedDigit()
+                    .fontWeight(isArmed ? .semibold : .regular)
                 Text(Fmt.relative(option.leaveBy, from: now))
                     .font(.caption)
                     .foregroundStyle(catchable ? Color.secondary : Color.red)

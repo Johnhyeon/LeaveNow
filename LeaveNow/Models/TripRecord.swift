@@ -17,7 +17,7 @@ final class TripRecord {
         self.note = note
     }
 
-    var direction: Direction { Direction(rawValue: directionRaw) ?? .bohun }
+    var direction: Direction { Direction.parse(directionRaw) }
 
     func duration(for kind: SegmentKind) -> Double? {
         guard let i = SegmentKind.allCases.firstIndex(of: kind), i < durations.count else { return nil }
