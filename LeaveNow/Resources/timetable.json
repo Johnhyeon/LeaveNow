@@ -1,0 +1,5151 @@
+{
+ "station": "가양역 (9호선)",
+ "exit": "10번 출구",
+ "source": "서울시메트로9호선 공식 시각표 (2026-09-22 조회)",
+ "entries": [
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "00:04",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "00:05",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "00:15",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "00:16",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "00:26",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "00:27",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "00:37",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "00:38",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "00:48",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "00:49",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "00:58",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "00:59",
+   "type": "일반",
+   "note": "마곡나루"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "05:30",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "05:42",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "05:57",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "06:08",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "06:22",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "06:38",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "06:39",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "06:53",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "06:54",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "07:06",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "07:07",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "07:19",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "07:20",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "07:32",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "07:33",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "07:45",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "07:46",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "07:58",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "07:59",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "08:07",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "08:08",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "08:19",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "08:20",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "08:30",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "08:31",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "08:39",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "08:40",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "08:47",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "08:48",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "08:56",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "08:57",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "09:05",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "09:06",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "09:13",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "09:14",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "09:21",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "09:22",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "09:28",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "09:28",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "09:34",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "09:35",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "09:40",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "09:41",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "09:47",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "09:47",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "09:53",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "09:54",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "09:59",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "10:00",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "10:06",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "10:06",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "10:12",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "10:13",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "10:18",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "10:19",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "10:25",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "10:25",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "10:31",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "10:32",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "10:37",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "10:38",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "10:44",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "10:44",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "10:50",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "10:51",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "10:55",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "11:01",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "11:02",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "11:08",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "11:12",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "11:15",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "11:21",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "11:22",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "11:29",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "11:30",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "11:39",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "11:40",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "11:50",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "11:51",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "12:01",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "12:02",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "12:12",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "12:13",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "12:23",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "12:24",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "12:34",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "12:35",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "12:47",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "12:47",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "12:58",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "12:59",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "13:09",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "13:10",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "13:20",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "13:21",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "13:31",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "13:32",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "13:42",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "13:43",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "13:53",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "13:54",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "14:04",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "14:05",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "14:15",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "14:16",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "14:26",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "14:27",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "14:37",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "14:38",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "14:48",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "14:49",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "14:59",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "15:00",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "15:10",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "15:11",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "15:21",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "15:22",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "15:33",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "15:34",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "15:46",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "15:47",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "15:58",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "15:59",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "16:10",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "16:10",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "16:20",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "16:21",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "16:31",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "16:32",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "16:42",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "16:43",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "16:53",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "16:54",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "17:04",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "17:05",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "17:15",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "17:16",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "17:26",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "17:27",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "17:37",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "17:38",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "17:48",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "17:49",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "17:59",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "18:00",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "18:10",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "18:11",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "18:21",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "18:22",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "18:32",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "18:33",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "18:41",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "18:42",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "18:49",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "18:50",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "18:57",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "18:58",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "19:05",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "19:06",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "19:13",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "19:14",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "19:21",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "19:22",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "19:28",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "19:29",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "19:35",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "19:36",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "19:42",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "19:42",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "19:48",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "19:49",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "19:55",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "19:56",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "20:02",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "20:03",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "20:09",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "20:10",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "20:16",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "20:17",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "20:23",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "20:23",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "20:29",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "20:30",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "20:36",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "20:37",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "20:43",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "20:44",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "20:50",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "20:51",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "20:57",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "20:58",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "21:04",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "21:04",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "21:10",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "21:11",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "21:17",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "21:18",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "21:24",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "21:25",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "21:32",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "21:32",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "21:38",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "21:42",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "21:46",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "21:53",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "21:54",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "22:03",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "22:04",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "22:14",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "22:15",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "22:21",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "22:25",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "22:26",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "22:36",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "22:37",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "22:47",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "22:48",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "22:58",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "22:59",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "23:09",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "23:10",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "23:20",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "23:21",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "23:31",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "23:32",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "23:42",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "23:43",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "23:53",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekday",
+   "time": "23:54",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "05:30",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "05:44",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "05:57",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "06:08",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "06:21",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "06:33",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "06:43",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "06:50",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "06:55",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "07:07",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "07:08",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "07:19",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "07:20",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "07:31",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "07:32",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "07:43",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "07:44",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "07:55",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "07:56",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "08:07",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "08:08",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "08:19",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "08:20",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "08:31",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "08:32",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "08:43",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "08:44",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "08:55",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "08:56",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "09:07",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "09:08",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "09:19",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "09:20",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "09:31",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "09:32",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "09:43",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "09:44",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "09:55",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "09:56",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "10:07",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "10:08",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "10:18",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "10:19",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "10:29",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "10:30",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "10:40",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "10:41",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "10:51",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "10:52",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "11:02",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "11:03",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "11:13",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "11:14",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "11:24",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "11:25",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "11:35",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "11:36",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "11:46",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "11:47",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "11:57",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "11:58",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "12:08",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "12:09",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "12:19",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "12:20",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "12:30",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "12:31",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "12:41",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "12:42",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "12:52",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "12:53",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "13:03",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "13:04",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "13:14",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "13:15",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "13:25",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "13:26",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "13:36",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "13:37",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "13:47",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "13:48",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "13:58",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "13:59",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "14:09",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "14:10",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "14:20",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "14:21",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "14:31",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "14:32",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "14:42",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "14:43",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "14:53",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "14:54",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "15:04",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "15:05",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "15:15",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "15:16",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "15:26",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "15:27",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "15:37",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "15:38",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "15:48",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "15:49",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "15:59",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "16:00",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "16:10",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "16:11",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "16:21",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "16:22",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "16:32",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "16:33",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "16:43",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "16:44",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "16:54",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "16:55",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "17:05",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "17:06",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "17:16",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "17:17",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "17:27",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "17:28",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "17:38",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "17:39",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "17:49",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "17:50",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "18:00",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "18:01",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "18:11",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "18:12",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "18:22",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "18:23",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "18:33",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "18:34",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "18:44",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "18:45",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "18:55",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "18:56",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "19:06",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "19:07",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "19:17",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "19:18",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "19:28",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "19:29",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "19:39",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "19:40",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "19:50",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "19:51",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "20:01",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "20:02",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "20:12",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "20:13",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "20:23",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "20:24",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "20:34",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "20:35",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "20:45",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "20:46",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "20:56",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "20:57",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "21:07",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "21:08",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "21:18",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "21:19",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "21:28",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "21:29",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "21:40",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "21:41",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "21:51",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "21:52",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "22:02",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "22:03",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "22:13",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "22:14",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "22:24",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "22:25",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "22:35",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "22:36",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "22:46",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "22:47",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "22:58",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "22:59",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "23:10",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "23:11",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "23:25",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "23:26",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "23:34",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "23:41",
+   "type": "급행"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "23:51",
+   "type": "일반"
+  },
+  {
+   "direction": "김포공항행",
+   "dayType": "weekend",
+   "time": "23:57",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "00:07",
+   "type": "일반",
+   "note": "삼전"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "00:20",
+   "type": "일반",
+   "note": "신논현"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "00:33",
+   "type": "일반",
+   "note": "동작"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "00:46",
+   "type": "일반",
+   "note": "당산"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "05:37",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "05:38",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "05:47",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "05:48",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "05:59",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "06:00",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "06:11",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "06:12",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "06:23",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "06:24",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "06:30",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "06:35",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "06:40",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "06:47",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "06:48",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "06:53",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "06:54",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "07:00",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "07:01",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "07:06",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "07:07",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "07:12",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "07:13",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "07:19",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "07:20",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "07:25",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "07:26",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "07:31",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "07:32",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "07:38",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "07:39",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "07:44",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "07:45",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "07:50",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "07:51",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "07:57",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "07:58",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "08:03",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "08:04",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "08:09",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "08:10",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "08:16",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "08:17",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "08:22",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "08:23",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "08:28",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "08:29",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "08:35",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "08:36",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "08:42",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "08:43",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "08:50",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "08:51",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "08:59",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "09:00",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "09:10",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "09:11",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "09:21",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "09:22",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "09:32",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "09:33",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "09:43",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "09:44",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "09:54",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "09:55",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "10:05",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "10:06",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "10:16",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "10:17",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "10:27",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "10:28",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "10:38",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "10:39",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "10:49",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "10:50",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "11:01",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "11:02",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "11:13",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "11:14",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "11:24",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "11:25",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "11:35",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "11:36",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "11:46",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "11:47",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "11:57",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "11:58",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "12:08",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "12:09",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "12:19",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "12:20",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "12:30",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "12:31",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "12:41",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "12:42",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "12:52",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "12:53",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "13:03",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "13:04",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "13:14",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "13:15",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "13:26",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "13:27",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "13:38",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "13:39",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "13:49",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "13:50",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "14:00",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "14:01",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "14:11",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "14:12",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "14:22",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "14:23",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "14:33",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "14:34",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "14:44",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "14:45",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "14:55",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "14:56",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "15:06",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "15:07",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "15:17",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "15:18",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "15:28",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "15:29",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "15:39",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "15:40",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "15:50",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "15:51",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "15:57",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "16:02",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "16:03",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "16:14",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "16:15",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "16:25",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "16:26",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "16:29",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "16:36",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "16:37",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "16:47",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "16:48",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "16:54",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "16:55",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "17:01",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "17:02",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "17:08",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "17:09",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "17:14",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "17:15",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "17:21",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "17:22",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "17:28",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "17:29",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "17:35",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "17:36",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "17:42",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "17:43",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "17:49",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "17:50",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "17:55",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "17:56",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "18:02",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "18:03",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "18:09",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "18:10",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "18:16",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "18:17",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "18:23",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "18:24",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "18:30",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "18:31",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "18:36",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "18:37",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "18:43",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "18:44",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "18:50",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "18:51",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "18:57",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "18:58",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "19:04",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "19:05",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "19:11",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "19:12",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "19:20",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "19:21",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "19:28",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "19:29",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "19:37",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "19:38",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "19:46",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "19:47",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "19:55",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "19:56",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "20:06",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "20:07",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "20:17",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "20:18",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "20:28",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "20:29",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "20:39",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "20:40",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "20:50",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "20:51",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "21:01",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "21:02",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "21:12",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "21:13",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "21:23",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "21:24",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "21:34",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "21:35",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "21:45",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "21:46",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "21:56",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "21:57",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "22:07",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "22:08",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "22:18",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "22:19",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "22:29",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "22:30",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "22:40",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "22:41",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "22:51",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "22:52",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "23:02",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "23:03",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "23:13",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "23:14",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "23:24",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "23:25",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "23:35",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "23:36",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "23:47",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekday",
+   "time": "23:56",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "05:36",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "05:37",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "05:46",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "05:47",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "05:58",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "05:59",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "06:10",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "06:11",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "06:22",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "06:23",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "06:34",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "06:35",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "06:46",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "06:47",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "06:58",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "06:59",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "07:10",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "07:11",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "07:22",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "07:23",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "07:34",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "07:35",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "07:46",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "07:47",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "07:58",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "07:59",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "08:10",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "08:11",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "08:22",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "08:23",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "08:34",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "08:35",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "08:46",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "08:47",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "08:58",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "08:59",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "09:10",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "09:11",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "09:21",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "09:22",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "09:31",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "09:32",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "09:42",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "09:43",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "09:53",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "09:54",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "10:04",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "10:05",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "10:15",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "10:16",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "10:26",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "10:27",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "10:37",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "10:38",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "10:48",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "10:49",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "10:59",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "11:00",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "11:10",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "11:11",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "11:21",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "11:22",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "11:32",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "11:33",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "11:43",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "11:44",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "11:54",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "11:55",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "12:05",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "12:06",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "12:16",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "12:17",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "12:27",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "12:28",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "12:38",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "12:39",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "12:49",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "12:50",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "13:00",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "13:01",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "13:11",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "13:12",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "13:22",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "13:23",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "13:33",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "13:34",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "13:44",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "13:45",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "13:55",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "13:56",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "14:06",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "14:07",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "14:17",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "14:18",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "14:28",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "14:29",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "14:39",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "14:40",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "14:50",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "14:51",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "15:01",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "15:02",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "15:12",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "15:13",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "15:23",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "15:24",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "15:34",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "15:35",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "15:45",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "15:46",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "15:56",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "15:57",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "16:07",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "16:08",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "16:18",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "16:19",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "16:29",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "16:30",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "16:40",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "16:41",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "16:51",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "16:52",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "17:02",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "17:03",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "17:13",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "17:14",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "17:24",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "17:25",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "17:35",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "17:36",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "17:46",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "17:47",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "17:57",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "17:58",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "18:08",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "18:09",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "18:19",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "18:20",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "18:30",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "18:31",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "18:41",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "18:42",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "18:52",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "18:53",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "19:03",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "19:04",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "19:14",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "19:15",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "19:25",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "19:26",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "19:36",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "19:37",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "19:47",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "19:48",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "19:58",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "19:59",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "20:09",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "20:10",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "20:20",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "20:21",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "20:31",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "20:32",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "20:42",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "20:43",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "20:53",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "20:54",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "21:04",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "21:05",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "21:15",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "21:16",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "21:26",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "21:27",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "21:39",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "21:40",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "21:52",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "21:53",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "22:06",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "22:07",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "22:20",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "22:21",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "22:34",
+   "type": "급행"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "22:35",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "22:47",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "23:01",
+   "type": "일반"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "23:16",
+   "type": "일반",
+   "note": "신논현"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "23:30",
+   "type": "일반",
+   "note": "동작"
+  },
+  {
+   "direction": "중앙보훈병원행",
+   "dayType": "weekend",
+   "time": "23:44",
+   "type": "일반",
+   "note": "당산"
+  }
+ ]
+}

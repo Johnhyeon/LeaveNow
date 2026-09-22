@@ -1,0 +1,30 @@
+name: LeaveNow
+options:
+  bundleIdPrefix: com.drimaes
+  deploymentTarget:
+    iOS: "17.0"
+  createIntermediateGroups: true
+settings:
+  base:
+    SWIFT_VERSION: "5.0"
+    MARKETING_VERSION: "0.1.0"
+    CURRENT_PROJECT_VERSION: "1"
+targets:
+  LeaveNow:
+    type: application
+    platform: iOS
+    sources:
+      - path: LeaveNow
+    info:
+      path: LeaveNow/Info.plist
+      properties:
+        CFBundleDisplayName: 출발시각
+        CFBundleDevelopmentRegion: ko
+        UILaunchScreen: {}
+        UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.drimaes.LeaveNow
+        GENERATE_INFOPLIST_FILE: NO
+        TARGETED_DEVICE_FAMILY: "1"
+        CODE_SIGN_STYLE: Automatic
