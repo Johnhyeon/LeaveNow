@@ -111,6 +111,10 @@ struct SettingsView: View {
                 }
 
                 Section {
+                    NavigationLink("0단계 실험 (개발용)") { SpikeView() }
+                }
+
+                Section {
                     Button("초기 설정 다시 하기") { hasCompletedSetup = false }
                     Button("측정 기록 전체 삭제", role: .destructive) { showDeleteConfirm = true }
                 }

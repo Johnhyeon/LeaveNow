@@ -15,10 +15,16 @@ targets:
     platform: iOS
     sources:
       - path: LeaveNow
+      - path: Shared
+    dependencies:
+      - target: LeaveNowWidgets
     info:
       path: LeaveNow/Info.plist
       properties:
         CFBundleDisplayName: 출발시각
+        NSSupportsLiveActivities: true
+        NSLocationWhenInUseUsageDescription: 집 근처 역을 찾고, 역에 도착한 시각을 기록하는 데 씁니다.
+        NSLocationAlwaysAndWhenInUseUsageDescription: 앱을 열지 않아도 역에 도착한 시각을 자동으로 기록하는 데 씁니다. 위치 기록은 이 폰에만 저장됩니다.
         CFBundleDevelopmentRegion: ko
         UILaunchScreen: {}
         UISupportedInterfaceOrientations: [UIInterfaceOrientationPortrait]
@@ -37,3 +43,24 @@ targets:
         TARGETED_DEVICE_FAMILY: "1"
         CODE_SIGN_STYLE: Automatic
         DEVELOPMENT_TEAM: PADG9BS9NP
+
+  LeaveNowWidgets:
+    type: app-extension
+    platform: iOS
+    sources:
+      - path: LeaveNowWidgets
+      - path: Shared
+    info:
+      path: LeaveNowWidgets/Info.plist
+      properties:
+        CFBundleDisplayName: 출발시각
+        NSExtension:
+          NSExtensionPointIdentifier: com.apple.widgetkit-extension
+    settings:
+      base:
+        PRODUCT_BUNDLE_IDENTIFIER: com.drimaes.LeaveNow.Widgets
+        GENERATE_INFOPLIST_FILE: NO
+        TARGETED_DEVICE_FAMILY: "1"
+        CODE_SIGN_STYLE: Automatic
+        DEVELOPMENT_TEAM: PADG9BS9NP
+        SKIP_INSTALL: YES

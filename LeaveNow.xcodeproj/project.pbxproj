@@ -7,21 +7,28 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		02F32F9EEC2183CDBA90B047 /* DepartureActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269B82A9BFE7AE0EF2270C93 /* DepartureActivityAttributes.swift */; };
 		0CB93DE46F7E01C3360DB309 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BE02A09DFF2070FB9C3629 /* Secrets.swift */; };
+		1277F1A071A888F755629680 /* DepartureActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269B82A9BFE7AE0EF2270C93 /* DepartureActivityAttributes.swift */; };
 		197397AA916BCB59258C7A7A /* RealtimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85B62204D829775439D778A /* RealtimeService.swift */; };
 		1A8F9AE428F9A39EAC290077 /* SignalCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4CA1178BF4307A5905F75C /* SignalCycleView.swift */; };
 		200DC3E1DABAC4450143C3E7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F6F1D9C8DD9F4AA0072706 /* SettingsView.swift */; };
 		2C29DFB0D75AF26A93BDBB78 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3099350243901A33CFD9ADD8 /* ContentView.swift */; };
+		367D8C75D1AEBDB792356CFF /* DepartureLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721D1F446C5BCA2D64517B6 /* DepartureLiveActivity.swift */; };
 		3FB4EA8BAB98B8ECED2507A5 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AA670A701E8F65196A7BA1E /* Secrets.plist */; };
 		48057B0307AE0AB1DA92470D /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32748146DF672E3D79195414 /* HistoryView.swift */; };
 		56FEB8A7CBD0E41150653BCE /* timetable_09.json in Resources */ = {isa = PBXBuildFile; fileRef = B0AE2DCFA7993F4A7A83760D /* timetable_09.json */; };
+		67F6D73E66010DEA5CBD7FA0 /* LeaveNowWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AF0934E8DCDA393B7EF6A3EF /* LeaveNowWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		68B40B31F87C00C043C3F785 /* ManualEntryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D88F8F88A071B35BD1727E3 /* ManualEntryView.swift */; };
+		72CC19C0A543254BE8C6D0E8 /* SpikeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D48328D65BDF33CB6BC6C893 /* SpikeView.swift */; };
 		75D91554B54851EBFD3EAD7F /* TripRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5CA9E3975B7CD91C731B9457 /* TripRecord.swift */; };
 		77C22B8168B67B480DB0285C /* Fmt.swift in Sources */ = {isa = PBXBuildFile; fileRef = C65A17556F3CCD89FA5C7E06 /* Fmt.swift */; };
 		7CBE9A6B4FA68577948D9DB1 /* StationPickerSection.swift in Sources */ = {isa = PBXBuildFile; fileRef = DE4DA30303EBC281A5C01F10 /* StationPickerSection.swift */; };
 		95D58B7E86A30D0BB49219C6 /* SeoulMetroAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = A612E3E61DE945F0D9C81AE6 /* SeoulMetroAPI.swift */; };
 		97777CB4E2164A897A3C6112 /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A5EFFC6B2481BD9A3F24D49E /* HomeView.swift */; };
 		978A74A1F3DAC83949B0AAFA /* NotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = A68DAB6F37EE41E213D050FE /* NotificationManager.swift */; };
+		98A73BE15BE31E5F15FE3507 /* LiveActivitySpike.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FDF0215E4EBDA0DB2C12AA /* LiveActivitySpike.swift */; };
+		9B212A1FBAE3FD52AD521F48 /* GeofenceSpike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6012B31F5EFF3DAF57EB838A /* GeofenceSpike.swift */; };
 		AE0AE6A2A0E465B147855600 /* lines.json in Resources */ = {isa = PBXBuildFile; fileRef = 00BED392C92F04FB084B21CC /* lines.json */; };
 		B4B35C9614565066E9A5CD5D /* Secrets.example.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2C521C24713A3C217304B5C /* Secrets.example.plist */; };
 		BFA6E055D0EFE399675EE6FE /* LeaveNowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE88F84D5AE2A209F7927B53 /* LeaveNowApp.swift */; };
@@ -29,14 +36,40 @@
 		C7C3BD60951C6E52F6F3BE20 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B171E0BCADA1C8937903F5A /* OnboardingView.swift */; };
 		C7D6E980C8B8001A7C626410 /* RoutineSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A06491E020E5BCD634944 /* RoutineSync.swift */; };
 		C844D44ABC93D2BBBB7FF0E5 /* Estimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E30F3CD32879F43BAFE4328 /* Estimator.swift */; };
+		E6C3E02CA78DACBDDD630553 /* LeaveNowWidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59DE84B94DD4F74D31473AE /* LeaveNowWidgetsBundle.swift */; };
 		E6E09E6795491EEA9D3EAD8C /* Timetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7884101EB53F3E3F0DFCB02 /* Timetable.swift */; };
 		EE1AD0E09E917D4C901A0AE6 /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBC54FBA782A119A41E8C3A /* Segment.swift */; };
 		FD4CD7683E3871CE194F5CD1 /* MeasureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DDBDF90581D09B1FFAC3A8 /* MeasureView.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		5758126775B2D5042ABD589C /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 5A5D009E0129D7234DE0AA2B /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 75D714E4C1BBAFD51E0B7683;
+			remoteInfo = LeaveNowWidgets;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		11DB0398BCA151D4C47CE505 /* Embed Foundation Extensions */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "";
+			dstSubfolderSpec = 13;
+			files = (
+				67F6D73E66010DEA5CBD7FA0 /* LeaveNowWidgets.appex in Embed Foundation Extensions */,
+			);
+			name = "Embed Foundation Extensions";
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		00BED392C92F04FB084B21CC /* lines.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = lines.json; sourceTree = "<group>"; };
 		0D88F8F88A071B35BD1727E3 /* ManualEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualEntryView.swift; sourceTree = "<group>"; };
+		269B82A9BFE7AE0EF2270C93 /* DepartureActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureActivityAttributes.swift; sourceTree = "<group>"; };
 		2B171E0BCADA1C8937903F5A /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		2F4CA1178BF4307A5905F75C /* SignalCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalCycleView.swift; sourceTree = "<group>"; };
 		3099350243901A33CFD9ADD8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -49,16 +82,23 @@
 		4CF121D705C92F572B90B29D /* LeaveNow.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = LeaveNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5CA9E3975B7CD91C731B9457 /* TripRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripRecord.swift; sourceTree = "<group>"; };
 		5E30F3CD32879F43BAFE4328 /* Estimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Estimator.swift; sourceTree = "<group>"; };
+		6012B31F5EFF3DAF57EB838A /* GeofenceSpike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceSpike.swift; sourceTree = "<group>"; };
 		6DBC54FBA782A119A41E8C3A /* Segment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
+		88DE9B55E6D87B6079297B0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A5EFFC6B2481BD9A3F24D49E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A612E3E61DE945F0D9C81AE6 /* SeoulMetroAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulMetroAPI.swift; sourceTree = "<group>"; };
 		A68DAB6F37EE41E213D050FE /* NotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationManager.swift; sourceTree = "<group>"; };
 		AE88F84D5AE2A209F7927B53 /* LeaveNowApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveNowApp.swift; sourceTree = "<group>"; };
+		AF0934E8DCDA393B7EF6A3EF /* LeaveNowWidgets.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = LeaveNowWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		B0AE2DCFA7993F4A7A83760D /* timetable_09.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = timetable_09.json; sourceTree = "<group>"; };
 		B888F0C471F302B94D915332 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		C1FDF0215E4EBDA0DB2C12AA /* LiveActivitySpike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivitySpike.swift; sourceTree = "<group>"; };
 		C65A17556F3CCD89FA5C7E06 /* Fmt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fmt.swift; sourceTree = "<group>"; };
+		C721D1F446C5BCA2D64517B6 /* DepartureLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureLiveActivity.swift; sourceTree = "<group>"; };
 		C7884101EB53F3E3F0DFCB02 /* Timetable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Timetable.swift; sourceTree = "<group>"; };
 		C85B62204D829775439D778A /* RealtimeService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealtimeService.swift; sourceTree = "<group>"; };
+		D48328D65BDF33CB6BC6C893 /* SpikeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpikeView.swift; sourceTree = "<group>"; };
+		D59DE84B94DD4F74D31473AE /* LeaveNowWidgetsBundle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveNowWidgetsBundle.swift; sourceTree = "<group>"; };
 		DE4DA30303EBC281A5C01F10 /* StationPickerSection.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StationPickerSection.swift; sourceTree = "<group>"; };
 		F2C521C24713A3C217304B5C /* Secrets.example.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Secrets.example.plist; sourceTree = "<group>"; };
 		F3BE02A09DFF2070FB9C3629 /* Secrets.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Secrets.swift; sourceTree = "<group>"; };
@@ -86,6 +126,16 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		5FEF58D44105086514116504 /* LeaveNowWidgets */ = {
+			isa = PBXGroup;
+			children = (
+				C721D1F446C5BCA2D64517B6 /* DepartureLiveActivity.swift */,
+				88DE9B55E6D87B6079297B0E /* Info.plist */,
+				D59DE84B94DD4F74D31473AE /* LeaveNowWidgetsBundle.swift */,
+			);
+			path = LeaveNowWidgets;
+			sourceTree = "<group>";
+		};
 		79E1CBFE3015649431DC261E /* Logic */ = {
 			isa = PBXGroup;
 			children = (
@@ -105,6 +155,7 @@
 			isa = PBXGroup;
 			children = (
 				4CF121D705C92F572B90B29D /* LeaveNow.app */,
+				AF0934E8DCDA393B7EF6A3EF /* LeaveNowWidgets.appex */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -117,6 +168,7 @@
 				79E1CBFE3015649431DC261E /* Logic */,
 				5E3FD9BA092E3C5114B7A0A0 /* Models */,
 				29C46544AAC604ABF63BF1B7 /* Resources */,
+				A3A4AC5E3B89A7461D0A424C /* Spikes */,
 				BDD717BEC5391E53962B3DA3 /* Views */,
 			);
 			path = LeaveNow;
@@ -126,8 +178,20 @@
 			isa = PBXGroup;
 			children = (
 				989C4DB16DFC32B0E1DEDBD0 /* LeaveNow */,
+				5FEF58D44105086514116504 /* LeaveNowWidgets */,
+				F30C17B1C6A6F4FE01079AE4 /* Shared */,
 				8BBDB65B1D3985ECCAE99531 /* Products */,
 			);
+			sourceTree = "<group>";
+		};
+		A3A4AC5E3B89A7461D0A424C /* Spikes */ = {
+			isa = PBXGroup;
+			children = (
+				6012B31F5EFF3DAF57EB838A /* GeofenceSpike.swift */,
+				C1FDF0215E4EBDA0DB2C12AA /* LiveActivitySpike.swift */,
+				D48328D65BDF33CB6BC6C893 /* SpikeView.swift */,
+			);
+			path = Spikes;
 			sourceTree = "<group>";
 		};
 		BDD717BEC5391E53962B3DA3 /* Views */ = {
@@ -146,19 +210,46 @@
 			path = Views;
 			sourceTree = "<group>";
 		};
+		F30C17B1C6A6F4FE01079AE4 /* Shared */ = {
+			isa = PBXGroup;
+			children = (
+				269B82A9BFE7AE0EF2270C93 /* DepartureActivityAttributes.swift */,
+			);
+			path = Shared;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		75D714E4C1BBAFD51E0B7683 /* LeaveNowWidgets */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = D07E49C45D4D121897243D2E /* Build configuration list for PBXNativeTarget "LeaveNowWidgets" */;
+			buildPhases = (
+				579CC5D15A7D4FFA29561E79 /* Sources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = LeaveNowWidgets;
+			packageProductDependencies = (
+			);
+			productName = LeaveNowWidgets;
+			productReference = AF0934E8DCDA393B7EF6A3EF /* LeaveNowWidgets.appex */;
+			productType = "com.apple.product-type.app-extension";
+		};
 		BB271E4184E0968CC4BD61FF /* LeaveNow */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 122936F3BE971C90ACBAD805 /* Build configuration list for PBXNativeTarget "LeaveNow" */;
 			buildPhases = (
 				D2B6F9F7EA4319076F6FEB7C /* Sources */,
 				8AA4598F35A2DA567DE6856D /* Resources */,
+				11DB0398BCA151D4C47CE505 /* Embed Foundation Extensions */,
 			);
 			buildRules = (
 			);
 			dependencies = (
+				94F96CD0CFDB365E86D6F810 /* PBXTargetDependency */,
 			);
 			name = LeaveNow;
 			packageProductDependencies = (
@@ -176,6 +267,10 @@
 				BuildIndependentTargetsInParallel = YES;
 				LastUpgradeCheck = 1430;
 				TargetAttributes = {
+					75D714E4C1BBAFD51E0B7683 = {
+						DevelopmentTeam = PADG9BS9NP;
+						ProvisioningStyle = Automatic;
+					};
 					BB271E4184E0968CC4BD61FF = {
 						DevelopmentTeam = PADG9BS9NP;
 						ProvisioningStyle = Automatic;
@@ -197,6 +292,7 @@
 			projectRoot = "";
 			targets = (
 				BB271E4184E0968CC4BD61FF /* LeaveNow */,
+				75D714E4C1BBAFD51E0B7683 /* LeaveNowWidgets */,
 			);
 		};
 /* End PBXProject section */
@@ -216,16 +312,29 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		579CC5D15A7D4FFA29561E79 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				1277F1A071A888F755629680 /* DepartureActivityAttributes.swift in Sources */,
+				367D8C75D1AEBDB792356CFF /* DepartureLiveActivity.swift in Sources */,
+				E6C3E02CA78DACBDDD630553 /* LeaveNowWidgetsBundle.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		D2B6F9F7EA4319076F6FEB7C /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
 				2C29DFB0D75AF26A93BDBB78 /* ContentView.swift in Sources */,
+				02F32F9EEC2183CDBA90B047 /* DepartureActivityAttributes.swift in Sources */,
 				C844D44ABC93D2BBBB7FF0E5 /* Estimator.swift in Sources */,
 				77C22B8168B67B480DB0285C /* Fmt.swift in Sources */,
+				9B212A1FBAE3FD52AD521F48 /* GeofenceSpike.swift in Sources */,
 				48057B0307AE0AB1DA92470D /* HistoryView.swift in Sources */,
 				97777CB4E2164A897A3C6112 /* HomeView.swift in Sources */,
 				BFA6E055D0EFE399675EE6FE /* LeaveNowApp.swift in Sources */,
+				98A73BE15BE31E5F15FE3507 /* LiveActivitySpike.swift in Sources */,
 				68B40B31F87C00C043C3F785 /* ManualEntryView.swift in Sources */,
 				FD4CD7683E3871CE194F5CD1 /* MeasureView.swift in Sources */,
 				978A74A1F3DAC83949B0AAFA /* NotificationManager.swift in Sources */,
@@ -238,6 +347,7 @@
 				95D58B7E86A30D0BB49219C6 /* SeoulMetroAPI.swift in Sources */,
 				200DC3E1DABAC4450143C3E7 /* SettingsView.swift in Sources */,
 				1A8F9AE428F9A39EAC290077 /* SignalCycleView.swift in Sources */,
+				72CC19C0A543254BE8C6D0E8 /* SpikeView.swift in Sources */,
 				7CBE9A6B4FA68577948D9DB1 /* StationPickerSection.swift in Sources */,
 				E6E09E6795491EEA9D3EAD8C /* Timetable.swift in Sources */,
 				75D91554B54851EBFD3EAD7F /* TripRecord.swift in Sources */,
@@ -245,6 +355,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		94F96CD0CFDB365E86D6F810 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 75D714E4C1BBAFD51E0B7683 /* LeaveNowWidgets */;
+			targetProxy = 5758126775B2D5042ABD589C /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
 		1C27AE895AB91EC50D4C5361 /* Release */ = {
@@ -302,6 +420,25 @@
 				SWIFT_COMPILATION_MODE = wholemodule;
 				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
+			};
+			name = Release;
+		};
+		2311434469143A5A4C0AFFDC /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PADG9BS9NP;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = LeaveNowWidgets/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.drimaes.LeaveNow.Widgets;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
@@ -389,6 +526,25 @@
 			};
 			name = Debug;
 		};
+		BD377C9F37275BF0F0B9ACEF /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				DEVELOPMENT_TEAM = PADG9BS9NP;
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = LeaveNowWidgets/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+					"@executable_path/../../Frameworks",
+				);
+				PRODUCT_BUNDLE_IDENTIFIER = com.drimaes.LeaveNow.Widgets;
+				SDKROOT = iphoneos;
+				SKIP_INSTALL = YES;
+				TARGETED_DEVICE_FAMILY = 1;
+			};
+			name = Debug;
+		};
 		D14EDD9C3798525BA1495DC3 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -425,6 +581,15 @@
 			buildConfigurations = (
 				886BA2B4C264E6DC5D91F0F9 /* Debug */,
 				1C27AE895AB91EC50D4C5361 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Debug;
+		};
+		D07E49C45D4D121897243D2E /* Build configuration list for PBXNativeTarget "LeaveNowWidgets" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BD377C9F37275BF0F0B9ACEF /* Debug */,
+				2311434469143A5A4C0AFFDC /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Debug;
