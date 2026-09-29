@@ -1,7 +1,7 @@
 <title>출발시각 시안</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Nunito:wght@700;800;900&family=Noto+Sans+KR:wght@400;500;700;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700;800&family=Nunito:wght@700;800;900&family=Noto+Sans+KR:wght@400;500;700;800;900&family=Unbounded:wght@700;800;900&display=swap">
 <style>
 /* Layout: 시안(A·B·C)마다 한 줄, 같은 세 화면(홈·잠금화면·막차)을 나란히. 페이지 자체는 조용한 회색, 목업은 각자의 고정된 모습 */
 :root {
@@ -151,6 +151,119 @@ p { margin: 0; }
 .C .phone.night .track i { background: var(--c-orange); }
 .C .chip { justify-self: start; border-radius: 999px; padding: 5px 12px; font-size: 12px; font-weight: 800; background: rgba(255,122,26,.22); color: #FFB27A; border: 1px solid rgba(255,122,26,.4); }
 
+
+/* ================= D. 포스터 ================= */
+.D { --d-calm: #17614F; --d-soon: #EE9A26; --d-now: #DE3F36; --d-night: #141A3A; --d-gold: #FFC24B; }
+.D .phone { color: #fff; font-family: var(--f-ui); }
+.D .phone.calm { background: var(--d-calm); }
+.D .poster { font-family: "Unbounded", var(--f-round); font-weight: 900; font-size: 148px; line-height: .78; letter-spacing: -0.05em; font-variant-numeric: tabular-nums; margin-left: -4px; }
+.D .sub { font-size: 22px; font-weight: 800; letter-spacing: -0.01em; }
+.D .meta { font-size: 13px; opacity: .78; font-weight: 600; }
+.D .info { display: grid; gap: 4px; font-size: 13px; border-top: 1px solid rgba(255,255,255,.25); padding-top: 10px; }
+.D .info div { display: flex; justify-content: space-between; }
+.D .info b { font-family: "Unbounded", var(--f-round); font-weight: 700; font-size: 13px; }
+.D .btn { background: #fff; color: var(--d-calm); border-radius: 999px; text-align: center; padding: 13px; font-weight: 900; font-size: 15px; }
+.D .phone.lock { background: linear-gradient(170deg, #384050, #12161C); }
+.D .la { background: var(--d-now); border-radius: 22px; padding: 14px 16px; display: grid; gap: 2px; }
+.D .la .lbl { font-size: 12px; font-weight: 700; opacity: .9; }
+.D .la .big { font-family: "Unbounded", var(--f-round); font-weight: 900; font-size: 56px; line-height: .95; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+.D .isl .dot { width: 10px; height: 10px; border-radius: 50%; background: var(--d-now); }
+.D .phone.night { background: var(--d-night); }
+.D .phone.night .poster { color: var(--d-gold); }
+.D .phone.night .info { border-color: rgba(255,255,255,.18); }
+.D .chip { justify-self: start; border-radius: 999px; padding: 6px 12px; font-size: 12px; font-weight: 800; background: rgba(255,194,75,.16); color: var(--d-gold); }
+.D .states { display: flex; gap: 6px; }
+.D .states span { flex: 1; border-radius: 8px; padding: 6px 4px; text-align: center; font-size: 11px; font-weight: 800; color: #fff; }
+
+/* ================= E. 노선도 ================= */
+.E { --e-bg: #F6F7F9; --e-ink: #101318; --e-mute: #6B7380; --e-walk: #A9B0BA; --e-l9: #BDB092; --e-lsb: #D4003B; --e-l2: #00A84D; }
+.E .phone { background: var(--e-bg); color: var(--e-ink); font-family: var(--f-ui); }
+.E .head { display: grid; gap: 2px; }
+.E .head .meta { font-size: 13px; color: var(--e-mute); font-weight: 600; }
+.E .head .big { font-weight: 900; font-size: 84px; line-height: .86; letter-spacing: -0.04em; font-variant-numeric: tabular-nums; }
+.E .head .big small { font-size: 20px; font-weight: 800; letter-spacing: -0.01em; margin-left: 4px; }
+.E .map { display: grid; grid-template-columns: 46px 22px 1fr; column-gap: 8px; margin-top: 4px; }
+.E .map .t { font-size: 12px; font-weight: 700; text-align: right; font-variant-numeric: tabular-nums; color: var(--e-mute); line-height: 1; transform: translateY(-2px); }
+.E .map .t.now { color: #0A6CFF; }
+.E .map .rail { position: relative; display: flex; justify-content: center; }
+.E .map .rail .seg { width: 6px; border-radius: 3px; }
+.E .map .rail .seg.walk { width: 0; border-left: 3px dotted var(--e-walk); border-radius: 0; }
+.E .map .rail .node { position: absolute; top: -6px; width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 3px solid var(--c, var(--e-ink)); }
+.E .map .rail .node.now { background: #0A6CFF; border-color: #CFE0FF; box-shadow: 0 0 0 4px rgba(10,108,255,.18); }
+.E .map .lab { font-size: 13px; font-weight: 700; line-height: 1; transform: translateY(-2px); }
+.E .map .lab small { display: block; font-size: 11px; color: var(--e-mute); font-weight: 600; margin-top: 3px; }
+.E .btn { background: var(--e-ink); color: #fff; border-radius: 14px; text-align: center; padding: 13px; font-weight: 800; font-size: 15px; }
+.E .phone.lock { background: linear-gradient(170deg, #394355, #11151B); color: #fff; }
+.E .la { background: rgba(16,19,24,.8); border-radius: 22px; padding: 14px 16px; display: grid; gap: 8px; }
+.E .la .row { display: flex; justify-content: space-between; align-items: baseline; }
+.E .la .big { font-weight: 900; font-size: 48px; line-height: .9; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.E .hline { position: relative; display: flex; align-items: center; height: 14px; gap: 0; }
+.E .hline .s { height: 5px; border-radius: 3px; }
+.E .hline .s.walk { height: 0; border-top: 3px dotted rgba(255,255,255,.5); border-radius: 0; }
+.E .hline .n { position: absolute; top: 1px; width: 12px; height: 12px; border-radius: 50%; background: #11151B; border: 3px solid #fff; transform: translateX(-6px); }
+.E .hline .n.now { background: #0A6CFF; border-color: #CFE0FF; }
+.E .hl-lab { display: flex; justify-content: space-between; font-size: 11px; opacity: .8; }
+.E .isl .mini { display: flex; align-items: center; gap: 0; width: 34px; }
+.E .isl .mini i { height: 3px; display: block; }
+.E .phone.night { background: #0F1216; color: #F2F4F7; }
+.E .phone.night .head .meta, .E .phone.night .map .t { color: #8C95A2; }
+.E .phone.night .map .rail .node { background: #0F1216; }
+.E .phone.night .map .lab small { color: #8C95A2; }
+.E .phone.night .map .t.now { color: #FFB23E; }
+.E .phone.night .map .rail .node.now { background: #FFB23E; border-color: #5A4213; box-shadow: 0 0 0 4px rgba(255,178,62,.2); }
+.E .phone.night .head .big { color: #FFB23E; }
+
+/* ================= F. 플립 전광판 ================= */
+.F { --f-bg: #161616; --f-flap: #2B2B2B; --f-flap2: #232323; --f-digit: #F3F3F0; --f-yellow: #F7C600; --f-red: #FF5A4F; }
+.F .phone { background: var(--f-bg); color: var(--f-digit); font-family: var(--f-ui); }
+.F .lbl { color: var(--f-yellow); font-size: 13px; font-weight: 800; letter-spacing: 0.04em; }
+.F .flaps { display: flex; gap: 6px; align-items: flex-end; }
+.F .flap { width: 84px; height: 118px; border-radius: 10px; background: linear-gradient(var(--f-flap) 0 50%, var(--f-flap2) 50% 100%); display: grid; place-items: center; font-weight: 800; font-size: 100px; line-height: 1; position: relative; font-variant-numeric: tabular-nums; box-shadow: inset 0 -2px 0 rgba(0,0,0,.4); }
+.F .flap::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 2px; background: #0B0B0B; }
+.F .flaps .u { font-size: 18px; font-weight: 800; margin-left: 4px; padding-bottom: 8px; }
+.F .board { display: grid; gap: 6px; margin-top: 6px; }
+.F .board .r { display: grid; grid-template-columns: auto 1fr; gap: 10px; align-items: center; font-size: 13px; }
+.F .board .mini { display: flex; gap: 2px; }
+.F .board .mini span { width: 17px; height: 24px; border-radius: 3px; background: linear-gradient(var(--f-flap) 0 50%, var(--f-flap2) 50% 100%); display: grid; place-items: center; font-weight: 800; font-size: 16px; position: relative; font-variant-numeric: tabular-nums; }
+.F .board .mini span::after { content: ""; position: absolute; left: 0; right: 0; top: 50%; height: 1px; background: #0B0B0B; }
+.F .board .mini span.c { width: 8px; background: none; }
+.F .board .mini span.c::after { display: none; }
+.F .btn { background: var(--f-yellow); color: #121212; border-radius: 12px; text-align: center; padding: 13px; font-weight: 900; font-size: 15px; }
+.F .phone.lock { background: linear-gradient(170deg, #3A3A3A, #101010); }
+.F .la { background: #0E0E0E; border-radius: 20px; padding: 14px; display: grid; gap: 8px; border: 1px solid #2A2A2A; }
+.F .la .flap { width: 42px; height: 58px; font-size: 48px; border-radius: 6px; }
+.F .la .colon { font-size: 40px; font-weight: 800; padding: 0 1px; align-self: center; }
+.F .la .row { display: flex; justify-content: space-between; font-size: 12px; color: #BDBDBD; }
+.F .isl .y { color: var(--f-yellow); }
+.F .phone.night .lbl { color: var(--f-red); }
+
+/* ================= G. 물 빠짐 ================= */
+.G { --g-ink: #0E1726; --g-mute: #5C6B80; --g-w1: #4C9BFF; --g-w2: #2F7BF0; --g-n1: #23B5A8; --g-n2: #148A82; }
+.G .phone { background: #EEF3F9; color: var(--g-ink); font-family: var(--f-ui); }
+.G .water { position: absolute; left: 0; right: 0; bottom: 0; height: var(--lvl); background: linear-gradient(var(--g-w1), var(--g-w2)); z-index: 0; }
+.G .water svg { position: absolute; left: 0; top: 0; width: 100%; height: 18px; transform: translateY(-17px); display: block; }
+.G .layer { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+.G .meta { font-size: 13px; color: var(--g-mute); font-weight: 600; }
+.G .big { font-family: var(--f-round); font-weight: 900; font-size: 128px; line-height: .82; letter-spacing: -0.05em; font-variant-numeric: tabular-nums; }
+.G .sub { font-size: 19px; font-weight: 800; }
+.G .rows { color: #fff; display: grid; gap: 6px; font-size: 13px; }
+.G .rows div { display: flex; justify-content: space-between; }
+.G .rows b { font-family: var(--f-round); font-weight: 900; font-variant-numeric: tabular-nums; }
+.G .btn { background: #fff; color: var(--g-w2); border-radius: 999px; text-align: center; padding: 13px; font-weight: 900; font-size: 15px; }
+.G .phone.lock { background: linear-gradient(170deg, #3C4658, #12161D); color: #fff; }
+.G .la { position: relative; overflow: hidden; background: #151B26; border-radius: 22px; padding: 14px 16px; display: grid; gap: 2px; }
+.G .la .water { height: var(--lvl); }
+.G .la .water svg { height: 10px; transform: translateY(-9px); }
+.G .la > *:not(.water) { position: relative; z-index: 1; }
+.G .la .lbl { font-size: 12px; font-weight: 700; opacity: .85; }
+.G .la .num2 { font-family: var(--f-round); font-weight: 900; font-size: 54px; line-height: .95; letter-spacing: -0.03em; font-variant-numeric: tabular-nums; }
+.G .isl .tank { width: 12px; height: 16px; border-radius: 4px; border: 1.5px solid #fff; position: relative; overflow: hidden; }
+.G .isl .tank i { position: absolute; left: 0; right: 0; bottom: 0; height: 30%; background: var(--g-w1); }
+.G .phone.night { background: #0B1020; color: #EEF3F9; }
+.G .phone.night .water { background: linear-gradient(var(--g-n1), var(--g-n2)); }
+.G .phone.night .meta { color: #8FA0B8; }
+.G .chip { align-self: flex-start; border-radius: 999px; padding: 6px 12px; font-size: 12px; font-weight: 800; background: rgba(255,255,255,.2); color: #fff; }
+
 /* ---------- 비교 ---------- */
 .compare { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; display: grid; gap: 12px; }
 .compare h2 { font-size: 18px; font-weight: 800; }
@@ -168,8 +281,8 @@ p { margin: 0; }
 
   <header class="intro">
     <h1>출발시각 시안</h1>
-    <p><span class="fixed">숫자가 크게 보이는 것</span>을 세 시안 모두의 공통 조건으로 두고, 분위기만 다르게 그렸습니다. 각 시안은 같은 세 화면을 보여줍니다. 아침 홈 카드, 잠금화면 라이브 액티비티와 다이내믹 아일랜드, 주말 밤 막차 카드입니다.</p>
-    <p>마음에 드는 시안을 고르거나, "A의 원판에 C의 유리"처럼 섞어도 됩니다. 화면에 댓글로 남겨주셔도 됩니다. 애플 기기에서 보면 실제 아이폰 글꼴로 보입니다.</p>
+    <p><span class="fixed">숫자가 크게 보이는 것</span>을 모든 시안의 공통 조건으로 두고, 남은 시간을 보여주는 방식을 다르게 그렸습니다. A~C는 첫 시안, D~G는 표현 방식을 더 과감하게 바꾼 두 번째 시안입니다. 각 시안은 같은 세 화면을 보여줍니다. 아침 홈 카드, 잠금화면 라이브 액티비티와 다이내믹 아일랜드, 주말 밤 막차 카드입니다.</p>
+    <p>마음에 드는 시안을 고르거나, "D의 색에 E의 노선도"처럼 섞어도 됩니다. 화면에 댓글로 남겨주셔도 됩니다. 애플 기기에서 보면 실제 아이폰 글꼴로 보입니다.</p>
   </header>
 
   <!-- ================= A ================= -->
@@ -350,21 +463,274 @@ p { margin: 0; }
     </div>
   </section>
 
+  <!-- ================= D ================= -->
+  <section class="dir D" aria-labelledby="h-d">
+    <div class="dir-head"><span class="tag">D</span><h2 id="h-d">포스터</h2><p>화면에 숫자 하나만. 화면 전체 색이 여유, 곧, 지금 세 단계로 바뀝니다.</p></div>
+    <div class="mocks">
+      <div class="mock">
+        <div class="phone calm">
+          <div class="sb"><span>8:47</span><span>●●● ▮</span></div><div class="isl plain"></div>
+          <p class="meta">회사 · 강남 · 10:00까지</p>
+          <div class="spacer"></div>
+          <div class="poster">12</div>
+          <p class="sub">분 뒤 현관</p>
+          <div class="spacer"></div>
+          <div class="info">
+            <div><span>현관</span><b>8:59</b></div>
+            <div><span>9호선 급행</span><b>9:12</b></div>
+            <div><span>회사 도착</span><b>9:48</b></div>
+          </div>
+          <div class="btn">출발 준비</div>
+        </div>
+        <span class="cap">홈 · 아침 · 여유 상태</span>
+      </div>
+      <div class="mock">
+        <div class="phone lock">
+          <div class="sb"><span></span><span>●●● ▮</span></div>
+          <div class="isl"><span class="dot"></span><span class="num">3:12</span></div>
+          <div class="lock-clock num">8:56</div>
+          <div class="lock-date">9월 29일 화요일</div>
+          <div class="spacer"></div>
+          <div class="la">
+            <span class="lbl">현관까지 · 9호선 급행 9:12</span>
+            <span class="big">3:12</span>
+          </div>
+        </div>
+        <span class="cap">잠금화면 · 지금 상태(5분 이내)</span>
+      </div>
+      <div class="mock">
+        <div class="phone night">
+          <div class="sb"><span>22:23</span><span>●●● ▮</span></div><div class="isl plain"></div>
+          <p class="meta">집까지 가는 막차 · 홍대입구</p>
+          <div class="spacer"></div>
+          <div class="poster">47</div>
+          <p class="sub">분 뒤 일어나기</p>
+          <div class="spacer"></div>
+          <div class="info">
+            <div><span>일어나기</span><b>23:10</b></div>
+            <div><span>홍대입구 막차</span><b>23:24</b></div>
+            <div><span>집 도착</span><b>0:00</b></div>
+          </div>
+          <span class="chip">주말이라 1시간 12분 일찍 끊겨요</span>
+        </div>
+        <span class="cap">막차 · 주말 밤</span>
+      </div>
+    </div>
+    <div class="notes">
+      <div><h3>좋은 점</h3><ul><li>화면에 할 일이 하나뿐이라 가장 덜 산만합니다. 폰을 켜는 순간 색만 봐도 상태를 압니다.</li><li>숫자가 가장 큽니다. 초록에서 주황, 빨강으로 바뀌는 순간이 그 자체로 알림이 됩니다.</li></ul></div>
+      <div><h3>아쉬운 점</h3><ul><li>환승 경로는 한 번 더 눌러야 보입니다.</li><li>빨강이 자주 뜨면 불안을 키울 수 있어, 빨강은 5분 안쪽에만 씁니다.</li></ul></div>
+      <div><h3>색 단계</h3><div class="states"><span style="background:var(--d-calm)">여유 · 10분 넘게</span><span style="background:var(--d-soon)">곧 · 5~10분</span><span style="background:var(--d-now)">지금 · 5분 안</span></div></div>
+    </div>
+  </section>
+
+  <!-- ================= E ================= -->
+  <section class="dir E" aria-labelledby="h-e">
+    <div class="dir-head"><span class="tag">E</span><h2 id="h-e">노선도</h2><p>오늘 여정을 지하철 노선도처럼 그립니다. 간격이 실제 걸리는 시간에 비례하고, 파란 점이 지금입니다.</p></div>
+    <div class="mocks">
+      <div class="mock">
+        <div class="phone">
+          <div class="sb"><span>8:47</span><span>●●● ▮</span></div><div class="isl plain"></div>
+          <div class="head">
+            <p class="meta">회사 · 강남 · 10:00까지</p>
+            <div class="big">12<small>분 뒤 현관</small></div>
+          </div>
+          <div class="map">
+            <span class="t now">8:47</span><span class="rail"><span class="seg walk" style="height:36px"></span><span class="node now"></span></span><span class="lab">지금</span>
+            <span class="t">8:59</span><span class="rail"><span class="seg walk" style="height:40px"></span><span class="node" style="--c:#101318"></span></span><span class="lab">현관<small>집 → 승강장 9분 · 여유 4분</small></span>
+            <span class="t">9:12</span><span class="rail"><span class="seg" style="height:76px;background:#BDB092"></span><span class="node" style="--c:#BDB092"></span></span><span class="lab">가양<small>9호선 급행 · 7정거장</small></span>
+            <span class="t">9:37</span><span class="rail"><span class="seg walk" style="height:16px"></span><span class="node" style="--c:#BDB092"></span></span><span class="lab">신논현<small>환승 5분</small></span>
+            <span class="t">9:42</span><span class="rail"><span class="seg" style="height:14px;background:#D4003B"></span><span class="node" style="--c:#D4003B"></span></span><span class="lab">신논현<small>신분당선 · 1정거장</small></span>
+            <span class="t">9:43</span><span class="rail"><span class="seg walk" style="height:16px"></span><span class="node" style="--c:#D4003B"></span></span><span class="lab">강남</span>
+            <span class="t">9:48</span><span class="rail"><span class="node" style="--c:#101318"></span></span><span class="lab">회사<small>12분 일찍</small></span>
+          </div>
+          <div class="spacer"></div>
+          <div class="btn">출발 준비</div>
+        </div>
+        <span class="cap">홈 · 아침</span>
+      </div>
+      <div class="mock">
+        <div class="phone lock">
+          <div class="sb"><span></span><span>●●● ▮</span></div>
+          <div class="isl"><span class="mini"><i style="width:12px;background:#0A6CFF"></i><i style="width:22px;background:#BDB092"></i></span><span class="num">3:12</span></div>
+          <div class="lock-clock num">8:56</div>
+          <div class="lock-date">9월 29일 화요일</div>
+          <div class="spacer"></div>
+          <div class="la">
+            <div class="row"><span style="font-size:12px;opacity:.8">현관까지</span><span style="font-size:12px;opacity:.8">회사 9:48</span></div>
+            <div class="big">3:12</div>
+            <div class="hline">
+              <span class="s walk" style="width:16%"></span><span class="s walk" style="width:18%"></span><span class="s" style="width:40%;background:#BDB092"></span><span class="s walk" style="width:8%"></span><span class="s" style="width:5%;background:#D4003B"></span><span class="s walk" style="width:13%"></span>
+              <span class="n now" style="left:6%"></span><span class="n" style="left:16%"></span><span class="n" style="left:34%;border-color:#BDB092"></span><span class="n" style="left:82%;border-color:#D4003B"></span><span class="n" style="left:100%"></span>
+            </div>
+            <div class="hl-lab"><span>현관 8:59</span><span>가양 9:12</span><span>강남 9:43</span><span>회사</span></div>
+          </div>
+        </div>
+        <span class="cap">잠금화면 · 다이내믹 아일랜드</span>
+      </div>
+      <div class="mock">
+        <div class="phone night">
+          <div class="sb"><span>22:23</span><span>●●● ▮</span></div><div class="isl plain"></div>
+          <div class="head">
+            <p class="meta">집까지 가는 막차 · 홍대입구</p>
+            <div class="big">47<small>분 뒤 일어나기</small></div>
+          </div>
+          <div class="map">
+            <span class="t now">22:23</span><span class="rail"><span class="seg walk" style="height:56px"></span><span class="node now"></span></span><span class="lab">지금</span>
+            <span class="t">23:10</span><span class="rail"><span class="seg walk" style="height:18px"></span><span class="node" style="--c:#F2F4F7"></span></span><span class="lab">일어나기<small>역까지 7분 · 여유 8분</small></span>
+            <span class="t">23:24</span><span class="rail"><span class="seg" style="height:14px;background:#00A84D"></span><span class="node" style="--c:#00A84D"></span></span><span class="lab">홍대입구<small>2호선 막차 · 2정거장</small></span>
+            <span class="t">23:29</span><span class="rail"><span class="seg walk" style="height:10px"></span><span class="node" style="--c:#00A84D"></span></span><span class="lab">당산<small>환승</small></span>
+            <span class="t">23:38</span><span class="rail"><span class="seg" style="height:16px;background:#BDB092"></span><span class="node" style="--c:#BDB092"></span></span><span class="lab">당산<small>9호선</small></span>
+            <span class="t">23:51</span><span class="rail"><span class="seg walk" style="height:12px"></span><span class="node" style="--c:#BDB092"></span></span><span class="lab">가양</span>
+            <span class="t">0:00</span><span class="rail"><span class="node" style="--c:#F2F4F7"></span></span><span class="lab">집</span>
+          </div>
+          <div class="spacer"></div>
+          <p class="meta" style="color:#FFB23E;font-weight:800;font-size:12.5px">주말이라 평일보다 1시간 12분 일찍 끊겨요</p>
+        </div>
+        <span class="cap">막차 · 주말 밤</span>
+      </div>
+    </div>
+    <div class="notes">
+      <div><h3>좋은 점</h3><ul><li>지하철 앱이라는 정체성이 가장 강합니다. 다른 앱에 없는 이 앱만의 얼굴이 됩니다.</li><li>현관까지 남은 시간과 그 뒤 여정이 한 그림에 담겨, "지금 나가면 어디쯤에서 뭘 타는지"가 한 번에 보입니다.</li></ul></div>
+      <div><h3>아쉬운 점</h3><ul><li>숫자 외에 볼 게 많아 D보다는 덜 단순합니다.</li><li>환승이 많은 경로는 세로로 길어져 줄이는 규칙이 필요합니다.</li></ul></div>
+    </div>
+  </section>
+
+  <!-- ================= F ================= -->
+  <section class="dir F" aria-labelledby="h-f">
+    <div class="dir-head"><span class="tag">F</span><h2 id="h-f">플립 전광판</h2><p>옛 기차역 출발 안내판처럼 숫자판이 한 장씩 넘어갑니다. 넘어가는 소리 없는 움직임이 시간이 흐른다는 신호입니다.</p></div>
+    <div class="mocks">
+      <div class="mock">
+        <div class="phone">
+          <div class="sb"><span>8:47</span><span>●●● ▮</span></div><div class="isl plain"></div>
+          <p class="lbl">현관까지</p>
+          <div class="flaps"><span class="flap">1</span><span class="flap">2</span><span class="u">분</span></div>
+          <div class="board">
+            <div class="r"><span class="mini"><span>0</span><span>8</span><span class="c">:</span><span>5</span><span>9</span></span><span>현관 출발</span></div>
+            <div class="r"><span class="mini"><span>0</span><span>9</span><span class="c">:</span><span>1</span><span>2</span></span><span>가양 · 9호선 급행</span></div>
+            <div class="r"><span class="mini"><span>0</span><span>9</span><span class="c">:</span><span>4</span><span>8</span></span><span>회사 도착 · 강남</span></div>
+          </div>
+          <div class="spacer"></div>
+          <div class="btn">출발 준비</div>
+        </div>
+        <span class="cap">홈 · 아침</span>
+      </div>
+      <div class="mock">
+        <div class="phone lock">
+          <div class="sb"><span></span><span>●●● ▮</span></div>
+          <div class="isl"><span class="y">현관</span><span class="num">3:12</span></div>
+          <div class="lock-clock num">8:56</div>
+          <div class="lock-date">9월 29일 화요일</div>
+          <div class="spacer"></div>
+          <div class="la">
+            <div class="row"><span style="color:#F7C600;font-weight:800">현관까지</span><span>9호선 급행 9:12</span></div>
+            <div class="flaps"><span class="flap">0</span><span class="flap">3</span><span class="colon">:</span><span class="flap">1</span><span class="flap">2</span></div>
+          </div>
+        </div>
+        <span class="cap">잠금화면 · 다이내믹 아일랜드</span>
+      </div>
+      <div class="mock">
+        <div class="phone night">
+          <div class="sb"><span>22:23</span><span>●●● ▮</span></div><div class="isl plain"></div>
+          <p class="lbl">막차까지 · 일어나기</p>
+          <div class="flaps"><span class="flap">4</span><span class="flap">7</span><span class="u">분</span></div>
+          <div class="board">
+            <div class="r"><span class="mini"><span>2</span><span>3</span><span class="c">:</span><span>1</span><span>0</span></span><span>일어나기</span></div>
+            <div class="r"><span class="mini"><span>2</span><span>3</span><span class="c">:</span><span>2</span><span>4</span></span><span>홍대입구 · 막차</span></div>
+            <div class="r"><span class="mini"><span>0</span><span>0</span><span class="c">:</span><span>0</span><span>0</span></span><span>집 도착</span></div>
+          </div>
+          <div class="spacer"></div>
+          <p style="color:#FF5A4F;font-size:12.5px;font-weight:800">주말이라 평일보다 1시간 12분 일찍 끊겨요</p>
+        </div>
+        <span class="cap">막차 · 주말 밤</span>
+      </div>
+    </div>
+    <div class="notes">
+      <div><h3>좋은 점</h3><ul><li>분이 바뀔 때마다 숫자판이 넘어가는 움직임이 눈길을 끌어, 시간이 흐르는 게 몸으로 느껴집니다.</li><li>역과 기차의 옛 감성이 있어 기억에 남습니다.</li></ul></div>
+      <div><h3>아쉬운 점</h3><ul><li>숫자판 틀 때문에 같은 폭에서 숫자가 조금 작아집니다.</li><li>잠금화면에서는 넘어가는 움직임을 보여줄 수 없어 멈춘 모양만 씁니다.</li></ul></div>
+    </div>
+  </section>
+
+  <!-- ================= G ================= -->
+  <section class="dir G" aria-labelledby="h-g">
+    <div class="dir-head"><span class="tag">G</span><h2 id="h-g">물 빠짐</h2><p>화면에 찬 물이 남은 시간만큼 조금씩 빠집니다. 물이 바닥에 닿으면 나갈 시간입니다.</p></div>
+    <div class="mocks">
+      <div class="mock">
+        <div class="phone">
+          <div class="water" style="--lvl:58%"><svg viewBox="0 0 260 18" preserveAspectRatio="none" aria-hidden="true"><path d="M0 10 Q 32.5 0 65 10 T 130 10 T 195 10 T 260 10 V18 H0Z" fill="#4C9BFF"/></svg></div>
+          <div class="layer">
+            <div class="sb"><span>8:47</span><span>●●● ▮</span></div><div class="isl plain"></div>
+            <p class="meta">회사 · 강남 · 10:00까지</p>
+            <div class="big">12</div>
+            <p class="sub">분 뒤 현관</p>
+            <div class="spacer"></div>
+            <div class="rows">
+              <div><span>현관</span><b>8:59</b></div>
+              <div><span>9호선 급행</span><b>9:12</b></div>
+              <div><span>회사 도착</span><b>9:48</b></div>
+            </div>
+            <div class="btn">출발 준비</div>
+          </div>
+        </div>
+        <span class="cap">홈 · 아침</span>
+      </div>
+      <div class="mock">
+        <div class="phone lock">
+          <div class="sb"><span></span><span>●●● ▮</span></div>
+          <div class="isl"><span class="tank"><i></i></span><span class="num">3:12</span></div>
+          <div class="lock-clock num">8:56</div>
+          <div class="lock-date">9월 29일 화요일</div>
+          <div class="spacer"></div>
+          <div class="la">
+            <div class="water" style="--lvl:32%"><svg viewBox="0 0 260 18" preserveAspectRatio="none" aria-hidden="true"><path d="M0 10 Q 32.5 0 65 10 T 130 10 T 195 10 T 260 10 V18 H0Z" fill="#4C9BFF"/></svg></div>
+            <span class="lbl">현관까지 · 9호선 급행 9:12</span>
+            <span class="num2">3:12</span>
+          </div>
+        </div>
+        <span class="cap">잠금화면 · 다이내믹 아일랜드</span>
+      </div>
+      <div class="mock">
+        <div class="phone night">
+          <div class="water" style="--lvl:74%"><svg viewBox="0 0 260 18" preserveAspectRatio="none" aria-hidden="true"><path d="M0 10 Q 32.5 0 65 10 T 130 10 T 195 10 T 260 10 V18 H0Z" fill="#23B5A8"/></svg></div>
+          <div class="layer">
+            <div class="sb"><span>22:23</span><span>●●● ▮</span></div><div class="isl plain"></div>
+            <p class="meta">집까지 가는 막차 · 홍대입구</p>
+            <div class="big">47</div>
+            <p class="sub">분 뒤 일어나기</p>
+            <div class="spacer"></div>
+            <div class="rows">
+              <div><span>일어나기</span><b>23:10</b></div>
+              <div><span>홍대입구 막차</span><b>23:24</b></div>
+              <div><span>집 도착</span><b>0:00</b></div>
+            </div>
+            <span class="chip">주말이라 1시간 12분 일찍 끊겨요</span>
+          </div>
+        </div>
+        <span class="cap">막차 · 주말 밤</span>
+      </div>
+    </div>
+    <div class="notes">
+      <div><h3>좋은 점</h3><ul><li>화면 전체가 모래시계라, 숫자를 안 읽어도 얼마나 남았는지 알 수 있습니다.</li><li>부드럽고 덜 긴장되는 느낌이라 불안을 덜 줍니다.</li></ul></div>
+      <div><h3>아쉬운 점</h3><ul><li>물 위아래로 글자색이 바뀌어 배치에 신경을 많이 써야 합니다.</li><li>물이 흔들리는 움직임은 배터리를 조금 더 씁니다. 움직임 줄이기 설정에서는 멈춥니다.</li></ul></div>
+    </div>
+  </section>
+
   <section class="compare" aria-labelledby="h-cmp">
     <h2 id="h-cmp">한눈에 비교</h2>
     <div class="tbl">
       <table>
-        <thead><tr><th></th><th>A 타이머</th><th>B 역 표지판</th><th>C 유리</th></tr></thead>
+        <thead><tr><th>시안</th><th>남은 시간이 보이는 방식</th><th>흘끗 볼 때</th><th>경로 정보</th><th>이 앱만의 인상</th><th>만드는 난이도</th></tr></thead>
         <tbody>
-          <tr><td>남은 시간이 보이는 방식</td><td>숫자와 줄어드는 원판</td><td>좁고 굵은 큰 숫자</td><td>둥근 큰 숫자와 막대</td></tr>
-          <tr><td>흘끗 볼 때</td><td>가장 빠름. 면적으로 먼저 느낌</td><td>빠름. 숫자가 가장 큼</td><td>보통</td></tr>
-          <tr><td>경로 정보</td><td>아래로 밀림</td><td>가장 잘 보임</td><td>적당함</td></tr>
-          <tr><td>분위기</td><td>차분하고 따뜻함</td><td>또렷하고 지하철다움</td><td>깔끔하고 요즘 iOS다움</td></tr>
-          <tr><td>만드는 난이도</td><td>보통</td><td>보통</td><td>가장 쉬움</td></tr>
+          <tr><td>A 타이머</td><td>숫자와 줄어드는 원판</td><td>빠름</td><td>아래로 밀림</td><td>보통</td><td>보통</td></tr>
+          <tr><td>B 역 표지판</td><td>좁고 굵은 큰 숫자</td><td>빠름</td><td>가장 잘 보임</td><td>보통</td><td>보통</td></tr>
+          <tr><td>C 유리</td><td>둥근 큰 숫자와 막대</td><td>보통</td><td>적당함</td><td>약함</td><td>가장 쉬움</td></tr>
+          <tr><td>D 포스터</td><td>숫자 하나와 화면 전체 색</td><td>가장 빠름</td><td>한 번 더 눌러야 봄</td><td>강함</td><td>쉬움</td></tr>
+          <tr><td>E 노선도</td><td>큰 숫자와 시간 비례 노선도</td><td>빠름</td><td>가장 풍부함</td><td>가장 강함</td><td>어려움</td></tr>
+          <tr><td>F 플립 전광판</td><td>넘어가는 숫자판</td><td>빠름</td><td>적당함</td><td>강함</td><td>보통</td></tr>
+          <tr><td>G 물 빠짐</td><td>큰 숫자와 빠지는 물 높이</td><td>빠름</td><td>적당함</td><td>강함</td><td>어려움</td></tr>
         </tbody>
       </table>
     </div>
-    <p class="pick"><b>제 추천은 A를 중심으로 섞는 것입니다.</b> 남은 시간을 면적으로 보여주는 원판은 ADHD 사용자에게 가장 직접적인 장치라 이 앱의 얼굴로 삼을 만합니다. 바탕과 버튼은 C처럼 iOS 기본 유리 부품을 쓰고, 경로 구간 목록만 B처럼 노선색 표지판 스타일로 보여주면 세 시안의 장점이 모입니다.</p>
+    <p class="pick"><b>새로 넣은 것 중에서는 D와 E를 권합니다.</b> D는 폰을 켜는 순간 색으로 상태를 알려줘서 ADHD 사용자에게 가장 부담이 적습니다. E는 지하철 앱이라는 정체성이 가장 강해서 다른 앱과 확실히 구별됩니다. 둘은 잘 섞입니다. 홈은 D처럼 숫자 하나와 상태색으로 두고, 카드를 올리거나 한 번 누르면 E의 노선도가 펼쳐지는 식입니다.</p>
   </section>
 
 </div>
