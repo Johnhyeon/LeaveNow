@@ -66,8 +66,15 @@ struct ContentView: View {
             let target = deadline.addingTimeInterval(TimeInterval(-profile.arriveEarly * 60))
             let started = Date.now
             do {
-                let plan = try await RoutePlanner.shared.plan(origin: origin, destination: to, stationArrivalTarget: target,
-                                                              bufferMinutes: profile.platformBuffer, mode: .fastest)
+                let both = try await RoutePlanner.shared.planBoth(origin: origin, destination: to, stationArrivalTarget: target,
+                                                                  bufferMinutes: profile.platformBuffer)
+                guard let plan = both[.fastest] else { continue }
+                if flag == "-planTest" {
+                    let again = Date.now
+                    _ = try await RoutePlanner.shared.planBoth(origin: origin, destination: to, stationArrivalTarget: target,
+                                                               bufferMinutes: profile.platformBuffer)
+                    print("PLAN 두 번째 계산 \(String(format: "%.2f", Date.now.timeIntervalSince(again)))초 · 최소환승 같은 경로 \(both[.fastest]?.trip.signature == both[.fewestTransfers]?.trip.signature)")
+                }
                 print("PLAN \(from)→\(to) 마감 \(Fmt.dateTime.string(from: deadline)) · 계산 \(String(format: "%.1f", Date.now.timeIntervalSince(started)))초")
                 print("PLAN 현관 \(Fmt.time.string(from: plan.leaveBy)) · 승강장 \(Fmt.time.string(from: plan.platformBy)) · 늦음 \(plan.isLate)")
                 for r in plan.trip.rides {

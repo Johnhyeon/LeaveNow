@@ -16,10 +16,12 @@ final class Profile {
     var homeToPlatform: Int { didSet { d.set(homeToPlatform, forKey: "v2.homeToPlatform") } }
     /// 열차 시각보다 이만큼 먼저 승강장에 (분)
     var platformBuffer: Int { didSet { d.set(platformBuffer, forKey: "v2.platformBuffer") } }
-    /// 목적지에 이만큼 일찍 도착 (분)
+    /// 입력한 시각보다 이만큼 일찍 도착 (분). 기본 0: 입력한 시각이 곧 도착 목표
     var arriveEarly: Int { didSet { d.set(arriveEarly, forKey: "v2.arriveEarly") } }
     /// 미리 알림: 나갈 시각 몇 분 전 (분)
     var leadMinutes: Int { didSet { d.set(leadMinutes, forKey: "v2.leadMinutes") } }
+    /// 내 걸음 배율: 표준(초속 1.2m) 대비. 1.1 이면 10% 느림. 3단계에서 도착 기록으로 배운다
+    var walkFactor: Double { didSet { d.set(walkFactor, forKey: "v2.walkFactor") } }
 
     private init() {
         onboarded = d.bool(forKey: "v2.onboarded")
@@ -28,8 +30,9 @@ final class Profile {
         homeStation = d.string(forKey: "v2.homeStation") ?? ""
         homeToPlatform = d.object(forKey: "v2.homeToPlatform") as? Int ?? 10
         platformBuffer = d.object(forKey: "v2.platformBuffer") as? Int ?? 4
-        arriveEarly = d.object(forKey: "v2.arriveEarly") as? Int ?? 10
+        arriveEarly = d.object(forKey: "v2.arriveEarly") as? Int ?? 0
         leadMinutes = d.object(forKey: "v2.leadMinutes") as? Int ?? 10
+        walkFactor = d.object(forKey: "v2.walkFactor") as? Double ?? 1.0
     }
 
     var home: CLLocation? {

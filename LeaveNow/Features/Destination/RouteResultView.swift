@@ -79,6 +79,11 @@ struct RouteResultView: View {
             Text("\(placeName) · \(Fmt.time.string(from: deadline))까지")
                 .font(.subheadline.weight(.semibold))
                 .foregroundStyle(Theme.mute)
+            if profile.arriveEarly > 0 {
+                Text("\(profile.arriveEarly)분 일찍 도착하도록 계산했어요 · 설정에서 바꿀 수 있어요")
+                    .font(.caption)
+                    .foregroundStyle(Theme.mute)
+            }
             if !loading, !sameRoute {
                 Picker("경로", selection: $mode) {
                     ForEach(RouteMode.allCases) { Text($0.title).tag($0) }
@@ -127,14 +132,9 @@ struct RouteResultView: View {
         loading = true
         error = nil
         do {
-            async let fast = RoutePlanner.shared.plan(origin: origin, destination: stationName,
-                                                      stationArrivalTarget: stationTarget,
-                                                      bufferMinutes: profile.platformBuffer, mode: .fastest)
-            async let few = RoutePlanner.shared.plan(origin: origin, destination: stationName,
-                                                     stationArrivalTarget: stationTarget,
-                                                     bufferMinutes: profile.platformBuffer, mode: .fewestTransfers)
-            let (a, b) = try await (fast, few)
-            plans = [.fastest: a, .fewestTransfers: b]
+            plans = try await RoutePlanner.shared.planBoth(origin: origin, destination: stationName,
+                                                           stationArrivalTarget: stationTarget,
+                                                           bufferMinutes: profile.platformBuffer)
             mode = .fastest
         } catch {
             self.error = error.localizedDescription

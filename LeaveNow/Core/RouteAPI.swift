@@ -19,6 +19,10 @@ struct RouteTrip: Codable, Hashable, Identifiable {
         let stops: Int
         let towards: String?
         let trainNo: String?
+        /// 출발역 바로 다음 역 (갈아탄 열차의 방면 판단용)
+        var secondStation: String? = nil
+        /// 도착역 바로 앞 역 (내릴 열차의 방면 판단용)
+        var penultimateStation: String? = nil
     }
     struct Transfer: Codable, Hashable {
         let station: String
@@ -133,7 +137,9 @@ enum RouteAPI {
                 express: (first["etrnYn"] as? String) == "Y",
                 stops: max(1, group.count - nonstop),
                 towards: first["tmnlStnNm"] as? String,
-                trainNo: first["trainno"] as? String)))
+                trainNo: first["trainno"] as? String,
+                secondStation: stn(first, "arvlStn")["stnNm"] as? String,
+                penultimateStation: stn(last, "dptreStn")["stnNm"] as? String)))
             group = []
         }
 

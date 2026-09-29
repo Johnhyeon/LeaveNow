@@ -20,14 +20,27 @@ enum RouteStops {
 
         for (i, ride) in rides.enumerated() {
             let color = LineStyle.color(ride.line)
-            stops.append(.init(time: t(ride.departure), title: ride.from,
-                               detail: "\(ride.line)\(ride.express ? " 급행" : "") · \(ride.stops)정거장",
-                               nodeColor: color, leg: .line(color), minutes: mins(ride.departure, ride.arrival)))
+            var detail = "\(ride.line)\(ride.express ? " 급행" : "") · \(ride.stops)정거장"
+            var nextRide: RouteTrip.Ride? = nil
             if i + 1 < rides.count {
                 let next = rides[i + 1]
-                let walk = plan.trip.transfers.first { $0.station == ride.to }?.walkSeconds ?? 0
-                stops.append(.init(time: t(ride.arrival), title: ride.to,
-                                   detail: "환승 · 걸어서 \(max(1, walk / 60))분",
+                nextRide = next
+                if let car = TransferData.shared.fastCar(station: ride.to, fromLine: ride.line, prevStation: ride.penultimateStation,
+                                                          toLine: next.line, nextStation: next.secondStation) {
+                    detail += " · \(car.alight)칸 타면 환승 가까워요"
+                }
+            }
+            stops.append(.init(time: t(ride.departure), title: ride.from, detail: detail,
+                               nodeColor: color, leg: .line(color), minutes: mins(ride.departure, ride.arrival)))
+            if let next = nextRide {
+                let transfer = plan.trip.transfers.first { TransferData.baseName($0.station) == TransferData.baseName(ride.to) }
+                var text = "환승"
+                if let transfer {
+                    let shown = TransferModel.displayMinutes(transfer, at: ride.arrival)
+                    text += shown.walk == 0 ? " · 같은 승강장" : " · 걸어서 \(shown.walk)분"
+                    text += " · 여유 \(shown.spare)분"
+                }
+                stops.append(.init(time: t(ride.arrival), title: ride.to, detail: text,
                                    nodeColor: color, leg: .walk, minutes: mins(ride.arrival, next.departure)))
             }
         }

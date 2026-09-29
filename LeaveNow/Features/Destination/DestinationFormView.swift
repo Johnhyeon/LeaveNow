@@ -82,7 +82,9 @@ struct DestinationFormView: View {
                         }
                     }
                 } footer: {
-                    Text("목적지에 \(profile.arriveEarly)분 일찍 도착하도록 계산해요.")
+                    Text(profile.arriveEarly > 0
+                         ? "입력한 시각보다 \(profile.arriveEarly)분 일찍 도착하도록 계산해요."
+                         : "입력한 시각까지 도착하도록 계산해요.")
                 }
 
                 Section {

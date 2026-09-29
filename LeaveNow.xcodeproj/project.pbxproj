@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		02F32F9EEC2183CDBA90B047 /* DepartureActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269B82A9BFE7AE0EF2270C93 /* DepartureActivityAttributes.swift */; };
+		05978B03925E2D21BB574A90 /* Transfers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C274C966E5C38A65E053D680 /* Transfers.swift */; };
 		0CB93DE46F7E01C3360DB309 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BE02A09DFF2070FB9C3629 /* Secrets.swift */; };
 		1277F1A071A888F755629680 /* DepartureActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269B82A9BFE7AE0EF2270C93 /* DepartureActivityAttributes.swift */; };
 		1726A9E85B1FC5D1CF91120C /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BF38B35DDE88A2105B9BAD /* Color+Hex.swift */; };
@@ -18,6 +19,7 @@
 		367D8C75D1AEBDB792356CFF /* DepartureLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721D1F446C5BCA2D64517B6 /* DepartureLiveActivity.swift */; };
 		3B3F6D338886BFEAAF9121E0 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE7A3BA93DFE7092FC67BA63 /* SettingsView.swift */; };
 		3FB4EA8BAB98B8ECED2507A5 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AA670A701E8F65196A7BA1E /* Secrets.plist */; };
+		403B6600839250765A136B3F /* transfers.json in Resources */ = {isa = PBXBuildFile; fileRef = 93524A19C3B12C21840B3C3A /* transfers.json */; };
 		423CCB2CAE4F7689E8BF1B91 /* WaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714F9AB31E1782F6B0CBECE9 /* WaterView.swift */; };
 		4BD33EB7DEA2120C7D79635F /* HomeRootView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4BEE890399794E3C162AA0B6 /* HomeRootView.swift */; };
 		67F6D73E66010DEA5CBD7FA0 /* LeaveNowWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AF0934E8DCDA393B7EF6A3EF /* LeaveNowWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -87,12 +89,14 @@
 		714F9AB31E1782F6B0CBECE9 /* WaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterView.swift; sourceTree = "<group>"; };
 		7E16275D04A109D1EB6BB17F /* OnboardingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlow.swift; sourceTree = "<group>"; };
 		88DE9B55E6D87B6079297B0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		93524A19C3B12C21840B3C3A /* transfers.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = transfers.json; sourceTree = "<group>"; };
 		A288AD8762E080673506DAC8 /* Stations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stations.swift; sourceTree = "<group>"; };
 		AE88F84D5AE2A209F7927B53 /* LeaveNowApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveNowApp.swift; sourceTree = "<group>"; };
 		AF0934E8DCDA393B7EF6A3EF /* LeaveNowWidgets.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = LeaveNowWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
 		B888F0C471F302B94D915332 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C1A2DE891F717A6199D53055 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		C1FDF0215E4EBDA0DB2C12AA /* LiveActivitySpike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivitySpike.swift; sourceTree = "<group>"; };
+		C274C966E5C38A65E053D680 /* Transfers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Transfers.swift; sourceTree = "<group>"; };
 		C55E63987C546E1004076E4A /* RouteStops.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteStops.swift; sourceTree = "<group>"; };
 		C65A17556F3CCD89FA5C7E06 /* Fmt.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fmt.swift; sourceTree = "<group>"; };
 		C721D1F446C5BCA2D64517B6 /* DepartureLiveActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureLiveActivity.swift; sourceTree = "<group>"; };
@@ -134,6 +138,7 @@
 				F2C521C24713A3C217304B5C /* Secrets.example.plist */,
 				4AA670A701E8F65196A7BA1E /* Secrets.plist */,
 				4225F85A15797745BB0468D1 /* stations.json */,
+				93524A19C3B12C21840B3C3A /* transfers.json */,
 			);
 			path = Resources;
 			sourceTree = "<group>";
@@ -160,6 +165,7 @@
 				D9FD67CC168C148AF63A8D72 /* RoutePlanner.swift */,
 				C55E63987C546E1004076E4A /* RouteStops.swift */,
 				A288AD8762E080673506DAC8 /* Stations.swift */,
+				C274C966E5C38A65E053D680 /* Transfers.swift */,
 				591BDF7C006279A47008D21F /* TripNotifier.swift */,
 			);
 			path = Core;
@@ -367,6 +373,7 @@
 				B4B35C9614565066E9A5CD5D /* Secrets.example.plist in Resources */,
 				3FB4EA8BAB98B8ECED2507A5 /* Secrets.plist in Resources */,
 				DC808FC3EA2C3F21F8533AF1 /* stations.json in Resources */,
+				403B6600839250765A136B3F /* transfers.json in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -411,6 +418,7 @@
 				72CC19C0A543254BE8C6D0E8 /* SpikeView.swift in Sources */,
 				79CF3E5EC04EF387D5275E92 /* Stations.swift in Sources */,
 				1800B5D608A5912203CCD6D5 /* Theme.swift in Sources */,
+				05978B03925E2D21BB574A90 /* Transfers.swift in Sources */,
 				8635FF70EB73F0F429D41C1D /* TripNotifier.swift in Sources */,
 				75D91554B54851EBFD3EAD7F /* TripRecord.swift in Sources */,
 				DC4B5947F42B703F1A50348E /* WaterHomeView.swift in Sources */,

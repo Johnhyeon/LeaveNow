@@ -27,12 +27,13 @@ struct SettingsView: View {
                 }
                 Section {
                     Stepper("승강장 여유  \(profile.platformBuffer)분", value: $profile.platformBuffer, in: 0...15)
-                    Stepper("목적지 일찍 도착  \(profile.arriveEarly)분", value: $profile.arriveEarly, in: 0...60)
+                    Stepper(profile.arriveEarly == 0 ? "일찍 도착  안 함" : "일찍 도착  \(profile.arriveEarly)분",
+                            value: $profile.arriveEarly, in: 0...60)
                     Stepper("미리 알림  \(profile.leadMinutes)분 전", value: $profile.leadMinutes, in: 1...60)
                 } header: {
                     Text("계산")
                 } footer: {
-                    Text("바꾼 값은 다음에 경로를 계산할 때부터 적용돼요.")
+                    Text("일찍 도착은 입력한 시각보다 먼저 도착하도록 여유를 더합니다. 이미 여유를 넣어 시각을 적는다면 '안 함'으로 두세요. 바꾼 값은 다음 계산부터 적용돼요.")
                 }
                 if !places.isEmpty {
                     Section("저장한 곳") {
