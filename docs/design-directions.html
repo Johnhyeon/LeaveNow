@@ -264,6 +264,77 @@ p { margin: 0; }
 .G .phone.night .meta { color: #8FA0B8; }
 .G .chip { align-self: flex-start; border-radius: 999px; padding: 6px 12px; font-size: 12px; font-weight: 800; background: rgba(255,255,255,.2); color: #fff; }
 
+
+/* ================= E×G ================= */
+.EG { --w1: #5AA7FF; --w2: #2F7BF0; --n1: #2CC0B2; --n2: #138C84; --ink: #0F1724; --mute: #5E6C7F; --walk: #A7B1BE; --l9: #BDB092; --lsb: #D4003B; --l2: #00A84D; --now: #0A6CFF; --amber: #FFB23E; }
+.EG .phone { background: #EEF3F9; color: var(--ink); font-family: var(--f-ui); }
+.EG .meta { font-size: 13px; color: var(--mute); font-weight: 600; }
+.EG .big { font-family: var(--f-round); font-weight: 900; line-height: .84; letter-spacing: -0.05em; font-variant-numeric: tabular-nums; }
+.EG .unit { font-size: 18px; font-weight: 800; letter-spacing: -0.01em; }
+.EG .btn { border-radius: 999px; text-align: center; padding: 13px; font-weight: 900; font-size: 15px; background: var(--ink); color: #fff; }
+.EG .water { position: absolute; left: 0; right: 0; bottom: 0; height: var(--lvl); background: linear-gradient(var(--w1), var(--w2)); z-index: 0; }
+.EG .water svg { position: absolute; left: 0; top: 0; width: 100%; height: 16px; transform: translateY(-15px); display: block; }
+.EG .layer { position: relative; z-index: 1; display: flex; flex-direction: column; gap: 10px; flex: 1; }
+
+/* 노선도 공통 */
+.EG .map { display: grid; grid-template-columns: 40px 30px 1fr; column-gap: 8px; }
+.EG .map .t { font-size: 12px; font-weight: 700; text-align: right; font-variant-numeric: tabular-nums; color: var(--mute); line-height: 1; transform: translateY(-2px); }
+.EG .map .rail { position: relative; display: flex; justify-content: center; }
+.EG .map .seg { width: 6px; border-radius: 3px; }
+.EG .map .seg.walk { width: 0; border-left: 3px dotted var(--walk); border-radius: 0; }
+.EG .map .node { position: absolute; top: -6px; width: 14px; height: 14px; border-radius: 50%; background: #fff; border: 3px solid var(--c, var(--ink)); }
+.EG .map .node.now { background: var(--now); border-color: #CFE0FF; box-shadow: 0 0 0 4px rgba(10,108,255,.18); }
+.EG .map .lab { font-size: 13px; font-weight: 700; line-height: 1; transform: translateY(-2px); }
+.EG .map .lab small { display: block; font-size: 11px; color: var(--mute); font-weight: 600; margin-top: 3px; }
+
+/* 1안: 물 배경 위 유리 카드 노선도 */
+.EG .v1card { background: rgba(255,255,255,.72); -webkit-backdrop-filter: blur(16px) saturate(1.5); backdrop-filter: blur(16px) saturate(1.5); border: 1px solid rgba(255,255,255,.85); border-radius: 22px; padding: 16px 14px 6px; box-shadow: 0 8px 24px rgba(20,40,80,.12); }
+
+/* 2안: 관 */
+.EG .tube { width: 30px; height: var(--h, 140px); border-radius: 15px; background: #DCE5F0; position: relative; overflow: hidden; box-shadow: inset 0 0 0 2px #C6D3E2; }
+.EG .tube .w { position: absolute; left: 0; right: 0; bottom: 0; height: var(--lvl); background: linear-gradient(var(--w1), var(--w2)); }
+.EG .tube .w svg { position: absolute; left: 0; top: 0; width: 100%; height: 8px; transform: translateY(-7px); display: block; }
+.EG .tubecell { display: flex; flex-direction: column; justify-content: space-between; height: var(--h, 140px); }
+.EG .tuberow { display: grid; grid-template-columns: 40px 30px 1fr; column-gap: 8px; align-items: stretch; margin-bottom: 10px; }
+.EG .tuberow .numcell { display: flex; flex-direction: column; justify-content: center; padding-left: 6px; }
+.EG .htube { height: 16px; border-radius: 8px; background: rgba(255,255,255,.18); position: relative; overflow: hidden; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.35); }
+.EG .htube .w { position: absolute; left: 0; top: 0; bottom: 0; width: var(--lvl); background: linear-gradient(90deg, var(--w2), var(--w1)); border-radius: 8px; }
+.EG .isl .mt { width: 30px; height: 10px; border-radius: 5px; box-shadow: inset 0 0 0 1.5px rgba(255,255,255,.7); position: relative; overflow: hidden; }
+.EG .isl .mt i { position: absolute; left: 0; top: 0; bottom: 0; width: 30%; background: var(--w1); }
+
+/* 잠금화면 */
+.EG .phone.lock { background: linear-gradient(170deg, #3B4659, #11161E); color: #fff; }
+.EG .la { background: rgba(14,18,26,.82); border-radius: 22px; padding: 14px 16px; display: grid; gap: 8px; position: relative; overflow: hidden; }
+.EG .la .row { display: flex; justify-content: space-between; align-items: baseline; font-size: 12px; opacity: .85; }
+.EG .la .big { font-size: 52px; }
+.EG .la .labs { display: flex; justify-content: space-between; font-size: 11px; opacity: .75; }
+.EG .la .water { height: var(--lvl); opacity: .9; }
+.EG .la .water svg { height: 9px; transform: translateY(-8px); }
+.EG .la > *:not(.water) { position: relative; z-index: 1; }
+
+/* 밤 */
+.EG .phone.night { background: #0B1020; color: #EEF3F9; }
+.EG .phone.night .water, .EG .phone.night .tube .w { background: linear-gradient(var(--n1), var(--n2)); }
+.EG .phone.night .meta, .EG .phone.night .map .t, .EG .phone.night .map .lab small { color: #8FA0B8; }
+.EG .phone.night .map .node { background: #0B1020; }
+.EG .phone.night .map .node.now { background: var(--amber); border-color: #5A4213; box-shadow: 0 0 0 4px rgba(255,178,62,.2); }
+.EG .phone.night .tube { background: #1A2236; box-shadow: inset 0 0 0 2px #2A3550; }
+.EG .phone.night .v1card { background: rgba(11,16,32,.66); border-color: rgba(255,255,255,.14); }
+.EG .phone.night .btn { background: #fff; color: #0B1020; }
+.EG .warnline { color: var(--amber); font-size: 12.5px; font-weight: 800; }
+
+/* 3안: 시트 */
+.EG .sheet { position: absolute; left: 0; right: 0; bottom: 0; background: #F7F9FC; border-radius: 26px 26px 0 0; padding: 10px 16px 18px; z-index: 2; box-shadow: 0 -8px 24px rgba(10,30,60,.18); display: grid; gap: 10px; }
+.EG .sheet .grab { width: 38px; height: 5px; border-radius: 3px; background: #C5CEDA; justify-self: center; }
+.EG .sheet .peek { display: flex; justify-content: space-between; align-items: center; font-size: 13px; font-weight: 700; }
+.EG .pline { display: flex; align-items: center; height: 12px; }
+.EG .pline .s { height: 5px; border-radius: 3px; }
+.EG .pline .s.walk { height: 0; border-top: 3px dotted var(--walk); border-radius: 0; }
+.EG .phone.water-screen { color: #fff; }
+.EG .phone.water-screen .meta { color: rgba(255,255,255,.85); }
+.EG .phone.water-screen.light-top .meta { color: var(--mute); }
+.EG .phone.water-screen.light-top { color: var(--ink); }
+
 /* ---------- 비교 ---------- */
 .compare { background: var(--card); border: 1px solid var(--line); border-radius: 14px; padding: 18px 20px; display: grid; gap: 12px; }
 .compare h2 { font-size: 18px; font-weight: 800; }
@@ -281,9 +352,188 @@ p { margin: 0; }
 
   <header class="intro">
     <h1>출발시각 시안</h1>
-    <p><span class="fixed">숫자가 크게 보이는 것</span>을 모든 시안의 공통 조건으로 두고, 남은 시간을 보여주는 방식을 다르게 그렸습니다. A~C는 첫 시안, D~G는 표현 방식을 더 과감하게 바꾼 두 번째 시안입니다. 각 시안은 같은 세 화면을 보여줍니다. 아침 홈 카드, 잠금화면 라이브 액티비티와 다이내믹 아일랜드, 주말 밤 막차 카드입니다.</p>
+    <p><span class="fixed">숫자가 크게 보이는 것</span>을 모든 시안의 공통 조건으로 두고, 남은 시간을 보여주는 방식을 다르게 그렸습니다. A~C는 첫 시안, D~G는 표현 방식을 더 과감하게 바꾼 두 번째 시안입니다. 맨 위 E×G는 E 노선도와 G 물 빠짐을 섞은 세 번째 시안입니다. 각 시안은 같은 세 화면을 보여줍니다. 아침 홈 카드, 잠금화면 라이브 액티비티와 다이내믹 아일랜드, 주말 밤 막차 카드입니다.</p>
     <p>마음에 드는 시안을 고르거나, "D의 색에 E의 노선도"처럼 섞어도 됩니다. 화면에 댓글로 남겨주셔도 됩니다. 애플 기기에서 보면 실제 아이폰 글꼴로 보입니다.</p>
   </header>
+
+  <!-- ================= E×G ================= -->
+  <section class="dir EG" aria-labelledby="h-eg">
+    <div class="dir-head"><span class="tag">E×G</span><h2 id="h-eg">노선도와 물 빠짐을 섞은 세 가지</h2><p>남은 시간은 물로, 그 뒤 여정은 노선도로. 둘을 어디서 어떻게 만나게 할지가 다릅니다.</p></div>
+
+    <h3 style="font-size:16px;font-weight:800">1안 · 물 위에 뜬 노선도</h3>
+    <div class="mocks">
+      <div class="mock">
+        <div class="phone">
+          <div class="water" style="--lvl:62%"><svg viewBox="0 0 260 16" preserveAspectRatio="none" aria-hidden="true"><path d="M0 9 Q 32.5 0 65 9 T 130 9 T 195 9 T 260 9 V16 H0Z" fill="#5AA7FF"/></svg></div>
+          <div class="layer">
+            <div class="sb"><span>8:47</span><span>●●● ▮</span></div><div class="isl plain"></div>
+            <p class="meta">회사 · 강남 · 10:00까지</p>
+            <div><span class="big" style="font-size:96px">12</span><span class="unit">분 뒤 현관</span></div>
+            <div class="v1card"><div class="map"><span class="t">8:47</span><span class="rail"><span class="seg walk" style="height:30px"></span><span class="node now"></span></span><span class="lab">지금</span><span class="t">8:59</span><span class="rail"><span class="seg walk" style="height:34px"></span><span class="node" style="--c:#0F1724"></span></span><span class="lab">현관<small>집 → 승강장 9분 · 여유 4분</small></span><span class="t">9:12</span><span class="rail"><span class="seg" style="height:62px;background:#BDB092"></span><span class="node" style="--c:#BDB092"></span></span><span class="lab">가양<small>9호선 급행 · 7정거장</small></span><span class="t">9:37</span><span class="rail"><span class="seg walk" style="height:26px"></span><span class="node" style="--c:#BDB092"></span></span><span class="lab">신논현<small>환승 5분</small></span><span class="t">9:42</span><span class="rail"><span class="seg" style="height:26px;background:#D4003B"></span><span class="node" style="--c:#D4003B"></span></span><span class="lab">신논현<small>신분당선 · 1정거장</small></span><span class="t">9:43</span><span class="rail"><span class="seg walk" style="height:26px"></span><span class="node" style="--c:#D4003B"></span></span><span class="lab">강남</span><span class="t">9:48</span><span class="rail"><span class="node" style="--c:#0F1724"></span></span><span class="lab">회사<small>12분 일찍</small></span></div></div>
+            <div class="spacer"></div>
+            <div class="btn" style="background:#fff;color:#2F7BF0">출발 준비</div>
+          </div>
+        </div>
+        <span class="cap">홈 · 아침</span>
+      </div>
+      <div class="mock">
+        <div class="phone lock">
+          <div class="sb"><span></span><span>●●● ▮</span></div>
+          <div class="isl"><span class="mt"><i></i></span><span class="num">3:12</span></div>
+          <div class="lock-clock num">8:56</div>
+          <div class="lock-date">9월 29일 화요일</div>
+          <div class="spacer"></div>
+          <div class="la">
+            <div class="water" style="--lvl:34%"><svg viewBox="0 0 260 9" preserveAspectRatio="none" aria-hidden="true"><path d="M0 5 Q 32.5 0 65 5 T 130 5 T 195 5 T 260 5 V9 H0Z" fill="#5AA7FF"/></svg></div>
+            <div class="row"><span>현관까지</span><span>회사 9:48</span></div>
+            <div class="big">3:12</div>
+            <div class="labs"><span>현관 8:59</span><span>가양 9:12 급행</span><span>강남 9:43</span></div>
+          </div>
+        </div>
+        <span class="cap">잠금화면 · 다이내믹 아일랜드</span>
+      </div>
+      <div class="mock">
+        <div class="phone night">
+          <div class="water" style="--lvl:78%"><svg viewBox="0 0 260 16" preserveAspectRatio="none" aria-hidden="true"><path d="M0 9 Q 32.5 0 65 9 T 130 9 T 195 9 T 260 9 V16 H0Z" fill="#2CC0B2"/></svg></div>
+          <div class="layer">
+            <div class="sb"><span>22:23</span><span>●●● ▮</span></div><div class="isl plain"></div>
+            <p class="meta">집까지 가는 막차 · 홍대입구</p>
+            <div><span class="big" style="font-size:96px">47</span><span class="unit">분 뒤 일어나기</span></div>
+            <div class="v1card"><div class="map"><span class="t">22:23</span><span class="rail"><span class="seg walk" style="height:30px"></span><span class="node now"></span></span><span class="lab">지금</span><span class="t">23:10</span><span class="rail"><span class="seg walk" style="height:26px"></span><span class="node" style="--c:#EEF3F9"></span></span><span class="lab">일어나기<small>역까지 7분 · 여유 8분</small></span><span class="t">23:24</span><span class="rail"><span class="seg" style="height:26px;background:#00A84D"></span><span class="node" style="--c:#00A84D"></span></span><span class="lab">홍대입구<small>2호선 막차 · 2정거장</small></span><span class="t">23:29</span><span class="rail"><span class="seg walk" style="height:26px"></span><span class="node" style="--c:#00A84D"></span></span><span class="lab">당산<small>환승</small></span><span class="t">23:38</span><span class="rail"><span class="seg" style="height:26px;background:#BDB092"></span><span class="node" style="--c:#BDB092"></span></span><span class="lab">당산<small>9호선</small></span><span class="t">23:51</span><span class="rail"><span class="seg walk" style="height:26px"></span><span class="node" style="--c:#BDB092"></span></span><span class="lab">가양</span><span class="t">0:00</span><span class="rail"><span class="node" style="--c:#EEF3F9"></span></span><span class="lab">집</span></div></div>
+            <div class="spacer"></div>
+            <p class="warnline" style="color:#fff">주말이라 1시간 12분 일찍 끊겨요</p>
+          </div>
+        </div>
+        <span class="cap">막차 · 주말 밤</span>
+      </div>
+    </div>
+    <div class="notes">
+      <div><h3>느낌</h3><ul><li>화면 전체가 모래시계이고, 여정은 물 위에 뜬 유리 카드에 담깁니다. 물 높이와 숫자가 한 번에 들어옵니다.</li></ul></div>
+      <div><h3>걸리는 점</h3><ul><li>물이 빠지면서 카드 뒤 배경이 바뀌어, 카드를 불투명에 가깝게 둬야 글자가 흔들리지 않습니다.</li></ul></div>
+    </div>
+
+    <h3 style="font-size:16px;font-weight:800;margin-top:12px">2안 · 노선도 첫 구간이 물이 빠지는 관</h3>
+    <div class="mocks">
+      <div class="mock">
+        <div class="phone">
+          <div class="sb"><span>8:47</span><span>●●● ▮</span></div><div class="isl plain"></div>
+          <p class="meta">회사 · 강남 · 10:00까지</p>
+          <div class="tuberow" style="--h:140px">
+              <div class="tubecell"><span class="t" style="font-size:12px;font-weight:700;text-align:right;color:#0A6CFF">8:47 지금</span><span class="t" style="font-size:12px;font-weight:700;text-align:right;color:#5E6C7F">8:59</span></div>
+              <div class="tube" style="--lvl:60%"><div class="w"><svg viewBox="0 0 260 8" preserveAspectRatio="none" aria-hidden="true"><path d="M0 4 Q 32.5 0 65 4 T 130 4 T 195 4 T 260 4 V8 H0Z" fill="#5AA7FF"/></svg></div></div>
+              <div class="numcell"><span class="big" style="font-size:88px">12</span><span class="unit">분 뒤 현관</span></div>
+            </div>
+          <div class="map"><span class="t">8:59</span><span class="rail"><span class="seg walk" style="height:34px"></span><span class="node" style="--c:#0F1724"></span></span><span class="lab">현관<small>집 → 승강장 9분 · 여유 4분</small></span><span class="t">9:12</span><span class="rail"><span class="seg" style="height:62px;background:#BDB092"></span><span class="node" style="--c:#BDB092"></span></span><span class="lab">가양<small>9호선 급행 · 7정거장</small></span><span class="t">9:37</span><span class="rail"><span class="seg walk" style="height:26px"></span><span class="node" style="--c:#BDB092"></span></span><span class="lab">신논현<small>환승 5분</small></span><span class="t">9:42</span><span class="rail"><span class="seg" style="height:26px;background:#D4003B"></span><span class="node" style="--c:#D4003B"></span></span><span class="lab">신논현<small>신분당선 · 1정거장</small></span><span class="t">9:43</span><span class="rail"><span class="seg walk" style="height:26px"></span><span class="node" style="--c:#D4003B"></span></span><span class="lab">강남</span><span class="t">9:48</span><span class="rail"><span class="node" style="--c:#0F1724"></span></span><span class="lab">회사<small>12분 일찍</small></span></div>
+          <div class="spacer"></div>
+          <div class="btn">출발 준비</div>
+        </div>
+        <span class="cap">홈 · 아침</span>
+      </div>
+      <div class="mock">
+        <div class="phone lock">
+          <div class="sb"><span></span><span>●●● ▮</span></div>
+          <div class="isl"><span class="mt"><i></i></span><span class="num">3:12</span></div>
+          <div class="lock-clock num">8:56</div>
+          <div class="lock-date">9월 29일 화요일</div>
+          <div class="spacer"></div>
+          <div class="la">
+            <div class="row"><span>현관까지</span><span>9호선 급행 9:12</span></div>
+            <div class="big">3:12</div>
+            <div style="display:flex;align-items:center;gap:6px">
+              <div class="htube" style="--lvl:27%;flex:0 0 46%"><div class="w"></div></div>
+              <span style="flex:0 0 12%;border-top:3px dotted rgba(255,255,255,.5)"></span>
+              <span style="flex:1;height:5px;border-radius:3px;background:#BDB092"></span>
+              <span style="flex:0 0 5%;height:5px;border-radius:3px;background:#D4003B"></span>
+            </div>
+            <div class="labs"><span>지금 → 현관 8:59</span><span>가양 9:12</span><span>강남</span></div>
+          </div>
+        </div>
+        <span class="cap">잠금화면 · 다이내믹 아일랜드</span>
+      </div>
+      <div class="mock">
+        <div class="phone night">
+          <div class="sb"><span>22:23</span><span>●●● ▮</span></div><div class="isl plain"></div>
+          <p class="meta">집까지 가는 막차 · 홍대입구</p>
+          <div class="tuberow" style="--h:140px">
+              <div class="tubecell"><span class="t" style="font-size:12px;font-weight:700;text-align:right;color:#FFB23E">22:23 지금</span><span class="t" style="font-size:12px;font-weight:700;text-align:right;color:#8FA0B8">23:10</span></div>
+              <div class="tube" style="--lvl:78%"><div class="w"><svg viewBox="0 0 260 8" preserveAspectRatio="none" aria-hidden="true"><path d="M0 4 Q 32.5 0 65 4 T 130 4 T 195 4 T 260 4 V8 H0Z" fill="#2CC0B2"/></svg></div></div>
+              <div class="numcell"><span class="big" style="font-size:88px">47</span><span class="unit">분 뒤 일어나기</span></div>
+            </div>
+          <div class="map"><span class="t">23:10</span><span class="rail"><span class="seg walk" style="height:26px"></span><span class="node" style="--c:#EEF3F9"></span></span><span class="lab">일어나기<small>역까지 7분 · 여유 8분</small></span><span class="t">23:24</span><span class="rail"><span class="seg" style="height:26px;background:#00A84D"></span><span class="node" style="--c:#00A84D"></span></span><span class="lab">홍대입구<small>2호선 막차 · 2정거장</small></span><span class="t">23:29</span><span class="rail"><span class="seg walk" style="height:26px"></span><span class="node" style="--c:#00A84D"></span></span><span class="lab">당산<small>환승</small></span><span class="t">23:38</span><span class="rail"><span class="seg" style="height:26px;background:#BDB092"></span><span class="node" style="--c:#BDB092"></span></span><span class="lab">당산<small>9호선</small></span><span class="t">23:51</span><span class="rail"><span class="seg walk" style="height:26px"></span><span class="node" style="--c:#BDB092"></span></span><span class="lab">가양</span><span class="t">0:00</span><span class="rail"><span class="node" style="--c:#EEF3F9"></span></span><span class="lab">집</span></div>
+          <div class="spacer"></div>
+          <p class="warnline">주말이라 평일보다 1시간 12분 일찍 끊겨요</p>
+        </div>
+        <span class="cap">막차 · 주말 밤</span>
+      </div>
+    </div>
+    <div class="notes">
+      <div><h3>느낌</h3><ul><li>노선도의 첫 구간, 지금부터 현관까지가 굵은 관이고 그 안의 물이 빠집니다. 관이 비는 순간 현관 역에 닿는 그림이라 "나갈 시간"이 자연스럽게 읽힙니다.</li><li>물이 한 곳에만 있어서 가장 깔끔하고 이 앱만의 모양이 됩니다.</li></ul></div>
+      <div><h3>걸리는 점</h3><ul><li>관이 작아서 G처럼 화면 전체가 빠지는 시원함은 덜합니다.</li></ul></div>
+    </div>
+
+    <h3 style="font-size:16px;font-weight:800;margin-top:12px">3안 · 평소엔 물, 올리면 노선도</h3>
+    <div class="mocks">
+      <div class="mock">
+        <div class="phone water-screen light-top">
+          <div class="water" style="--lvl:62%"><svg viewBox="0 0 260 16" preserveAspectRatio="none" aria-hidden="true"><path d="M0 9 Q 32.5 0 65 9 T 130 9 T 195 9 T 260 9 V16 H0Z" fill="#5AA7FF"/></svg></div>
+          <div class="layer">
+            <div class="sb"><span>8:47</span><span>●●● ▮</span></div><div class="isl plain"></div>
+            <p class="meta">회사 · 강남 · 10:00까지</p>
+            <div class="spacer"></div>
+            <div class="big" style="font-size:150px;color:#fff;text-shadow:0 2px 12px rgba(10,40,90,.25)">12</div>
+            <p class="unit" style="color:#fff">분 뒤 현관</p>
+            <div style="height:96px"></div>
+          </div>
+          <div class="sheet">
+            <span class="grab"></span>
+            <div class="peek"><span>8:59 현관 · 9:12 급행</span><span style="color:#5E6C7F;font-size:12px">회사 9:48</span></div>
+            <div class="pline"><span class="s walk" style="width:30%"></span><span class="s" style="width:48%;background:#BDB092"></span><span class="s walk" style="width:8%"></span><span class="s" style="width:4%;background:#D4003B"></span><span class="s walk" style="width:10%"></span></div>
+          </div>
+        </div>
+        <span class="cap">홈 · 접힘</span>
+      </div>
+      <div class="mock">
+        <div class="phone water-screen light-top">
+          <div class="water" style="--lvl:62%"><svg viewBox="0 0 260 16" preserveAspectRatio="none" aria-hidden="true"><path d="M0 9 Q 32.5 0 65 9 T 130 9 T 195 9 T 260 9 V16 H0Z" fill="#5AA7FF"/></svg></div>
+          <div class="layer">
+            <div class="sb"><span>8:47</span><span>●●● ▮</span></div><div class="isl plain"></div>
+            <div style="display:flex;align-items:baseline;gap:6px"><span class="big" style="font-size:56px">12</span><span class="unit" style="font-size:15px">분 뒤 현관</span></div>
+          </div>
+          <div class="sheet" style="top:120px">
+            <span class="grab"></span>
+            <div class="map"><span class="t">8:47</span><span class="rail"><span class="seg walk" style="height:30px"></span><span class="node now"></span></span><span class="lab">지금</span><span class="t">8:59</span><span class="rail"><span class="seg walk" style="height:34px"></span><span class="node" style="--c:#0F1724"></span></span><span class="lab">현관<small>집 → 승강장 9분 · 여유 4분</small></span><span class="t">9:12</span><span class="rail"><span class="seg" style="height:62px;background:#BDB092"></span><span class="node" style="--c:#BDB092"></span></span><span class="lab">가양<small>9호선 급행 · 7정거장</small></span><span class="t">9:37</span><span class="rail"><span class="seg walk" style="height:26px"></span><span class="node" style="--c:#BDB092"></span></span><span class="lab">신논현<small>환승 5분</small></span><span class="t">9:42</span><span class="rail"><span class="seg" style="height:26px;background:#D4003B"></span><span class="node" style="--c:#D4003B"></span></span><span class="lab">신논현<small>신분당선 · 1정거장</small></span><span class="t">9:43</span><span class="rail"><span class="seg walk" style="height:26px"></span><span class="node" style="--c:#D4003B"></span></span><span class="lab">강남</span><span class="t">9:48</span><span class="rail"><span class="node" style="--c:#0F1724"></span></span><span class="lab">회사<small>12분 일찍</small></span></div>
+            <div class="btn">출발 준비</div>
+          </div>
+        </div>
+        <span class="cap">홈 · 올려서 펼침</span>
+      </div>
+      <div class="mock">
+        <div class="phone night water-screen">
+          <div class="water" style="--lvl:78%"><svg viewBox="0 0 260 16" preserveAspectRatio="none" aria-hidden="true"><path d="M0 9 Q 32.5 0 65 9 T 130 9 T 195 9 T 260 9 V16 H0Z" fill="#2CC0B2"/></svg></div>
+          <div class="layer">
+            <div class="sb"><span>22:23</span><span>●●● ▮</span></div><div class="isl plain"></div>
+            <p class="meta">집까지 가는 막차 · 홍대입구</p>
+            <div class="spacer"></div>
+            <div class="big" style="font-size:150px">47</div>
+            <p class="unit">분 뒤 일어나기</p>
+            <div style="height:96px"></div>
+          </div>
+          <div class="sheet" style="background:#141B2E;box-shadow:0 -8px 24px rgba(0,0,0,.4)">
+            <span class="grab" style="background:#3A4560"></span>
+            <div class="peek" style="color:#EEF3F9"><span>23:10 일어나기 · 23:24 막차</span><span style="color:#FFB23E;font-size:12px">주말</span></div>
+            <div class="pline"><span class="s walk" style="width:20%;border-color:#56627A"></span><span class="s" style="width:15%;background:#00A84D"></span><span class="s walk" style="width:10%;border-color:#56627A"></span><span class="s" style="width:40%;background:#BDB092"></span><span class="s walk" style="width:15%;border-color:#56627A"></span></div>
+          </div>
+        </div>
+        <span class="cap">막차 · 접힘</span>
+      </div>
+    </div>
+    <div class="notes">
+      <div><h3>느낌</h3><ul><li>처음 보이는 건 물과 숫자뿐이라 가장 단순합니다. 아래 카드에는 여정이 한 줄 노선으로 살짝 보이고, 올리면 노선도가 펼쳐집니다.</li><li>급할 땐 물과 숫자만, 여유 있을 땐 여정 전체를 봅니다.</li></ul></div>
+      <div><h3>걸리는 점</h3><ul><li>여정을 보려면 한 번 올려야 합니다. 잠금화면은 1안이나 2안 방식을 그대로 씁니다.</li></ul></div>
+    </div>
+
+    <p class="pick" style="margin-top:6px"><b>제 추천은 2안입니다.</b> 물이 빠지는 관이 곧 노선도의 첫 구간이라, 두 시안이 억지로 붙은 게 아니라 하나의 그림이 됩니다. 관이 비면 현관 역에 닿는다는 이야기도 분명하고, 잠금화면의 가로 관과 다이내믹 아일랜드의 작은 관까지 같은 모양으로 이어집니다.</p>
+  </section>
 
   <!-- ================= A ================= -->
   <section class="dir A" aria-labelledby="h-a">
