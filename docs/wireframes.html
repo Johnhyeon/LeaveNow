@@ -175,6 +175,19 @@ h1, h2, h3 { text-wrap: balance; margin: 0; }
 .linechip { display: inline-block; font-size: 10.5px; font-weight: 700; padding: 0 6px; border-radius: 4px; color: #FFFFFF; background: var(--c); margin-right: 4px; }
 .linechip.l9 { color: #1B1B1B; }
 
+/* 물 화면 (M1) */
+.water-phone { overflow: hidden; }
+.water { position: absolute; left: 0; right: 0; bottom: 0; top: calc(100% - var(--level)); background: linear-gradient(#5AA6FF, #2F7FE8); border-radius: 0 0 28px 28px; padding: 18px 20px; color: #fff; }
+.water::before { content: ""; position: absolute; left: -10%; right: -10%; top: -10px; height: 20px; border-radius: 50%; background: #5AA6FF; }
+.water-num { position: relative; font-size: 92px; font-weight: 700; line-height: 1; letter-spacing: -0.04em; }
+.water-unit { position: relative; font-size: 15px; font-weight: 700; }
+.peek { position: absolute; left: 6px; right: 6px; bottom: 6px; background: var(--paper); border-radius: 22px 22px 24px 24px; padding: 8px 14px 12px; display: grid; gap: 6px; color: var(--ink); }
+.peek .grab { justify-self: center; width: 36px; height: 4px; border-radius: 2px; background: var(--line); }
+.strip { display: flex; gap: 3px; height: 5px; }
+.strip i { border-radius: 3px; }
+.strip i.walk { background: repeating-linear-gradient(90deg, var(--ink-3) 0 2px, transparent 2px 5px); height: 2px; align-self: center; }
+.car-ic { width: 28px; height: 28px; border-radius: 8px; background: var(--accent-soft); display: grid; place-items: center; font-size: 14px; }
+
 /* 잠금화면 */
 .lock-time { text-align: center; font-family: var(--font-num); font-size: 48px; font-weight: 600; line-height: 1; margin-top: 10px; }
 .lock-date { text-align: center; font-size: 12px; opacity: 0.8; }
@@ -369,6 +382,7 @@ flowchart LR
   M3 -. 자세히 .-> P1[P1 출발 시각별 도착]
   M1 -. 마감 없는 날 .-> P2[P2 마감 없는 날]
   T1 -. 2주 뒤 .-> P3[P3 습관 보정]
+  M1 -- 시트 올림 --> M1s[M1s 시트 올림]
   M1 -- 톱니 --> S1[S1 내 이동 시간]
 </pre>
     </div>
@@ -485,37 +499,68 @@ flowchart LR
     <div class="screens">
 
       <article class="screen" id="M1">
-        <div class="screen-head"><span class="sid">M1</span><h3>홈</h3><span class="phase p1">1차</span></div>
-        <div class="phone">
+        <div class="screen-head"><span class="sid">M1</span><h3>홈 · 평소</h3><span class="phase p1">1차</span></div>
+        <div class="phone water-phone">
           <div class="status"><span>8:47</span><span class="island"></span><span class="dots">•••</span></div>
-          <div class="row between"><p class="w-small">다음 일정</p><span class="gear" aria-label="설정">⚙︎</span></div>
-          <div class="card hero" style="padding:16px;gap:10px">
-            <div class="row between"><b>회사 · 강남</b><span class="pill ok">12분 일찍 도착</span></div>
-            <p class="w-text" style="margin-top:-6px">10:00까지</p>
-            <div class="big-time" style="font-size:44px">12분<small>뒤 현관</small></div>
-            <div class="bar"><i style="width:62%"></i></div>
-            <div class="list">
-              <div class="item">현관<span class="muted">8:59</span></div>
-              <div class="item"><span class="dot" style="background:var(--l9)"></span>가양 9호선 급행<span class="muted">9:12</span></div>
-              <div class="item">회사 도착 예상<span class="muted">9:48</span></div>
-            </div>
-            <span class="pill warn" style="justify-self:start">이 급행을 놓치면 6분 늦어져요</span>
-            <p class="w-small">이 시간대 신분당선 환승이 평소 2분 늦어서 여유에 넣었어요</p>
-            <div class="row between" style="font-size:11.5px;color:var(--ink-3)"><span>오늘만 시각 바꾸기</span><span>오늘은 안 가요</span></div>
+          <div class="row between"><p class="w-small">회사 · 강남 · 10:00까지</p><span class="gear" aria-label="설정">⚙︎</span></div>
+          <div class="water" style="--level:62%">
+            <div class="water-num num">12</div>
+            <div class="water-unit">분 뒤 현관</div>
           </div>
-          <div class="btn big">출발 준비</div>
-          <div class="w-spacer"></div>
-          <div class="row between" style="font-size:12.5px"><span style="color:var(--accent)">다른 곳 가기</span><span style="color:var(--ink-3)">저장한 곳 2 ›</span></div>
-          <p class="w-small">10월 정시 도착 <span class="num">18/20</span> · 집 → 승강장 <span class="num">9분</span> ›</p>
+          <div class="peek">
+            <span class="grab"></span>
+            <div class="row between"><b style="font-size:12.5px">8:59 집 · 9:12 급행</b><span class="w-small">회사 9:48</span></div>
+            <div class="strip"><i class="walk" style="flex:13"></i><i style="flex:25;background:var(--l9)"></i><i class="walk" style="flex:5"></i><i style="flex:3;background:var(--lsb)"></i><i class="walk" style="flex:5"></i></div>
+            <p class="w-small">🔔 알림 8:49 · 8:59 &nbsp; 🚆 4-4칸 타기</p>
+          </div>
         </div>
         <ul class="notes">
-          <li><span class="tag new">정해짐</span><span>홈은 다음 일정 하나만 크게 보여줍니다. 저장한 목적지와 새 목적지는 아래 작은 링크로 내렸습니다.</span></li>
-          <li><span class="tag adhd">ADHD</span><span>시각보다 "12분 뒤"를 크게, 줄어드는 막대로. 시간이 흐르는 게 눈에 보이게 합니다.</span></li>
-          <li><span class="tag adhd">ADHD</span><span>다음 열차가 크게 늦어지는 "절벽"이면 경고를 띄웁니다. 여유가 있다는 말보다 놓쳤을 때의 손해가 더 잘 움직이게 합니다. 2차 기능입니다.</span></li>
-          <li><span class="tag new">새로</span><span>"오늘만 시각 바꾸기"는 반복 일정을 건드리지 않고 오늘 마감만 바꿉니다.</span></li>
-          <li><span class="tag new">이동</span><span>오른쪽 위 톱니를 누르면 설정 S1로 갑니다. 맨 아래 통계 줄을 누르면 T1로 갑니다. 통계가 없는 1차에서는 이 줄에 집에서 승강장 시간만 보여줍니다.</span></li>
+          <li><span class="tag new">정해짐</span><span>평소에는 물과 큰 숫자만 보입니다. 물은 남은 시간만큼 차 있고, 현관까지 → 열차까지 → 도착까지 차례로 빠집니다. 5분 아래로 내려가면 주황으로 바뀝니다. 빨강은 쓰지 않습니다.</span></li>
+          <li><span class="tag adhd">ADHD</span><span>시각보다 "12분 뒤"를 크게. 시간이 흐르는 게 물이 줄어드는 걸로 눈에 보이게 합니다.</span></li>
+          <li><span class="tag new">새로</span><span>아래 시트는 접힌 채로 한 줄 요약, 노선 띠, 알림 시각과 탈 칸까지 보여줍니다. 올리면 M1s.</span></li>
+          <li><span class="tag new">이동</span><span>오른쪽 위 톱니를 누르면 설정 S1로 갑니다.</span></li>
           <li><span class="tag new">새로</span><span>목적지에 도착한 뒤에는 홈이 자동으로 돌아오는 길로 바뀝니다. M5 참고.</span></li>
-          <li><span class="tag new">새로</span><span>"오늘은 안 가요"를 누르면 그날 알림을 끄고 홈은 M1b로 바뀝니다. 다음 날에는 다시 켜집니다.</span></li>
+          <li><span class="tag adhd">ADHD</span><span>다음 열차가 크게 늦어지는 "절벽"이면 경고를 띄웁니다. 2차 기능입니다.</span></li>
+        </ul>
+      </article>
+
+      <article class="screen" id="M1s">
+        <div class="screen-head"><span class="sid">M1s</span><h3>홈 · 시트 올림</h3><span class="phase p1">1차</span></div>
+        <div class="phone" style="gap:8px">
+          <div class="status"><span>8:47</span><span class="island"></span><span class="dots">•••</span></div>
+          <div class="row between"><b style="font-size:12.5px">8:59 집 · 9:12 급행</b><span class="w-small">회사 9:48</span></div>
+          <div class="row" style="align-items:baseline;gap:6px"><div class="big-time" style="font-size:30px">8:59</div><b>집에서 출발</b></div>
+          <p class="w-text" style="margin-top:-6px">회사 9:48 도착 · 12분 일찍</p>
+          <div class="row" style="gap:4px;flex-wrap:wrap"><span class="pill neutral">환승 1회</span><span class="pill neutral">도어 투 도어 49분</span><span class="pill neutral">급행</span></div>
+          <div class="card" style="grid-template-columns:28px 1fr;align-items:center;padding:9px">
+            <span class="car-ic">🚆</span><div><b style="font-size:12.5px">가양에서 4-4칸에 타세요</b><br><span class="w-small">신논현 환승 통로가 가까워요</span></div>
+          </div>
+          <div class="card legs" style="padding:10px">
+            <div class="leg"><div class="rail"><span class="node" style="--c:var(--ink)"></span><span class="walk"></span></div><div class="body"><b>집</b> <span class="t">8:59</span><br><span class="t">집 → 승강장 9분 · 여유 4분</span></div></div>
+            <div class="leg" style="--c:var(--l9)"><div class="rail"><span class="node"></span><span class="track"></span></div><div class="body"><b>가양</b> <span class="t">9:12</span><br><span class="t">9호선 급행 · 7정거장 · 4-4칸</span></div></div>
+            <div class="leg" style="--c:var(--l9)"><div class="rail"><span class="node"></span><span class="walk"></span></div><div class="body"><b>신논현</b> <span class="t">9:37</span><br><span class="t">환승 · 걸어서 5분 · 여유 4분</span></div></div>
+            <div class="leg" style="--c:var(--lsb)"><div class="rail"><span class="node"></span><span class="track"></span></div><div class="body"><b>신논현</b> <span class="t">9:42</span><br><span class="t">신분당선 · 1정거장</span></div></div>
+            <div class="leg" style="--c:var(--lsb)"><div class="rail"><span class="node"></span></div><div class="body"><b>강남</b> <span class="t">9:43</span> · 회사 <span class="t">9:48</span></div></div>
+          </div>
+          <div class="card" style="padding:9px;gap:3px">
+            <span class="w-small">이 열차를 놓치면</span>
+            <div class="row between" style="font-size:12px"><span class="num">9:18 급행</span><span style="color:var(--warn)">회사 9:55 · 3분 일찍</span></div>
+            <div class="row between" style="font-size:12px"><span class="num">9:24 급행</span><span style="color:var(--warn)">회사 10:02 · 2분 늦음</span></div>
+          </div>
+          <div class="card" style="padding:9px;gap:3px">
+            <span class="w-small">알림</span>
+            <span style="font-size:12px">🔔 8:49 미리 알림 · 10분 뒤 현관</span>
+            <span style="font-size:12px">🔔 8:59 지금 현관을 나서요</span>
+          </div>
+          <div class="btn">지금 기준으로 다시 계산</div>
+          <div class="row" style="justify-content:center;gap:18px;font-size:12px"><span style="color:var(--accent)">다른 곳 가기</span><span style="color:var(--late)">이번 이동 취소</span></div>
+        </div>
+        <ul class="notes">
+          <li><span class="tag new">새로</span><span>시트를 끝까지 올리면 위에서부터 출발 요약, 빠른 칸, 세로 노선도, 놓쳤을 때 다음 열차, 알림 시각, 버튼 순서로 보입니다. 내용이 길면 시트 안에서 스크롤합니다.</span></li>
+          <li><span class="tag adhd">ADHD</span><span>"이 열차를 놓치면"은 다음 열차 두 개와 목적지 도착 시각을 보여줍니다. 늦어지면 주황. 놓쳐도 끝이 아니라는 걸 먼저 알려 조급함을 줄입니다.</span></li>
+          <li><span class="tag new">정해짐</span><span>다음 열차는 환승 여유가 넉넉한 연결만 고르고, 먼저 떠나도 급행에 추월당해 늦게 도착하는 일반 열차는 뺍니다.</span></li>
+          <li><span class="tag new">새로</span><span>빠른 칸은 서울교통공사 환승 데이터에 있는 역만 보입니다. 없으면 카드 자체를 숨깁니다.</span></li>
+          <li><span class="tag new">새로</span><span>지난 알림은 목록에서 빠지고, 알림이 모두 지나면 알림 카드도 숨깁니다.</span></li>
         </ul>
       </article>
 
