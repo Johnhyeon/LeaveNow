@@ -12,6 +12,27 @@ enum RouteStops {
         return (a.from, car.alight, a.to)
     }
 
+    /// 빠른 칸 카드 문구
+    static func fastCarText(_ plan: TripPlan) -> (title: String, subtitle: String)? {
+        fastCar(plan).map { ("\($0.station)에서 \($0.car)칸에 타세요", "\($0.transfer) 환승 통로가 가까워요") }
+    }
+
+    /// "이 열차를 놓치면" 줄들: 첫 열차 시각과 종류, 목적지 도착과 마감 대비
+    static func alternatives(plan: TripPlan, placeName: String, walkFromStation: Int, deadline: Date) -> [RouteOption] {
+        let t = { (d: Date) in Fmt.time.string(from: d) }
+        let walk = TimeInterval(walkFromStation * 60)
+        return (plan.alternatives ?? []).map { alt in
+            let label = alt.rides.first.map { ride in
+                let short = LineStyle.short(ride.line)
+                return "\(t(ride.departure)) \(ride.express ? "급행" : short + (Int(short) != nil ? "호선" : ""))"
+            } ?? t(alt.departure)
+            let placeArrive = alt.arrival.addingTimeInterval(walk)
+            let diff = Int(placeArrive.timeIntervalSince(deadline) / 60)
+            let status = diff > 0 ? "\(diff)분 늦음" : (diff == 0 ? "딱 맞음" : "\(-diff)분 일찍")
+            return RouteOption(left: label, right: "\(placeName) \(t(placeArrive)) · \(status)", warning: diff > 0)
+        }
+    }
+
     static func make(plan: TripPlan, origin: OriginInfo, placeName: String, walkFromStation: Int,
                      arriveEarly: Int, deadline: Date, now: Date = .now, includeNow: Bool = true) -> [RouteStop] {
         var stops: [RouteStop] = []

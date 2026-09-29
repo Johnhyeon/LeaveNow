@@ -22,6 +22,8 @@ struct RouteStop: Identifiable {
 struct RouteMapView: View {
     let stops: [RouteStop]
     var night = false
+    /// 화면을 넉넉히 쓰는 곳(경로 결과, 펼친 시트)에서는 간격과 글자를 키운다
+    var large = false
 
     private var mute: Color { night ? Theme.nightMute : Theme.mute }
     private var nowColor: Color { night ? Theme.nightNow : Theme.now }
@@ -30,30 +32,41 @@ struct RouteMapView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             ForEach(stops) { stop in
-                let height = stop.leg == nil ? 18 : max(30, stop.minutes * 2.6)
-                HStack(alignment: .top, spacing: 8) {
+                HStack(alignment: .top, spacing: large ? 10 : 8) {
                     Text(stop.time)
-                        .font(.caption.weight(.bold).monospacedDigit())
+                        .font((large ? Font.subheadline : .caption).weight(.bold).monospacedDigit())
                         .foregroundStyle(stop.isNow ? nowColor : mute)
-                        .frame(width: 44, alignment: .trailing)
+                        .frame(width: large ? 50 : 44, alignment: .trailing)
+                    // 선은 칸 높이를 꽉 채운다. 설명이 두 줄로 늘어나도 다음 역까지 이어진다
                     ZStack(alignment: .top) {
                         legView(stop.leg)
-                            .frame(height: height)
+                            .frame(maxHeight: .infinity)
                             .offset(y: 7)
                         node(stop)
                     }
-                    .frame(width: 26, height: height, alignment: .top)
+                    .frame(width: 26)
+                    .frame(minHeight: legHeight(stop), maxHeight: .infinity, alignment: .top)
                     VStack(alignment: .leading, spacing: 2) {
-                        Text(stop.title).font(.subheadline.weight(.bold))
+                        Text(stop.title).font((large ? Font.headline : .subheadline).weight(.bold))
                         if let detail = stop.detail {
-                            Text(detail).font(.caption).foregroundStyle(mute)
+                            Text(detail).font(large ? .subheadline : .caption).foregroundStyle(mute)
                         }
                     }
-                    .offset(y: -1)
+                    .offset(y: large ? -3 : -1)
+                    .padding(.bottom, stop.leg == nil ? 0 : 6)
                 }
+                .fixedSize(horizontal: false, vertical: true)
             }
         }
         .accessibilityElement(children: .combine)
+    }
+
+    /// 걸리는 시간에 비례한 칸 높이. 지금부터 나설 때까지 기다리는 구간은 몇 시간이어도 짧게 둔다
+    private func legHeight(_ stop: RouteStop) -> CGFloat {
+        guard stop.leg != nil else { return 18 }
+        if stop.isNow { return large ? 56 : 40 }
+        let perMinute: CGFloat = large ? 4.4 : 2.6
+        return min(max(large ? 46 : 30, CGFloat(stop.minutes) * perMinute), large ? 240 : 160)
     }
 
     @ViewBuilder
@@ -64,7 +77,7 @@ struct RouteMapView: View {
                 .stroke(Theme.walk, style: StrokeStyle(lineWidth: 3, lineCap: .round, dash: [0.1, 6]))
                 .frame(width: 3)
         case .line(let color):
-            Capsule().fill(color).frame(width: 6)
+            Capsule().fill(color).frame(width: large ? 7 : 6)
         case nil:
             Color.clear.frame(width: 1)
         }
@@ -80,7 +93,61 @@ struct RouteMapView: View {
                     .overlay(Circle().stroke(stop.nodeColor ?? (night ? .white : Theme.ink), lineWidth: 3))
             }
         }
-        .frame(width: 14, height: 14)
+        .frame(width: large ? 16 : 14, height: large ? 16 : 14)
+    }
+}
+
+/// "이 열차를 놓치면" 한 줄
+struct RouteOption: Hashable {
+    let left: String      // "18:43 급행"
+    let right: String     // "시청 19:16 · 1분 늦음"
+    let warning: Bool
+}
+
+/// 탈 칸 안내 카드
+struct FastCarCard: View {
+    let title: String
+    let subtitle: String
+    var night = false
+
+    var body: some View {
+        HStack(spacing: 12) {
+            Image(systemName: "tram.fill")
+                .font(.title3)
+                .foregroundStyle(Theme.now)
+                .frame(width: 40, height: 40)
+                .background(Theme.now.opacity(0.14), in: RoundedRectangle(cornerRadius: 12))
+            VStack(alignment: .leading, spacing: 2) {
+                Text(title).font(.subheadline.weight(.bold)).foregroundStyle(night ? .white : Theme.ink)
+                Text(subtitle).font(.caption).foregroundStyle(night ? Theme.nightMute : Theme.mute)
+            }
+            Spacer(minLength: 0)
+        }
+        .padding(12)
+        .background(night ? Color.white.opacity(0.06) : Theme.card, in: RoundedRectangle(cornerRadius: 16))
+    }
+}
+
+/// 놓쳤을 때 탈 수 있는 다음 열차들
+struct AlternativesCard: View {
+    let options: [RouteOption]
+    var night = false
+
+    var body: some View {
+        VStack(alignment: .leading, spacing: 8) {
+            Text("이 열차를 놓치면").font(.caption.weight(.bold)).foregroundStyle(night ? Theme.nightMute : Theme.mute)
+            ForEach(options, id: \.self) { option in
+                HStack {
+                    Text(option.left).font(.subheadline.weight(.semibold)).foregroundStyle(night ? .white : Theme.ink)
+                    Spacer()
+                    Text(option.right)
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(option.warning ? Color.orange : (night ? Theme.nightMute : Theme.mute))
+                }
+            }
+        }
+        .padding(14)
+        .background(night ? Color.white.opacity(0.06) : Theme.card, in: RoundedRectangle(cornerRadius: 16))
     }
 }
 
@@ -90,11 +157,13 @@ struct RouteStripView: View {
     var night = false
 
     var body: some View {
-        let total = max(stops.compactMap { $0.leg == nil ? nil : $0.minutes }.reduce(0, +), 1)
+        // 나설 때까지 기다리는 구간은 몇 시간이어도 20분으로 친다
+        let span = { (stop: RouteStop) in stop.isNow ? min(stop.minutes, 20) : stop.minutes }
+        let total = max(stops.compactMap { $0.leg == nil ? nil : span($0) }.reduce(0, +), 1)
         GeometryReader { geo in
             HStack(spacing: 0) {
                 ForEach(stops.filter { $0.leg != nil }) { stop in
-                    let w = geo.size.width * stop.minutes / total
+                    let w = geo.size.width * span(stop) / total
                     switch stop.leg {
                     case .walk:
                         HorizontalDottedLine()

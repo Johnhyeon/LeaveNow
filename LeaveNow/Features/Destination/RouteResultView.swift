@@ -68,7 +68,9 @@ struct RouteResultView: View {
                 .buttonBorderShape(.capsule)
                 .controlSize(.large)
                 .padding(.horizontal, 20)
+                .padding(.top, 10)
                 .padding(.bottom, 8)
+                .background(Theme.paper)
             }
         }
         .task { await load() }
@@ -110,12 +112,21 @@ struct RouteResultView: View {
                 .font(.subheadline.weight(.bold))
                 .foregroundStyle(.orange)
         }
+        if let car = RouteStops.fastCarText(plan) {
+            FastCarCard(title: car.title, subtitle: car.subtitle)
+        }
         RouteMapView(stops: RouteStops.make(plan: plan, origin: origin, placeName: placeName,
                                             walkFromStation: walkFromStation, arriveEarly: profile.arriveEarly,
-                                            deadline: deadline, includeNow: false))
+                                            deadline: deadline, includeNow: false),
+                     large: true)
             .frame(maxWidth: .infinity, alignment: .leading)
-            .padding(16)
+            .padding(18)
             .background(Theme.card, in: RoundedRectangle(cornerRadius: 20))
+        let options = RouteStops.alternatives(plan: plan, placeName: placeName,
+                                              walkFromStation: walkFromStation, deadline: deadline)
+        if !options.isEmpty {
+            AlternativesCard(options: options)
+        }
         Text(otherLine(plan)).font(.footnote).foregroundStyle(Theme.mute)
     }
 

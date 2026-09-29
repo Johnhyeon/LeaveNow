@@ -21,7 +21,7 @@ struct WaterHomeView: View {
     /// 시트를 채우는 정보. 미리보기처럼 없으면 경로 한 줄만 보인다
     struct SheetDetails {
         struct Item: Hashable { let symbol: String; let text: String }
-        struct Option: Hashable { let left: String; let right: String; let warning: Bool }
+        typealias Option = RouteOption
         var compact: [Item] = []          // 접었을 때 한 줄: 알림 시각, 탈 칸
         var leaveTime: String             // "18:23"
         var leaveLabel: String            // "집에서 출발"
@@ -103,10 +103,14 @@ struct WaterHomeView: View {
                     Spacer(minLength: 24)
                     Text(bigNumber(remaining))
                         .font(Theme.number(detent == .large ? 64 : 150))
+                        .lineLimit(1)
+                        .minimumScaleFactor(0.4)
                         .foregroundStyle(primary)
                         .contentTransition(.numericText(countsDown: true))
                         .animation(.snappy, value: bigNumber(remaining))
-                    Text(remaining < 60 ? "지금 나가세요" : content.unit)
+                    // 100분이 넘으면 숫자가 "7:54"라서 "분"을 뺀다
+                    Text(remaining < 60 ? "지금 나가세요"
+                         : (remaining >= 100 * 60 ? content.unit.replacingOccurrences(of: "분 뒤", with: "뒤") : content.unit))
                         .font(.title2.weight(.heavy))
                         .foregroundStyle(primary)
                     // 숫자가 화면 위쪽 3분의 1쯤 오도록 아래 공간을 더 크게 둔다
@@ -158,7 +162,7 @@ private struct RouteSheet: View {
             if detent == .large {
                 VStack(alignment: .leading, spacing: 16) {
                     if let d = content.details { summary(d) }
-                    RouteMapView(stops: content.stops, night: content.night)
+                    RouteMapView(stops: content.stops, night: content.night, large: true)
                         .foregroundStyle(ink)
                         .frame(maxWidth: .infinity, alignment: .leading)
                         .padding(16)
@@ -231,40 +235,14 @@ private struct RouteSheet: View {
             }
         }
         if let car = d.fastCar {
-            HStack(spacing: 12) {
-                Image(systemName: "tram.fill")
-                    .font(.title3)
-                    .foregroundStyle(Theme.now)
-                    .frame(width: 40, height: 40)
-                    .background(Theme.now.opacity(0.14), in: RoundedRectangle(cornerRadius: 12))
-                VStack(alignment: .leading, spacing: 2) {
-                    Text(car.title).font(.subheadline.weight(.bold)).foregroundStyle(ink)
-                    Text(car.subtitle).font(.caption).foregroundStyle(mute)
-                }
-                Spacer(minLength: 0)
-            }
-            .padding(12)
-            .background(card, in: RoundedRectangle(cornerRadius: 16))
+            FastCarCard(title: car.title, subtitle: car.subtitle, night: content.night)
         }
     }
 
     @ViewBuilder
     private func extras(_ d: WaterHomeView.SheetDetails) -> some View {
         if !d.alternatives.isEmpty {
-            VStack(alignment: .leading, spacing: 8) {
-                Text("이 열차를 놓치면").font(.caption.weight(.bold)).foregroundStyle(mute)
-                ForEach(d.alternatives, id: \.self) { option in
-                    HStack {
-                        Text(option.left).font(.subheadline.weight(.semibold)).foregroundStyle(ink)
-                        Spacer()
-                        Text(option.right)
-                            .font(.subheadline.weight(.semibold))
-                            .foregroundStyle(option.warning ? Color.orange : mute)
-                    }
-                }
-            }
-            .padding(14)
-            .background(card, in: RoundedRectangle(cornerRadius: 16))
+            AlternativesCard(options: d.alternatives, night: content.night)
         }
         if !d.alerts.isEmpty {
             VStack(alignment: .leading, spacing: 8) {

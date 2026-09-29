@@ -147,15 +147,8 @@ struct TripHomeView: View {
         var compact: [WaterHomeView.SheetDetails.Item] = [.init(symbol: "bell.fill", text: "알림 \(t(lead)) · \(t(plan.leaveBy))")]
         if let car { compact.append(.init(symbol: "tram.fill", text: "\(car.car)칸 타기")) }
 
-        let walk = TimeInterval(trip.walkFromStation * 60)
-        let alternatives = (plan.alternatives ?? []).map { alt -> WaterHomeView.SheetDetails.Option in
-            let first = alt.rides.first
-            let label = first.map { "\(t($0.departure)) \($0.express ? "급행" : LineStyle.short($0.line) + (Int(LineStyle.short($0.line)) != nil ? "호선" : ""))" } ?? t(alt.departure)
-            let placeArrive = alt.arrival.addingTimeInterval(walk)
-            let diff = Int(placeArrive.timeIntervalSince(trip.deadline) / 60)
-            let status = diff > 0 ? "\(diff)분 늦음" : (diff == 0 ? "딱 맞음" : "\(-diff)분 일찍")
-            return .init(left: label, right: "\(trip.placeName) \(t(placeArrive)) · \(status)", warning: diff > 0)
-        }
+        let alternatives = RouteStops.alternatives(plan: plan, placeName: trip.placeName,
+                                                   walkFromStation: trip.walkFromStation, deadline: trip.deadline)
         var alerts: [WaterHomeView.SheetDetails.Item] = []
         if lead > now { alerts.append(.init(symbol: "bell", text: "\(t(lead)) 미리 알림 · \(profile.leadMinutes)분 뒤 현관")) }
         if plan.leaveBy > now { alerts.append(.init(symbol: "bell.badge", text: "\(t(plan.leaveBy)) 지금 현관을 나서요")) }
@@ -167,7 +160,7 @@ struct TripHomeView: View {
                      leaveLabel: origin.label == "지금 여기" ? "출발" : "\(origin.label)에서 출발",
                      arriveLine: "\(trip.placeName) \(t(arrive)) 도착 · \(early >= 0 ? "\(early)분 일찍" : "\(-early)분 늦음")",
                      chips: chips,
-                     fastCar: car.map { ("\($0.station)에서 \($0.car)칸에 타세요", "\($0.transfer) 환승 통로가 가까워요") },
+                     fastCar: RouteStops.fastCarText(plan),
                      alternatives: alternatives,
                      alerts: alerts)
     }
