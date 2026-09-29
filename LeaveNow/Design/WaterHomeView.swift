@@ -39,11 +39,29 @@ struct WaterHomeView: View {
         let action: () -> Void
     }
 
-    let content: Content
+    /// 시각을 받아 그때의 내용을 만든다. 시트는 따로 떠 있는 화면이라 스스로 매초 다시 읽어야
+    /// 다시 계산한 결과가 손대지 않아도 바로 보인다
+    let makeContent: (Date) -> Content
     var onClose: (() -> Void)? = nil
     var onSettings: (() -> Void)? = nil
     var primaryAction: (() -> Void)? = nil
     var extraActions: [SheetAction] = []
+
+    init(live makeContent: @escaping (Date) -> Content, onClose: (() -> Void)? = nil, onSettings: (() -> Void)? = nil,
+         primaryAction: (() -> Void)? = nil, extraActions: [SheetAction] = []) {
+        self.makeContent = makeContent
+        self.onClose = onClose
+        self.onSettings = onSettings
+        self.primaryAction = primaryAction
+        self.extraActions = extraActions
+    }
+
+    /// 미리보기처럼 내용이 고정일 때
+    init(content: Content, onClose: (() -> Void)? = nil, onSettings: (() -> Void)? = nil,
+         primaryAction: (() -> Void)? = nil, extraActions: [SheetAction] = []) {
+        self.init(live: { _ in content }, onClose: onClose, onSettings: onSettings,
+                  primaryAction: primaryAction, extraActions: extraActions)
+    }
 
     @State private var showSheet = true
     // 개발용: -sheetLarge 로 실행하면 시트를 펼친 채로 시작
@@ -51,6 +69,7 @@ struct WaterHomeView: View {
 
     var body: some View {
         TimelineView(.periodic(from: .now, by: 1)) { context in
+            let content = makeContent(context.date)
             let remaining = max(0, content.target.timeIntervalSince(context.date))
             let water = content.night ? Theme.nightWater
                 : (remaining < Theme.urgentSeconds ? Theme.urgentWater : Theme.dayWater)
@@ -102,12 +121,15 @@ struct WaterHomeView: View {
             .accessibilityLabel("\(content.meta). \(bigNumber(remaining)) \(content.unit)")
         }
         .sheet(isPresented: $showSheet) {
-            RouteSheet(content: content, detent: detent, primaryAction: primaryAction, extraActions: extraActions)
-                .presentationDetents([.height(128), .large], selection: $detent)
-                .presentationBackgroundInteraction(.enabled(upThrough: .height(128)))
-                .presentationCornerRadius(28)
-                .presentationBackground(content.night ? Theme.nightSheet : Theme.sheet)
-                .interactiveDismissDisabled()
+            TimelineView(.periodic(from: .now, by: 1)) { context in
+                RouteSheet(content: makeContent(context.date), detent: detent,
+                           primaryAction: primaryAction, extraActions: extraActions)
+            }
+            .presentationDetents([.height(128), .large], selection: $detent)
+            .presentationBackgroundInteraction(.enabled(upThrough: .height(128)))
+            .presentationCornerRadius(28)
+            .presentationBackground(makeContent(.now).night ? Theme.nightSheet : Theme.sheet)
+            .interactiveDismissDisabled()
         }
     }
 

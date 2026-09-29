@@ -100,21 +100,19 @@ struct TripHomeView: View {
     @State private var recalculating = false
 
     var body: some View {
-        if let plan = trip.plan, let origin = trip.origin {
-            TimelineView(.periodic(from: .now, by: 5)) { context in
-                WaterHomeView(content: content(plan: plan, origin: origin, now: context.date),
-                              onSettings: onSettings,
-                              primaryAction: { Task { await recalculate(origin: origin) } },
-                              extraActions: [
-                                .init(title: "다른 곳 가기") { onNew() },
-                                .init(title: "이번 이동 취소", role: .destructive) {
-                                    trip.cancelled = true
-                                    try? trip.modelContext?.save()
-                                    TripNotifier.cancelAll()
-                                },
-                              ])
-                .id(phase(plan: plan, now: context.date))
-            }
+        if let fallbackPlan = trip.plan, let origin = trip.origin {
+            // 계획은 매번 새로 읽는다. 다시 계산하면 물 화면과 시트가 손대지 않아도 1초 안에 바뀐다
+            WaterHomeView(live: { now in content(plan: trip.plan ?? fallbackPlan, origin: origin, now: now) },
+                          onSettings: onSettings,
+                          primaryAction: { Task { await recalculate(origin: origin) } },
+                          extraActions: [
+                            .init(title: "다른 곳 가기") { onNew() },
+                            .init(title: "이번 이동 취소", role: .destructive) {
+                                trip.cancelled = true
+                                try? trip.modelContext?.save()
+                                TripNotifier.cancelAll()
+                            },
+                          ])
         } else {
             Text("계획을 읽지 못했어요").onAppear { trip.cancelled = true }
         }
