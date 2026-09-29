@@ -191,6 +191,10 @@ h1, h2, h3 { text-wrap: balance; margin: 0; }
 .pill .star { color: var(--warn); }
 .pill.add { background: transparent; color: var(--ink-3); border: 1px dashed var(--line); }
 
+.big-legs .leg .body { font-size: 12.5px; padding-bottom: 10px; }
+.big-legs .leg .body b { font-size: 13.5px; }
+.big-legs .leg.tall .body { padding-bottom: 34px; }
+
 /* 잠금화면 */
 .lock-time { text-align: center; font-family: var(--font-num); font-size: 48px; font-weight: 600; line-height: 1; margin-top: 10px; }
 .lock-date { text-align: center; font-size: 12px; opacity: 0.8; }
@@ -628,28 +632,35 @@ flowchart LR
 
       <article class="screen" id="M3">
         <div class="screen-head"><span class="sid">M3</span><h3>경로 결과</h3><span class="phase p1">1차</span></div>
-        <div class="phone">
+        <div class="phone" style="gap:8px">
           <div class="status"><span>8:41</span><span class="island"></span><span class="dots">•••</span></div>
-          <div class="row between"><div class="big-time" style="font-size:28px">8:59<small>현관</small></div><span class="pill neutral">환승 1회</span></div>
-          <div class="legs">
-            <div class="leg" style="--c:var(--l9)"><div class="rail"><span class="node"></span><span class="track"></span></div>
-              <div class="body"><span class="linechip l9" style="--c:var(--l9)">9 급행</span><b>가양</b> <span class="t">9:12</span><br><span class="t">신논현 9:37 · 7정거장 정차 · 빠른 칸 안내</span></div></div>
-            <div class="leg"><div class="rail"><span class="walk"></span></div><div class="body"><span class="t">환승 · 걸어서 5분 · 여유 4분</span></div></div>
-            <div class="leg" style="--c:var(--lsb)"><div class="rail"><span class="node"></span><span class="track"></span></div>
-              <div class="body"><span class="linechip" style="--c:var(--lsb)">신분당</span><b>신논현</b> <span class="t">9:42</span><br><span class="t">강남 9:43 · 1정거장</span></div></div>
-            <div class="leg" style="--c:var(--lsb)"><div class="rail"><span class="node"></span></div>
-              <div class="body"><b>강남 9:43</b> · 회사 <span class="t">9:48</span> <span class="pill ok">12분 일찍</span></div></div>
+          <p class="w-small">회사 · 10:00까지</p>
+          <div class="row between"><div class="big-time" style="font-size:30px">8:59<small>집에서 출발</small></div><span class="pill neutral">환승 1회</span></div>
+          <div class="card" style="grid-template-columns:28px 1fr;align-items:center;padding:9px">
+            <span class="car-ic">🚆</span><div><b style="font-size:12.5px">가양에서 4-4칸에 타세요</b><br><span class="w-small">신논현 환승 통로가 가까워요</span></div>
+          </div>
+          <div class="card legs big-legs" style="padding:12px">
+            <div class="leg"><div class="rail"><span class="node" style="--c:var(--ink)"></span><span class="walk"></span></div><div class="body"><b>집</b> <span class="t">8:59</span><br><span class="t">집 → 승강장 9분 · 여유 4분</span></div></div>
+            <div class="leg tall" style="--c:var(--l9)"><div class="rail"><span class="node"></span><span class="track"></span></div><div class="body"><b>가양</b> <span class="t">9:12</span><br><span class="t">9호선 급행 · 7정거장 · 4-4칸</span></div></div>
+            <div class="leg" style="--c:var(--l9)"><div class="rail"><span class="node"></span><span class="walk"></span></div><div class="body"><b>신논현</b> <span class="t">9:37</span><br><span class="t">환승 · 걸어서 5분 · 여유 4분</span></div></div>
+            <div class="leg" style="--c:var(--lsb)"><div class="rail"><span class="node"></span><span class="track"></span></div><div class="body"><b>신논현</b> <span class="t">9:42</span><br><span class="t">신분당선 · 1정거장</span></div></div>
+            <div class="leg" style="--c:var(--lsb)"><div class="rail"><span class="node"></span><span class="walk"></span></div><div class="body"><b>강남</b> <span class="t">9:43</span></div></div>
+            <div class="leg"><div class="rail"><span class="node" style="--c:var(--ink)"></span></div><div class="body"><b>회사</b> <span class="t">9:48</span> <span class="pill ok">12분 일찍</span></div></div>
+          </div>
+          <div class="card" style="padding:9px;gap:3px">
+            <span class="w-small">이 열차를 놓치면</span>
+            <div class="row between" style="font-size:12px"><span class="num">9:18 급행</span><span style="color:var(--ink-2)">회사 9:55 · 5분 일찍</span></div>
+            <div class="row between" style="font-size:12px"><span class="num">9:24 급행</span><span style="color:var(--warn)">회사 10:02 · 2분 늦음</span></div>
           </div>
           <p class="w-small">최소환승도 같은 경로예요.</p>
-          <div class="w-spacer"></div>
           <div class="btn">이 경로로 알림 받기</div>
         </div>
         <ul class="notes">
-          <li><span class="tag new">새로</span><span>최단시간과 최소환승이 다른 경로를 내면 위에 탭을 두고, 다른 쪽과의 차이는 한 줄로만 보여줍니다.</span></li>
-          <li><span class="tag new">새로</span><span>급행과 일반은 목적지 도착 시각을 기준으로 비교해 고릅니다. 늦게 떠나도 먼저 도착하는 급행이 있으면 급행을, 목적지가 일반 정차역이면 급행 정차역에서 일반으로 갈아타는 구간을 보여줍니다.</span></li>
-          <li><span class="tag new">API</span><span>테스트 결과 열차 번호, 역별 출발·도착 시각, 급행 여부, 환승 도보 시간이 모두 나옵니다. 가양에서 강남은 실제로 신논현에서 신분당선으로 갈아타는 경로가 나왔습니다.</span></li>
-          <li><span class="tag new">새로</span><span>이 예시처럼 두 방식이 같은 경로면 탭 없이 하나만 보여주고 "최소환승도 같은 경로예요"만 적습니다.</span></li>
-          <li><span class="tag ask">구현</span><span>도착 시각 기준 검색은 없어서, 출발 시각을 바꿔가며 두세 번 조회해 마감에 맞는 가장 늦은 열차를 찾습니다. 한 번에 0.2초 정도라 부담이 없습니다.</span></li>
+          <li><span class="tag new">정해짐</span><span>노선도를 크게 그립니다. 역 사이 간격은 걸리는 시간에 비례하고, 설명이 두 줄로 늘어나도 선은 다음 역까지 이어집니다. 아래 빈 곳은 빠른 칸 카드와 "이 열차를 놓치면"으로 채웁니다. 홈 시트(M1s)와 같은 카드입니다.</span></li>
+          <li><span class="tag new">새로</span><span>최단시간과 최소환승이 다른 경로를 내면 위에 탭을 두고, 다른 쪽과의 차이는 한 줄로만 보여줍니다. 이 예시처럼 같은 경로면 탭 없이 "최소환승도 같은 경로예요"만 적습니다.</span></li>
+          <li><span class="tag new">새로</span><span>급행과 일반은 목적지 도착 시각을 기준으로 비교해 고릅니다. 환승 여유가 빠듯한 열차는 역마다 다른 환승 거리와 출근 시간대 혼잡을 넣어 걸러냅니다.</span></li>
+          <li><span class="tag new">새로</span><span>빠른 칸은 서울교통공사 환승 데이터에 있는 역만 보입니다. 없으면 카드를 숨깁니다.</span></li>
+          <li><span class="tag ask">구현</span><span>도착 시각 기준 검색은 없어서 출발 시각을 여러 개 동시에 조회해 마감에 맞는 가장 늦은 열차를 찾고, 결과는 폰에 일주일 저장합니다. 처음 계산 1초 안팎, 다시 계산은 0.2초 정도입니다.</span></li>
         </ul>
       </article>
 
