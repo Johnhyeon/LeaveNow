@@ -60,10 +60,12 @@ private struct IntroStep: View {
             }
             .buttonStyle(.borderedProminent)
             .tint(Theme.ink)
+            .foregroundStyle(Theme.onInk)
             .buttonBorderShape(.capsule)
             .controlSize(.large)
         }
         .padding(24)
+        .foregroundStyle(Theme.ink)
         .background(Theme.paper.ignoresSafeArea())
     }
 }
@@ -99,6 +101,7 @@ private struct HomeLocationStep: View {
             }
             .buttonStyle(.borderedProminent)
             .tint(Theme.ink)
+            .foregroundStyle(Theme.onInk)
             .buttonBorderShape(.capsule)
             .controlSize(.large)
             .disabled(working)
@@ -107,6 +110,7 @@ private struct HomeLocationStep: View {
                 .foregroundStyle(Theme.mute)
         }
         .padding(24)
+        .foregroundStyle(Theme.ink)
         .background(Theme.paper.ignoresSafeArea())
         .sheet(isPresented: $showSearch) {
             StationSearchSheet { station in
@@ -152,12 +156,12 @@ private struct StationConfirmStep: View {
                     } label: {
                         HStack {
                             LineDots(lines: s.station.lines)
-                            Text(s.station.name).font(.headline)
+                            Text(s.station.name).font(.headline).foregroundStyle(Theme.ink)
                             Spacer()
                             Text("걸어서 \(s.walkMinutes)분").font(.subheadline).foregroundStyle(Theme.mute)
                         }
                         .padding(14)
-                        .background(selected == s ? Theme.now.opacity(0.12) : Color.white,
+                        .background(selected == s ? Theme.now.opacity(0.12) : Theme.card,
                                     in: RoundedRectangle(cornerRadius: 14))
                         .overlay(RoundedRectangle(cornerRadius: 14)
                             .stroke(selected == s ? Theme.now : Color.clear, lineWidth: 2))
@@ -165,6 +169,7 @@ private struct StationConfirmStep: View {
                     .buttonStyle(.plain)
                 }
                 Button("다른 역 찾기") { showSearch = true }
+                .foregroundStyle(Theme.now)
                     .frame(maxWidth: .infinity, alignment: .leading)
                     .padding(.top, 4)
             }
@@ -172,7 +177,7 @@ private struct StationConfirmStep: View {
                 Text("집에서 승강장까지").font(.subheadline.weight(.semibold)).foregroundStyle(Theme.mute)
                 HStack {
                     Button { toPlatform = max(1, toPlatform - 1) } label: { Image(systemName: "minus.circle.fill") }
-                    Text("\(toPlatform)분").font(Theme.number(44)).frame(minWidth: 110)
+                    Text("\(toPlatform)분").font(Theme.number(44)).foregroundStyle(Theme.ink).frame(minWidth: 110)
                     Button { toPlatform = min(60, toPlatform + 1) } label: { Image(systemName: "plus.circle.fill") }
                 }
                 .font(.title)
@@ -189,11 +194,13 @@ private struct StationConfirmStep: View {
             }
             .buttonStyle(.borderedProminent)
             .tint(Theme.ink)
+            .foregroundStyle(Theme.onInk)
             .buttonBorderShape(.capsule)
             .controlSize(.large)
             .disabled(selected == nil)
         }
         .padding(24)
+        .foregroundStyle(Theme.ink)
         .background(Theme.paper.ignoresSafeArea())
         .onAppear { if selected == nil, let first = suggestions.first { select(first) } }
         .sheet(isPresented: $showSearch) {

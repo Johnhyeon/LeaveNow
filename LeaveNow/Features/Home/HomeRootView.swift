@@ -61,6 +61,7 @@ struct NoTripHomeView: View {
             }
             .buttonStyle(.borderedProminent)
             .tint(Theme.ink)
+            .foregroundStyle(Theme.onInk)
             .buttonBorderShape(.capsule)
             .controlSize(.large)
             if !places.isEmpty {
@@ -84,6 +85,7 @@ struct NoTripHomeView: View {
             }
         }
         .padding(24)
+        .foregroundStyle(Theme.ink)
         .background(Theme.paper.ignoresSafeArea())
     }
 }

@@ -42,7 +42,8 @@ struct WaterHomeView: View {
                        water: water,
                        paper: content.night ? Theme.nightPaper : Theme.paper,
                        dryInk: content.night ? .white : Theme.ink,
-                       drySecondary: content.night ? Theme.nightMute : Theme.mute) { primary, secondary in
+                       drySecondary: content.night ? Theme.nightMute : Theme.mute,
+                       floor: detent == .large ? 0 : 150) { primary, secondary in
                 VStack(alignment: .leading, spacing: 4) {
                     HStack {
                         Text(content.meta)
@@ -140,7 +141,7 @@ private struct RouteSheet: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(content.night ? .white : Theme.ink)
-                .foregroundStyle(content.night ? Theme.nightPaper : .white)
+                .foregroundStyle(content.night ? Theme.nightPaper : Theme.onInk)
                 .controlSize(.large)
                 .buttonBorderShape(.capsule)
                 ForEach(extraActions) { action in

@@ -61,6 +61,8 @@ struct WaterScene<Content: View>: View {
     var paper: Color
     var dryInk: Color
     var drySecondary: Color
+    /// 아래 시트에 가려지는 높이. 물 바닥을 이 위로 올려서 남은 물이 항상 보이게 한다
+    var floor: CGFloat = 0
     /// (주 글자색, 보조 글자색) 을 받아 글자 층을 그린다
     @ViewBuilder var content: (Color, Color) -> Content
     @Environment(\.accessibilityReduceMotion) private var reduceMotion
@@ -71,7 +73,8 @@ struct WaterScene<Content: View>: View {
             TimelineView(.animation(minimumInterval: 1.0 / 30, paused: reduceMotion)) { context in
                 let t = reduceMotion ? 0 : context.date.timeIntervalSinceReferenceDate
                 GeometryReader { geo in
-                    let waterHeight = max(0, min(1, level)) * geo.size.height
+                    let visible = max(0, geo.size.height - floor)
+                    let waterHeight = floor + max(0, min(1, level)) * visible
                     ZStack(alignment: .bottom) {
                         paper
                         WaveShape(phase: t * 1.1 + 1.4, amplitude: 7)

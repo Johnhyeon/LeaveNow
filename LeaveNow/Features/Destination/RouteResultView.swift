@@ -51,6 +51,7 @@ struct RouteResultView: View {
             }
             .padding(20)
         }
+        .foregroundStyle(Theme.ink)
         .background(Theme.paper.ignoresSafeArea())
         .navigationTitle("\(origin.station) → \(stationName)")
         .navigationBarTitleDisplayMode(.inline)
@@ -63,6 +64,7 @@ struct RouteResultView: View {
                 }
                 .buttonStyle(.borderedProminent)
                 .tint(Theme.ink)
+                .foregroundStyle(Theme.onInk)
                 .buttonBorderShape(.capsule)
                 .controlSize(.large)
                 .padding(.horizontal, 20)
@@ -108,7 +110,7 @@ struct RouteResultView: View {
                                             deadline: deadline, includeNow: false))
             .frame(maxWidth: .infinity, alignment: .leading)
             .padding(16)
-            .background(Color.white, in: RoundedRectangle(cornerRadius: 20))
+            .background(Theme.card, in: RoundedRectangle(cornerRadius: 20))
         Text(otherLine(plan)).font(.footnote).foregroundStyle(Theme.mute)
     }
 
