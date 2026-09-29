@@ -37,6 +37,7 @@ struct ContentView: View {
     /// -planTest 가양 강남 10:00 : 계산 결과를 콘솔에 출력
     /// -seedTrip 가양 강남 10:00 : 그 계획을 실제 이동으로 저장해 홈에 띄운다
     /// -resetOnboarding
+    /// -departNow : 진행 중인 이동에서 출발 버튼을 누른 것처럼
     /// -seedPlaces : 자주 가는 곳 둘, 최근 셋을 넣는다 (화면 확인용)
     private func runDebugArguments() async {
         let args = ProcessInfo.processInfo.arguments

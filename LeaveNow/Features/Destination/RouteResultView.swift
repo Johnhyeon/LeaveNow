@@ -165,6 +165,7 @@ struct RouteResultView: View {
         }
         // 이동은 하나만: 앞의 계획은 취소
         for t in trips where !t.cancelled { t.cancelled = true }
+        TripActivity.endAll()
         context.insert(PlannedTrip(placeName: placeName, destinationStation: stationName, walkFromStation: walkFromStation,
                                    deadline: deadline, origin: origin, plan: plan))
         try? context.save()

@@ -82,7 +82,11 @@ enum LineStyle {
     ]
 
     static func color(_ line: String) -> Color {
-        Color(hex: table.first { line.contains($0.key) }?.hex ?? "#8A94A3")
+        Color(hex: hex(line))
+    }
+
+    static func hex(_ line: String) -> String {
+        table.first { line.contains($0.key) }?.hex ?? "#8A94A3"
     }
 
     static func short(_ line: String) -> String {

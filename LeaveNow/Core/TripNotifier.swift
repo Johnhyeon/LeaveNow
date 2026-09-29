@@ -49,6 +49,13 @@ enum TripNotifier {
         return "\(Fmt.time.string(from: ride.departure)) \(ride.line)\(ride.express ? " 급행" : "")"
     }
 
+    /// "9:12 급행", "9:15 2호선" 처럼 짧게
+    static func shortTrainLabel(_ plan: TripPlan) -> String {
+        guard let ride = plan.trip.rides.first else { return "열차" }
+        let short = LineStyle.short(ride.line)
+        return "\(Fmt.time.string(from: ride.departure)) \(ride.express ? "급행" : short + (Int(short) != nil ? "호선" : ""))"
+    }
+
     private static func trigger(_ date: Date) -> UNCalendarNotificationTrigger {
         let comps = Calendar.current.dateComponents([.year, .month, .day, .hour, .minute, .second], from: date)
         return UNCalendarNotificationTrigger(dateMatching: comps, repeats: false)

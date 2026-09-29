@@ -16,6 +16,14 @@ struct WaterHomeView: View {
         var note: String? = nil         // 시트 위쪽 안내 한 줄 (예: 늦음)
         var noteIsWarning = false
         var details: SheetDetails? = nil
+        /// 물 위에 크게 두는 버튼 하나 (예: 출발). 시트를 펼치면 숨긴다
+        var mainAction: MainAction? = nil
+    }
+
+    struct MainAction {
+        let title: String
+        var busy = false
+        let action: () -> Void
     }
 
     /// 시트를 채우는 정보. 미리보기처럼 없으면 경로 한 줄만 보인다
@@ -123,6 +131,27 @@ struct WaterHomeView: View {
             }
             .accessibilityElement(children: .ignore)
             .accessibilityLabel("\(content.meta). \(bigNumber(remaining)) \(content.unit)")
+            .overlay(alignment: .bottom) {
+                if let main = content.mainAction, detent != .large {
+                    Button(action: main.action) {
+                        HStack(spacing: 8) {
+                            if main.busy { ProgressView().tint(Theme.ink) }
+                            Text(main.title).font(.title2.weight(.heavy))
+                        }
+                        .frame(maxWidth: .infinity)
+                        .padding(.vertical, 10)
+                    }
+                    .buttonStyle(.borderedProminent)
+                    .buttonBorderShape(.capsule)
+                    .controlSize(.large)
+                    .tint(.white)
+                    .foregroundStyle(Theme.ink)
+                    .shadow(color: .black.opacity(0.12), radius: 12, y: 4)
+                    .disabled(main.busy)
+                    .padding(.horizontal, 24)
+                    .padding(.bottom, 150)
+                }
+            }
         }
         .sheet(isPresented: $showSheet) {
             TimelineView(.periodic(from: .now, by: 1)) { context in

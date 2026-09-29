@@ -10,6 +10,7 @@
 		02F32F9EEC2183CDBA90B047 /* DepartureActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269B82A9BFE7AE0EF2270C93 /* DepartureActivityAttributes.swift */; };
 		05978B03925E2D21BB574A90 /* Transfers.swift in Sources */ = {isa = PBXBuildFile; fileRef = C274C966E5C38A65E053D680 /* Transfers.swift */; };
 		0CB93DE46F7E01C3360DB309 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BE02A09DFF2070FB9C3629 /* Secrets.swift */; };
+		0E39D3385FC942F1C0B8B12B /* TripActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = 85A6D2BDEE578E06C9B6AEF2 /* TripActivity.swift */; };
 		1277F1A071A888F755629680 /* DepartureActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269B82A9BFE7AE0EF2270C93 /* DepartureActivityAttributes.swift */; };
 		1726A9E85B1FC5D1CF91120C /* Color+Hex.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4BF38B35DDE88A2105B9BAD /* Color+Hex.swift */; };
 		1800B5D608A5912203CCD6D5 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E02FA3BB1E8603C1A763D85 /* Theme.swift */; };
@@ -90,6 +91,7 @@
 		6DBC54FBA782A119A41E8C3A /* Segment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
 		714F9AB31E1782F6B0CBECE9 /* WaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterView.swift; sourceTree = "<group>"; };
 		7E16275D04A109D1EB6BB17F /* OnboardingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlow.swift; sourceTree = "<group>"; };
+		85A6D2BDEE578E06C9B6AEF2 /* TripActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripActivity.swift; sourceTree = "<group>"; };
 		88DE9B55E6D87B6079297B0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		93524A19C3B12C21840B3C3A /* transfers.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = transfers.json; sourceTree = "<group>"; };
 		A288AD8762E080673506DAC8 /* Stations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stations.swift; sourceTree = "<group>"; };
@@ -168,6 +170,7 @@
 				C55E63987C546E1004076E4A /* RouteStops.swift */,
 				A288AD8762E080673506DAC8 /* Stations.swift */,
 				C274C966E5C38A65E053D680 /* Transfers.swift */,
+				85A6D2BDEE578E06C9B6AEF2 /* TripActivity.swift */,
 				591BDF7C006279A47008D21F /* TripNotifier.swift */,
 			);
 			path = Core;
@@ -423,6 +426,7 @@
 				79CF3E5EC04EF387D5275E92 /* Stations.swift in Sources */,
 				1800B5D608A5912203CCD6D5 /* Theme.swift in Sources */,
 				05978B03925E2D21BB574A90 /* Transfers.swift in Sources */,
+				0E39D3385FC942F1C0B8B12B /* TripActivity.swift in Sources */,
 				8635FF70EB73F0F429D41C1D /* TripNotifier.swift in Sources */,
 				75D91554B54851EBFD3EAD7F /* TripRecord.swift in Sources */,
 				DC4B5947F42B703F1A50348E /* WaterHomeView.swift in Sources */,

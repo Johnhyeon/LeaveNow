@@ -23,9 +23,8 @@ struct SpikeView: View {
             }
 
             Section {
-                Stepper("현관까지 \(Int(minutes))분", value: $minutes, in: 1...30)
+                Stepper("열차까지 \(Int(minutes))분", value: $minutes, in: 1...30)
                 Button("라이브 액티비티 시작") { live.start(minutes: minutes) }
-                Button("승강장 단계로 바꾸기") { Task { await live.advanceToPlatform() } }
                 Button("모두 끝내기", role: .destructive) { Task { await live.endAll() } }
                 if !live.message.isEmpty {
                     Text(live.message).font(.footnote).foregroundStyle(.secondary)

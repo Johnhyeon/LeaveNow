@@ -41,6 +41,8 @@ final class PlannedTrip {
     var planData: Data       // TripPlan
     var createdAt: Date
     var cancelled: Bool
+    /// 출발 버튼을 누른 시각. 집에서 승강장까지 시간을 배우는 데도 쓴다
+    var departedAt: Date? = nil
 
     init(placeName: String, destinationStation: String, walkFromStation: Int, deadline: Date, origin: OriginInfo, plan: TripPlan) {
         self.placeName = placeName
