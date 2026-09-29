@@ -152,8 +152,33 @@ private struct RouteSheet: View {
     private var card: Color { content.night ? Color.white.opacity(0.06) : Theme.card }
 
     var body: some View {
+        // 시트 전체를 스크롤 하나로 둬야 iOS가 이 스크롤을 시트의 것으로 알아본다.
+        // 그래야 내용 위에서 아래로 끌어도 맨 위에서는 시트가 내려간다. 머리 부분은 위에 고정
+        ScrollView {
+            if detent == .large {
+                VStack(alignment: .leading, spacing: 16) {
+                    if let d = content.details { summary(d) }
+                    RouteMapView(stops: content.stops, night: content.night)
+                        .foregroundStyle(ink)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding(16)
+                        .background(card, in: RoundedRectangle(cornerRadius: 20))
+                    if let d = content.details { extras(d) }
+                    buttons
+                }
+                .padding(.horizontal, 20)
+                .padding(.top, 8)
+                .padding(.bottom, 24)
+            }
+        }
+        .scrollIndicators(.hidden)
+        .scrollBounceBehavior(.basedOnSize)
+        .safeAreaInset(edge: .top, spacing: 0) { header }
+    }
+
+    /// 접었을 때도 보이는 부분
+    private var header: some View {
         VStack(alignment: .leading, spacing: 12) {
-            // 접었을 때도 보이는 부분
             HStack {
                 Text(content.peekLeft).font(.subheadline.weight(.bold)).foregroundStyle(ink)
                 Spacer()
@@ -175,28 +200,13 @@ private struct RouteSheet: View {
                     }
                 }
             }
-
-            if detent == .large {
-                ScrollView {
-                    VStack(alignment: .leading, spacing: 16) {
-                        if let d = content.details { summary(d) }
-                        RouteMapView(stops: content.stops, night: content.night)
-                            .foregroundStyle(ink)
-                            .frame(maxWidth: .infinity, alignment: .leading)
-                            .padding(16)
-                            .background(card, in: RoundedRectangle(cornerRadius: 20))
-                        if let d = content.details { extras(d) }
-                        buttons
-                    }
-                    .padding(.top, 8)
-                    .padding(.bottom, 24)
-                }
-                .scrollIndicators(.hidden)
-            }
-            Spacer(minLength: 0)
         }
+        .frame(maxWidth: .infinity, alignment: .leading)
         .padding(.horizontal, 20)
         .padding(.top, 22)
+        .padding(.bottom, detent == .large ? 8 : 0)
+        .background(content.night ? Theme.nightSheet : Theme.sheet)
+        .contentShape(Rectangle())
     }
 
     @ViewBuilder

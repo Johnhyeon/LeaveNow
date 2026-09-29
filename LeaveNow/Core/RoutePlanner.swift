@@ -105,9 +105,11 @@ actor RoutePlanner {
                                       end: chosen.departure.addingTimeInterval(15 * 60))
             pool = Self.merge(pool, more).filter { $0.departure > chosen.departure && !$0.isTight }
         }
-        // 먼저 떠나도 늦게 도착하는 열차(급행에 추월당하는 일반)는 빼고, 도착 순으로 두 개
+        // 먼저 떠나도 늦게 도착하는 열차(급행에 추월당하는 일반)와, 같은 시각에 도착하는데 더 일찍 떠나야 하는
+        // 열차는 빼고 도착 순으로 두 개
         var result: [RouteTrip] = []
-        for trip in pool.sorted(by: { $0.arrival < $1.arrival }) where result.count < 2 {
+        let ordered = pool.sorted { $0.arrival != $1.arrival ? $0.arrival < $1.arrival : $0.departure > $1.departure }
+        for trip in ordered where result.count < 2 {
             if !result.contains(where: { $0.arrival <= trip.arrival && $0.departure >= trip.departure }) {
                 result.append(trip)
             }

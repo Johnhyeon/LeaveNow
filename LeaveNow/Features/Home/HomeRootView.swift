@@ -8,15 +8,16 @@ struct HomeRootView: View {
     @State private var prefill: Place?
     @State private var showSettings = false
 
-    private var active: PlannedTrip? {
+    private func active(at now: Date) -> PlannedTrip? {
         trips.first { t in
-            !t.cancelled && (t.expectedArrival ?? t.deadline) > Date.now.addingTimeInterval(-10 * 60)
+            !t.cancelled && (t.expectedArrival ?? t.deadline) > now.addingTimeInterval(-10 * 60)
         }
     }
 
     var body: some View {
-        Group {
-            if let trip = active {
+        // 이동이 끝났는지 30초마다 다시 본다. 안 그러면 화면을 건드려야 일정 없는 홈으로 바뀐다
+        TimelineView(.periodic(from: .now, by: 30)) { context in
+            if let trip = active(at: context.date) {
                 TripHomeView(trip: trip, onSettings: { showSettings = true }, onNew: { prefill = nil; showForm = true })
             } else {
                 NoTripHomeView(onGo: { place in prefill = place; showForm = true },
