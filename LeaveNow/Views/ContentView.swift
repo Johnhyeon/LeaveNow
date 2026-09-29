@@ -37,6 +37,7 @@ struct ContentView: View {
     /// -planTest 가양 강남 10:00 : 계산 결과를 콘솔에 출력
     /// -seedTrip 가양 강남 10:00 : 그 계획을 실제 이동으로 저장해 홈에 띄운다
     /// -resetOnboarding
+    /// -seedPlaces : 자주 가는 곳 둘, 최근 셋을 넣는다 (화면 확인용)
     private func runDebugArguments() async {
         let args = ProcessInfo.processInfo.arguments
         func value(_ flag: String, _ offset: Int = 1) -> String? {
@@ -44,6 +45,17 @@ struct ContentView: View {
             return args[i + offset]
         }
         if args.contains("-resetOnboarding") { profile.onboarded = false }
+        if args.contains("-seedPlaces") {
+            let samples: [(String, String, Int, Bool)] = [("회사", "강남", 600, true), ("헬스장", "마곡나루", -1, true),
+                                                          ("시청", "시청", 1155, false), ("홍대입구", "홍대입구", 1140, false),
+                                                          ("여의도", "여의도", 780, false)]
+            for (name, station, minutes, favorite) in samples {
+                let place = Place(name: name, stationName: station, walkFromStation: 5, deadlineMinutes: minutes)
+                place.favorite = favorite
+                context.insert(place)
+            }
+            try? context.save()
+        }
         if let m = value("-spikeLiveActivity").flatMap(Double.init) { LiveActivitySpike.shared.start(minutes: m) }
         if let kind = value("-designPreview") {
             designPreview = kind == "night" ? .lastTrainSample() : (kind == "urgent" ? .morningSample(minutes: 4) : .morningSample())

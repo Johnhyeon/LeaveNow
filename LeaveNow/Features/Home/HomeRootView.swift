@@ -37,7 +37,6 @@ struct HomeRootView: View {
 struct NoTripHomeView: View {
     let onGo: (Place?) -> Void
     let onSettings: () -> Void
-    @Query(sort: \Place.lastUsedAt, order: .reverse) private var places: [Place]
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -65,25 +64,9 @@ struct NoTripHomeView: View {
             .foregroundStyle(Theme.onInk)
             .buttonBorderShape(.capsule)
             .controlSize(.large)
-            if !places.isEmpty {
-                ScrollView(.horizontal, showsIndicators: false) {
-                    HStack(spacing: 8) {
-                        ForEach(places.prefix(6)) { p in
-                            Button {
-                                onGo(p)
-                            } label: {
-                                Text("\(p.name) · \(String(format: "%d:%02d", p.deadlineMinutes / 60, p.deadlineMinutes % 60))")
-                                    .font(.subheadline.weight(.semibold))
-                                    .padding(.horizontal, 12).padding(.vertical, 7)
-                                    .background(Color(.secondarySystemFill), in: Capsule())
-                                    .foregroundStyle(Theme.ink)
-                            }
-                            .buttonStyle(.plain)
-                        }
-                    }
-                }
-                Text("저장한 곳을 누르면 바로 계산해요").font(.footnote).foregroundStyle(Theme.mute)
-            }
+            PlaceShortcuts(showsTime: true) { onGo($0) }
+                .padding(.top, 8)
+            Text("누르면 바로 채워져요 · 길게 누르면 빼거나 지울 수 있어요").font(.footnote).foregroundStyle(Theme.mute)
         }
         .padding(24)
         .foregroundStyle(Theme.ink)

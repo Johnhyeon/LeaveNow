@@ -8,10 +8,12 @@ final class Place {
     var stationName: String
     /// 역에서 최종 목적지까지 걷는 시간 (분)
     var walkFromStation: Int
-    /// 도착해야 하는 시각, 자정부터 분
+    /// 도착해야 하는 시각, 자정부터 분. 역만 등록하고 아직 가본 적 없으면 -1
     var deadlineMinutes: Int
     var createdAt: Date
     var lastUsedAt: Date
+    /// 자주 가는 곳으로 직접 등록했는지
+    var favorite: Bool = false
 
     init(name: String, stationName: String, walkFromStation: Int, deadlineMinutes: Int) {
         self.name = name
@@ -20,6 +22,11 @@ final class Place {
         self.deadlineMinutes = deadlineMinutes
         self.createdAt = .now
         self.lastUsedAt = .now
+    }
+
+    /// "9:00" 같은 도착 시각. 정해진 적 없으면 nil
+    var deadlineText: String? {
+        deadlineMinutes < 0 ? nil : String(format: "%d:%02d", deadlineMinutes / 60, deadlineMinutes % 60)
     }
 }
 

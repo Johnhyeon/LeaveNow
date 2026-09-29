@@ -2,7 +2,7 @@ import CoreLocation
 import SwiftData
 import SwiftUI
 
-/// M2 목적지 입력: 출발지(자동 선택), 최근 목적지, 도착역, 몇 시까지, 역에서 걸어서
+/// M2 목적지 입력: 출발지(자동 선택), 자주 가는 곳·최근, 도착역, 몇 시까지, 역에서 걸어서
 struct DestinationFormView: View {
     var prefill: Place? = nil
     let onPlanned: () -> Void
@@ -45,17 +45,9 @@ struct DestinationFormView: View {
                     }
                 }
 
-                if !places.isEmpty {
-                    Section("최근") {
-                        ScrollView(.horizontal, showsIndicators: false) {
-                            HStack(spacing: 8) {
-                                ForEach(places.prefix(6)) { p in
-                                    chip(p.name, selected: stationName == p.stationName) { apply(p) }
-                                }
-                            }
-                            .padding(.vertical, 2)
-                        }
-                    }
+                Section {
+                    PlaceShortcuts(selectedStation: stationName) { apply($0) }
+                        .padding(.vertical, 4)
                 }
 
                 Section {
@@ -153,6 +145,8 @@ struct DestinationFormView: View {
         stationName = p.stationName
         placeName = p.name
         walkFromStation = p.walkFromStation
+        // 역만 등록해 둔 곳은 시각이 없으니 지금 고른 시각을 그대로 둔다
+        guard p.deadlineMinutes >= 0 else { return }
         let cal = Calendar.current
         deadline = cal.date(bySettingHour: p.deadlineMinutes / 60, minute: p.deadlineMinutes % 60, second: 0, of: .now) ?? deadline
     }

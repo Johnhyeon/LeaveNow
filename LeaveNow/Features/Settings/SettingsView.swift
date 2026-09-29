@@ -41,7 +41,8 @@ struct SettingsView: View {
                             VStack(alignment: .leading, spacing: 2) {
                                 TextField("이름", text: Binding(get: { p.name }, set: { p.name = $0 }))
                                     .font(.body.weight(.semibold))
-                                Text("\(p.stationName) · \(String(format: "%d:%02d", p.deadlineMinutes / 60, p.deadlineMinutes % 60))까지 · 역에서 \(p.walkFromStation)분")
+                                Text([p.favorite ? "★ 자주 가는 곳" : nil, p.stationName, p.deadlineText.map { "\($0)까지" }, "역에서 \(p.walkFromStation)분"]
+                                    .compactMap { $0 }.joined(separator: " · "))
                                     .font(.caption).foregroundStyle(Theme.mute)
                             }
                         }
