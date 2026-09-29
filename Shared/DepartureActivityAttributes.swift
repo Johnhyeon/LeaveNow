@@ -10,6 +10,8 @@ struct DepartureActivityAttributes: ActivityAttributes {
             case done
         }
         var phase: Phase
+        /// 물이 가득 찬 상태로 시작한 시각. 이때부터 target 까지 물이 빠진다
+        var windowStart: Date
         /// 지금 단계의 목표 시각 (현관 출발 또는 승강장 도착)
         var target: Date
         /// 탈 열차 출발 시각

@@ -6,9 +6,22 @@ struct SpikeView: View {
     private let geo = GeofenceSpike.shared
     private let live = LiveActivitySpike.shared
     @State private var minutes = 2.0
+    @State private var preview: PreviewKind?
+
+    enum PreviewKind: String, Identifiable { case morning, night, urgent; var id: String { rawValue } }
 
     var body: some View {
         Form {
+            Section {
+                Button("아침 홈 (12분 남음)") { preview = .morning }
+                Button("아침 홈 (4분 남음 · 주황)") { preview = .urgent }
+                Button("막차 (47분 남음)") { preview = .night }
+            } header: {
+                Text("3안 디자인 미리보기")
+            } footer: {
+                Text("예시 데이터입니다. 아래 시트를 위로 올리면 노선도가 펼쳐집니다.")
+            }
+
             Section {
                 Stepper("현관까지 \(Int(minutes))분", value: $minutes, in: 1...30)
                 Button("라이브 액티비티 시작") { live.start(minutes: minutes) }
@@ -78,8 +91,19 @@ struct SpikeView: View {
                 Text("기록")
             }
         }
+        .fullScreenCover(item: $preview) { kind in
+            WaterHomeView(content: sample(kind)) { preview = nil }
+        }
         .navigationTitle("0단계 실험")
         .navigationBarTitleDisplayMode(.inline)
+    }
+
+    private func sample(_ kind: PreviewKind) -> WaterHomeView.Content {
+        switch kind {
+        case .morning: return .morningSample()
+        case .urgent: return .morningSample(minutes: 4)
+        case .night: return .lastTrainSample()
+        }
     }
 
     private var authText: String {

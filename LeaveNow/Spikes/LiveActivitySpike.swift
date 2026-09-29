@@ -15,6 +15,7 @@ final class LiveActivitySpike {
         let now = Date.now
         let state = DepartureActivityAttributes.ContentState(
             phase: .beforeLeaving,
+            windowStart: now,
             target: now.addingTimeInterval(minutes * 60),
             trainDeparture: now.addingTimeInterval(minutes * 60 + 13 * 60),
             trainLabel: "9호선 급행",
@@ -34,6 +35,7 @@ final class LiveActivitySpike {
         for activity in Activity<DepartureActivityAttributes>.activities {
             var s = activity.content.state
             s.phase = .toPlatform
+            s.windowStart = .now
             s.target = s.trainDeparture.addingTimeInterval(-4 * 60)
             await activity.update(ActivityContent(state: s, staleDate: nil))
         }

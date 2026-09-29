@@ -2,6 +2,7 @@ import SwiftUI
 
 struct ContentView: View {
     @AppStorage("hasCompletedSetup") private var hasCompletedSetup = false
+    @State private var designPreview: WaterHomeView.Content?
 
     var body: some View {
         TabView {
@@ -20,6 +21,20 @@ struct ContentView: View {
             if let i = args.firstIndex(of: "-spikeLiveActivity"), i + 1 < args.count, let m = Double(args[i + 1]) {
                 LiveActivitySpike.shared.start(minutes: m)
             }
+            if let i = args.firstIndex(of: "-designPreview"), i + 1 < args.count {
+                switch args[i + 1] {
+                case "night": designPreview = .lastTrainSample()
+                case "urgent": designPreview = .morningSample(minutes: 4)
+                case "expanded": designPreview = .morningSample()
+                default: designPreview = .morningSample()
+                }
+            }
+        }
+        .fullScreenCover(isPresented: Binding(
+            get: { designPreview != nil },
+            set: { if !$0 { designPreview = nil } }
+        )) {
+            if let designPreview { WaterHomeView(content: designPreview) }
         }
         .fullScreenCover(isPresented: Binding(
             get: { !hasCompletedSetup },

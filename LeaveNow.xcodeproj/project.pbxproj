@@ -10,12 +10,14 @@
 		02F32F9EEC2183CDBA90B047 /* DepartureActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269B82A9BFE7AE0EF2270C93 /* DepartureActivityAttributes.swift */; };
 		0CB93DE46F7E01C3360DB309 /* Secrets.swift in Sources */ = {isa = PBXBuildFile; fileRef = F3BE02A09DFF2070FB9C3629 /* Secrets.swift */; };
 		1277F1A071A888F755629680 /* DepartureActivityAttributes.swift in Sources */ = {isa = PBXBuildFile; fileRef = 269B82A9BFE7AE0EF2270C93 /* DepartureActivityAttributes.swift */; };
+		1800B5D608A5912203CCD6D5 /* Theme.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1E02FA3BB1E8603C1A763D85 /* Theme.swift */; };
 		197397AA916BCB59258C7A7A /* RealtimeService.swift in Sources */ = {isa = PBXBuildFile; fileRef = C85B62204D829775439D778A /* RealtimeService.swift */; };
 		1A8F9AE428F9A39EAC290077 /* SignalCycleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2F4CA1178BF4307A5905F75C /* SignalCycleView.swift */; };
 		200DC3E1DABAC4450143C3E7 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 44F6F1D9C8DD9F4AA0072706 /* SettingsView.swift */; };
 		2C29DFB0D75AF26A93BDBB78 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 3099350243901A33CFD9ADD8 /* ContentView.swift */; };
 		367D8C75D1AEBDB792356CFF /* DepartureLiveActivity.swift in Sources */ = {isa = PBXBuildFile; fileRef = C721D1F446C5BCA2D64517B6 /* DepartureLiveActivity.swift */; };
 		3FB4EA8BAB98B8ECED2507A5 /* Secrets.plist in Resources */ = {isa = PBXBuildFile; fileRef = 4AA670A701E8F65196A7BA1E /* Secrets.plist */; };
+		423CCB2CAE4F7689E8BF1B91 /* WaterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 714F9AB31E1782F6B0CBECE9 /* WaterView.swift */; };
 		48057B0307AE0AB1DA92470D /* HistoryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 32748146DF672E3D79195414 /* HistoryView.swift */; };
 		56FEB8A7CBD0E41150653BCE /* timetable_09.json in Resources */ = {isa = PBXBuildFile; fileRef = B0AE2DCFA7993F4A7A83760D /* timetable_09.json */; };
 		67F6D73E66010DEA5CBD7FA0 /* LeaveNowWidgets.appex in Embed Foundation Extensions */ = {isa = PBXBuildFile; fileRef = AF0934E8DCDA393B7EF6A3EF /* LeaveNowWidgets.appex */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
@@ -36,9 +38,11 @@
 		C7C3BD60951C6E52F6F3BE20 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2B171E0BCADA1C8937903F5A /* OnboardingView.swift */; };
 		C7D6E980C8B8001A7C626410 /* RoutineSync.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4A9A06491E020E5BCD634944 /* RoutineSync.swift */; };
 		C844D44ABC93D2BBBB7FF0E5 /* Estimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5E30F3CD32879F43BAFE4328 /* Estimator.swift */; };
+		DC4B5947F42B703F1A50348E /* WaterHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35654059C9A149B117938339 /* WaterHomeView.swift */; };
 		E6C3E02CA78DACBDDD630553 /* LeaveNowWidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59DE84B94DD4F74D31473AE /* LeaveNowWidgetsBundle.swift */; };
 		E6E09E6795491EEA9D3EAD8C /* Timetable.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7884101EB53F3E3F0DFCB02 /* Timetable.swift */; };
 		EE1AD0E09E917D4C901A0AE6 /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBC54FBA782A119A41E8C3A /* Segment.swift */; };
+		F76AFD9BBDD8D7A9DFEB10B5 /* RouteViews.swift in Sources */ = {isa = PBXBuildFile; fileRef = 56F2CEB4358DCB36894ED222 /* RouteViews.swift */; };
 		FD4CD7683E3871CE194F5CD1 /* MeasureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 36DDBDF90581D09B1FFAC3A8 /* MeasureView.swift */; };
 /* End PBXBuildFile section */
 
@@ -69,21 +73,25 @@
 /* Begin PBXFileReference section */
 		00BED392C92F04FB084B21CC /* lines.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = lines.json; sourceTree = "<group>"; };
 		0D88F8F88A071B35BD1727E3 /* ManualEntryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ManualEntryView.swift; sourceTree = "<group>"; };
+		1E02FA3BB1E8603C1A763D85 /* Theme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Theme.swift; sourceTree = "<group>"; };
 		269B82A9BFE7AE0EF2270C93 /* DepartureActivityAttributes.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DepartureActivityAttributes.swift; sourceTree = "<group>"; };
 		2B171E0BCADA1C8937903F5A /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		2F4CA1178BF4307A5905F75C /* SignalCycleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignalCycleView.swift; sourceTree = "<group>"; };
 		3099350243901A33CFD9ADD8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		32748146DF672E3D79195414 /* HistoryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HistoryView.swift; sourceTree = "<group>"; };
+		35654059C9A149B117938339 /* WaterHomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterHomeView.swift; sourceTree = "<group>"; };
 		36DDBDF90581D09B1FFAC3A8 /* MeasureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeasureView.swift; sourceTree = "<group>"; };
 		43136D8D41C7B1DA0FC71F56 /* Planner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Planner.swift; sourceTree = "<group>"; };
 		44F6F1D9C8DD9F4AA0072706 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		4A9A06491E020E5BCD634944 /* RoutineSync.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutineSync.swift; sourceTree = "<group>"; };
 		4AA670A701E8F65196A7BA1E /* Secrets.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Secrets.plist; sourceTree = "<group>"; };
 		4CF121D705C92F572B90B29D /* LeaveNow.app */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = wrapper.application; path = LeaveNow.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		56F2CEB4358DCB36894ED222 /* RouteViews.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RouteViews.swift; sourceTree = "<group>"; };
 		5CA9E3975B7CD91C731B9457 /* TripRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripRecord.swift; sourceTree = "<group>"; };
 		5E30F3CD32879F43BAFE4328 /* Estimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Estimator.swift; sourceTree = "<group>"; };
 		6012B31F5EFF3DAF57EB838A /* GeofenceSpike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GeofenceSpike.swift; sourceTree = "<group>"; };
 		6DBC54FBA782A119A41E8C3A /* Segment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Segment.swift; sourceTree = "<group>"; };
+		714F9AB31E1782F6B0CBECE9 /* WaterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WaterView.swift; sourceTree = "<group>"; };
 		88DE9B55E6D87B6079297B0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		A5EFFC6B2481BD9A3F24D49E /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
 		A612E3E61DE945F0D9C81AE6 /* SeoulMetroAPI.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SeoulMetroAPI.swift; sourceTree = "<group>"; };
@@ -114,6 +122,17 @@
 				B0AE2DCFA7993F4A7A83760D /* timetable_09.json */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		2C16CD126BFCFE5D6EFA26A9 /* Design */ = {
+			isa = PBXGroup;
+			children = (
+				56F2CEB4358DCB36894ED222 /* RouteViews.swift */,
+				1E02FA3BB1E8603C1A763D85 /* Theme.swift */,
+				35654059C9A149B117938339 /* WaterHomeView.swift */,
+				714F9AB31E1782F6B0CBECE9 /* WaterView.swift */,
+			);
+			path = Design;
 			sourceTree = "<group>";
 		};
 		5E3FD9BA092E3C5114B7A0A0 /* Models */ = {
@@ -165,6 +184,7 @@
 			children = (
 				B888F0C471F302B94D915332 /* Info.plist */,
 				AE88F84D5AE2A209F7927B53 /* LeaveNowApp.swift */,
+				2C16CD126BFCFE5D6EFA26A9 /* Design */,
 				79E1CBFE3015649431DC261E /* Logic */,
 				5E3FD9BA092E3C5114B7A0A0 /* Models */,
 				29C46544AAC604ABF63BF1B7 /* Resources */,
@@ -341,6 +361,7 @@
 				C7C3BD60951C6E52F6F3BE20 /* OnboardingView.swift in Sources */,
 				C4DCCF1AB07607B4E3B02365 /* Planner.swift in Sources */,
 				197397AA916BCB59258C7A7A /* RealtimeService.swift in Sources */,
+				F76AFD9BBDD8D7A9DFEB10B5 /* RouteViews.swift in Sources */,
 				C7D6E980C8B8001A7C626410 /* RoutineSync.swift in Sources */,
 				0CB93DE46F7E01C3360DB309 /* Secrets.swift in Sources */,
 				EE1AD0E09E917D4C901A0AE6 /* Segment.swift in Sources */,
@@ -349,8 +370,11 @@
 				1A8F9AE428F9A39EAC290077 /* SignalCycleView.swift in Sources */,
 				72CC19C0A543254BE8C6D0E8 /* SpikeView.swift in Sources */,
 				7CBE9A6B4FA68577948D9DB1 /* StationPickerSection.swift in Sources */,
+				1800B5D608A5912203CCD6D5 /* Theme.swift in Sources */,
 				E6E09E6795491EEA9D3EAD8C /* Timetable.swift in Sources */,
 				75D91554B54851EBFD3EAD7F /* TripRecord.swift in Sources */,
+				DC4B5947F42B703F1A50348E /* WaterHomeView.swift in Sources */,
+				423CCB2CAE4F7689E8BF1B91 /* WaterView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
