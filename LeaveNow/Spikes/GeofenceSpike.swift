@@ -28,6 +28,8 @@ final class GeofenceSpike: NSObject, CLLocationManagerDelegate {
     private let logKey = "geofenceSpikeLog"
     private let centerKey = "geofenceSpikeCenter"
     private var pendingSetCenter = false
+    /// 실험 화면에서 버튼을 눌렀을 때만 '항상 허용'까지 요청한다
+    private var wantsAlways = false
 
     private override init() {
         super.init()
@@ -48,6 +50,7 @@ final class GeofenceSpike: NSObject, CLLocationManagerDelegate {
     // MARK: 조작
 
     func requestAlways() {
+        wantsAlways = true
         if manager.authorizationStatus == .notDetermined {
             manager.requestWhenInUseAuthorization()
         } else {
@@ -91,7 +94,8 @@ final class GeofenceSpike: NSObject, CLLocationManagerDelegate {
 
     func locationManagerDidChangeAuthorization(_ manager: CLLocationManager) {
         authorization = manager.authorizationStatus
-        if authorization == .authorizedWhenInUse {
+        if authorization == .authorizedWhenInUse && wantsAlways {
+            wantsAlways = false
             manager.requestAlwaysAuthorization()
         }
     }
