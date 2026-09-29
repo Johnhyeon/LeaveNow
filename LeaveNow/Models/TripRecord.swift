@@ -1,7 +1,7 @@
 import Foundation
 import SwiftData
 
-/// 측정 모드로 기록한 한 번의 이동
+/// v1 측정 모드로 기록한 한 번의 이동. v2 2단계에서 "집에서 승강장까지" 한 구간으로 옮긴 뒤 지운다.
 @Model
 final class TripRecord {
     var date: Date
@@ -10,14 +10,12 @@ final class TripRecord {
     var durations: [Double]
     var note: String
 
-    init(date: Date = .now, direction: Direction, durations: [Double], note: String = "") {
+    init(date: Date = .now, directionRaw: String, durations: [Double], note: String = "") {
         self.date = date
-        self.directionRaw = direction.rawValue
+        self.directionRaw = directionRaw
         self.durations = durations
         self.note = note
     }
-
-    var direction: Direction { Direction.parse(directionRaw) }
 
     func duration(for kind: SegmentKind) -> Double? {
         guard let i = SegmentKind.allCases.firstIndex(of: kind), i < durations.count else { return nil }

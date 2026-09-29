@@ -16,6 +16,6 @@ struct LeaveNowApp: App {
         WindowGroup {
             ContentView()
         }
-        .modelContainer(for: TripRecord.self)
+        .modelContainer(for: [TripRecord.self, Place.self, PlannedTrip.self])
     }
 }

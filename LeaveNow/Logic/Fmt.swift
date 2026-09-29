@@ -20,7 +20,7 @@ enum Fmt {
     static let time: DateFormatter = {
         let f = DateFormatter()
         f.locale = Locale(identifier: "ko_KR")
-        f.dateFormat = "HH:mm"
+        f.dateFormat = "H:mm"
         return f
     }()
 
@@ -28,6 +28,13 @@ enum Fmt {
         let f = DateFormatter()
         f.locale = Locale(identifier: "ko_KR")
         f.dateFormat = "HH:mm:ss"
+        return f
+    }()
+
+    static let weekday: DateFormatter = {
+        let f = DateFormatter()
+        f.locale = Locale(identifier: "ko_KR")
+        f.dateFormat = "M월 d일 EEEE"
         return f
     }()
 

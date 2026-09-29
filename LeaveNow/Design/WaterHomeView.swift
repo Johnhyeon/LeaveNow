@@ -13,10 +13,22 @@ struct WaterHomeView: View {
         let stops: [RouteStop]
         let night: Bool
         let buttonTitle: String
+        var note: String? = nil         // 시트 위쪽 안내 한 줄 (예: 늦음)
+        var noteIsWarning = false
+    }
+
+    struct SheetAction: Identifiable {
+        let id = UUID()
+        let title: String
+        var role: ButtonRole? = nil
+        let action: () -> Void
     }
 
     let content: Content
     var onClose: (() -> Void)? = nil
+    var onSettings: (() -> Void)? = nil
+    var primaryAction: (() -> Void)? = nil
+    var extraActions: [SheetAction] = []
 
     @State private var showSheet = true
     @State private var detent: PresentationDetent = .height(128)
@@ -42,6 +54,15 @@ struct WaterHomeView: View {
                                 .font(.subheadline.weight(.semibold))
                                 .foregroundStyle(secondary)
                         }
+                        if let onSettings {
+                            Button(action: onSettings) {
+                                Image(systemName: "gearshape")
+                                    .font(.body.weight(.semibold))
+                                    .frame(width: 32, height: 32)
+                            }
+                            .foregroundStyle(secondary)
+                            .accessibilityLabel("설정")
+                        }
                     }
                     Spacer(minLength: 24)
                     Text(bigNumber(remaining))
@@ -64,7 +85,7 @@ struct WaterHomeView: View {
             .accessibilityLabel("\(content.meta). \(bigNumber(remaining)) \(content.unit)")
         }
         .sheet(isPresented: $showSheet) {
-            RouteSheet(content: content, detent: detent)
+            RouteSheet(content: content, detent: detent, primaryAction: primaryAction, extraActions: extraActions)
                 .presentationDetents([.height(128), .large], selection: $detent)
                 .presentationBackgroundInteraction(.enabled(upThrough: .height(128)))
                 .presentationCornerRadius(28)
@@ -75,13 +96,17 @@ struct WaterHomeView: View {
 
     private func bigNumber(_ remaining: TimeInterval) -> String {
         if remaining < 60 { return "0" }
-        return "\(Int((remaining / 60).rounded(.up)))"
+        let minutes = Int((remaining / 60).rounded(.up))
+        if minutes >= 100 { return String(format: "%d:%02d", minutes / 60, minutes % 60) }
+        return "\(minutes)"
     }
 }
 
 private struct RouteSheet: View {
     let content: WaterHomeView.Content
     let detent: PresentationDetent
+    var primaryAction: (() -> Void)? = nil
+    var extraActions: [WaterHomeView.SheetAction] = []
 
     var body: some View {
         let ink = content.night ? Color.white : Theme.ink
@@ -93,6 +118,11 @@ private struct RouteSheet: View {
                 Text(content.peekRight).font(.caption.weight(.semibold)).foregroundStyle(mute)
             }
             RouteStripView(stops: content.stops, night: content.night)
+            if let note = content.note {
+                Text(note)
+                    .font(.caption.weight(.bold))
+                    .foregroundStyle(content.noteIsWarning ? Color.orange : mute)
+            }
             if detent == .large {
                 Divider().padding(.vertical, 4)
                 ScrollView {
@@ -101,6 +131,7 @@ private struct RouteSheet: View {
                         .padding(.top, 8)
                 }
                 Button {
+                    primaryAction?()
                 } label: {
                     Text(content.buttonTitle)
                         .font(.headline.weight(.heavy))
@@ -112,6 +143,11 @@ private struct RouteSheet: View {
                 .foregroundStyle(content.night ? Theme.nightPaper : .white)
                 .controlSize(.large)
                 .buttonBorderShape(.capsule)
+                ForEach(extraActions) { action in
+                    Button(action.title, role: action.role, action: action.action)
+                        .font(.subheadline.weight(.semibold))
+                        .frame(maxWidth: .infinity)
+                }
             }
             Spacer(minLength: 0)
         }
