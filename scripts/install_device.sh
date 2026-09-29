@@ -5,7 +5,7 @@ set -e
 cd "$(dirname "$0")/.."
 
 # 1) 팀 ID: project.yml 의 DEVELOPMENT_TEAM (Xcode > Settings > Accounts 의 Personal Team)
-TEAM=$(grep -o 'DEVELOPMENT_TEAM: [A-Z0-9]*' project.yml | awk '{print $2}')
+TEAM=$(grep -o 'DEVELOPMENT_TEAM: [A-Z0-9]*' project.yml | awk '{print $2}' | head -1)
 if [[ -z "$TEAM" ]]; then
   echo "❌ project.yml 에 DEVELOPMENT_TEAM 이 없습니다. Xcode > Settings > Accounts 에서 Apple ID를 추가한 뒤 팀 ID를 적어주세요."
   exit 1
@@ -30,12 +30,24 @@ if [[ -z "$UDID" ]]; then
 fi
 echo "✅ 기기 UDID: $UDID"
 
-# 3) 빌드 (자동 서명, 프로비저닝 프로파일 자동 생성)
-xcodebuild -project LeaveNow.xcodeproj -scheme LeaveNow \
-  -destination "platform=iOS,id=$UDID" \
-  -derivedDataPath build -configuration Debug \
-  -allowProvisioningUpdates DEVELOPMENT_TEAM="$TEAM" build \
-  | grep -E "error:|warning: .*signing|BUILD (SUCCEEDED|FAILED)" || true
+# 3) 빌드: 폰에 이미 있는 서명 프로파일로 먼저 빌드하고, 없을 때만 Apple 계정에 접속해 새로 받는다.
+#    (Xcode 계정 세션이 만료되면 -allowProvisioningUpdates 가 "No Account for Team" 으로 실패하기 때문)
+build() {
+  xcodebuild -project LeaveNow.xcodeproj -scheme LeaveNow \
+    -destination "platform=iOS,id=$UDID" \
+    -derivedDataPath build -configuration Debug \
+    DEVELOPMENT_TEAM="$TEAM" "$@" build 2>&1 | tee /tmp/leavenow_build.log \
+    | grep -E "error:|BUILD (SUCCEEDED|FAILED)" || true
+}
+build
+if ! grep -q "BUILD SUCCEEDED" /tmp/leavenow_build.log; then
+  echo "↻ 로컬 프로파일로 실패, Apple 계정에서 프로파일을 새로 받아 다시 빌드합니다."
+  build -allowProvisioningUpdates -allowProvisioningDeviceRegistration
+fi
+if grep -q "No Account for Team" /tmp/leavenow_build.log && ! grep -q "BUILD SUCCEEDED" /tmp/leavenow_build.log; then
+  echo "❌ Xcode 계정 로그인이 만료됐습니다. Xcode를 열고 ⌘, > Accounts 에서 다시 로그인한 뒤, Xcode에서 한 번 ⌘R로 실행해 주세요."
+  exit 1
+fi
 
 APP=build/Build/Products/Debug-iphoneos/LeaveNow.app
 [[ -d "$APP" ]] || { echo "❌ 빌드 산출물이 없습니다."; exit 1; }
