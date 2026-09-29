@@ -315,7 +315,9 @@ h1, h2, h3 { text-wrap: balance; margin: 0; }
           <li>필요한 정보는 필요한 순간에만 묻습니다. 반복 요일은 묻지 않고 같은 곳에 세 번째 도착하면 제안하고, 목적지 이름은 역 이름으로 자동으로 붙입니다.</li>
           <li>공휴일은 묻지 않고 달력 데이터로 처리합니다. 휴일 시간표를 쓰고 평일 알림은 쉽니다.</li>
           <li>연차나 재택처럼 안 가는 날은 알림이나 홈에서 "오늘은 안 가요" 한 번으로 그날만 끕니다.</li>
-          <li>목적지에 일찍 도착하는 여유는 기본 10분이고 설정에서 바꿀 수 있습니다.</li>
+          <li>입력한 시각이 곧 도착 목표입니다. 일찍 도착 여유는 기본 0분이고 원하는 사람만 설정에서 켭니다. 켜면 결과 화면에 드러내 보여줍니다. 사람들이 이미 여유를 넣어 시각을 적는 경우가 많아 기본값에서 뺐습니다.</li>
+          <li>환승마다 필요한 여유를 따로 계산합니다. 표준 환승 시간(경로 API와 서울교통공사 환승 거리 중 긴 쪽) × 내 걸음 배율 + 기본 여유(같은 승강장 30초, 그 외 최소 1분, 긴 환승일수록 더, 출퇴근 시간 +30초). 대기 시간이 모자란 연결은 고르지 않습니다.</li>
+          <li>빠른 칸을 안내합니다. "4-4칸 타면 환승 가까워요"처럼 탈 칸을 알려줍니다. 서울교통공사 환승 데이터에 없는 역은 표시하지 않습니다.</li>
           <li>돌아오는 길은 오늘 가는 길 기록이 있을 때만, 목적지 도착 뒤 홈에 띄웁니다.</li>
           <li>지각이 확실하면 늦는다고 알릴 문장을 만들어 줍니다. 사실만 쓰고, 보내는 건 사용자가 합니다.</li>
           <li>출발지는 집, 저장한 곳, 지금 있는 곳 중에서 고릅니다. 지금 위치에 맞춰 자동으로 골라둡니다.</li>
@@ -553,7 +555,7 @@ flowchart LR
           <div class="w-field"><label>도착역</label><div class="w-input"><span class="dot" style="background:var(--l2)"></span>강남<span class="muted">2호선 · 신분당선</span></div></div>
           <div class="w-field"><label>몇 시까지</label><div class="w-input num">10:00</div></div>
           <div class="w-field"><label>역에서 걸어서 · 선택</label><div class="w-input">5분</div></div>
-          <p class="w-small">목적지에 10분 일찍 도착하도록 계산해요.</p>
+          <p class="w-small">입력한 시각까지 도착하도록 계산해요.</p>
           <div class="w-spacer"></div>
           <div class="btn">경로 보기</div>
         </div>
@@ -562,7 +564,7 @@ flowchart LR
           <li><span class="tag new">새로</span><span>출발지는 지금 위치에 맞춰 자동으로 골라둡니다. 집에 있으면 "집", 회사 근처면 "회사", 그 밖이면 "지금 여기"입니다. 퇴근 후 바로 약속에 가는 날은 "회사"로 바뀌어 있고, 회사에서 역까지 시간은 이미 배운 값을 씁니다. 처음 가는 곳은 지도 도보 시간에 여유를 더합니다.</span></li>
           <li><span class="tag new">새로</span><span>최근 간 역을 먼저 보여줍니다. 누르면 도착역이 채워지고 시각만 바꾸면 됩니다.</span></li>
           <li><span class="tag new">새로</span><span>이름과 반복 요일은 묻지 않습니다. 이름은 역 이름으로 붙고 나중에 "회사"처럼 바꿀 수 있습니다. 반복은 M6에서 제안합니다.</span></li>
-          <li><span class="tag new">정해짐</span><span>일찍 도착 여유는 기본 10분. 설정 화면에서 바꿉니다.</span></li>
+          <li><span class="tag new">정해짐</span><span>일찍 도착 여유는 기본 0분. 입력한 시각이 곧 도착 목표이고, 설정에서 켤 수 있습니다.</span></li>
           <li><span class="tag new">새로</span><span>저장하면 돌아오는 길도 자동으로 생깁니다. 역에서 걷는 시간은 돌아올 때 목적지에서 역까지 시간으로 다시 씁니다.</span></li>
         </ul>
       </article>
@@ -574,8 +576,8 @@ flowchart LR
           <div class="row between"><div class="big-time" style="font-size:28px">8:59<small>현관</small></div><span class="pill neutral">환승 1회</span></div>
           <div class="legs">
             <div class="leg" style="--c:var(--l9)"><div class="rail"><span class="node"></span><span class="track"></span></div>
-              <div class="body"><span class="linechip l9" style="--c:var(--l9)">9 급행</span><b>가양</b> <span class="t">9:12</span><br><span class="t">신논현 9:37 · 7정거장 정차</span></div></div>
-            <div class="leg"><div class="rail"><span class="walk"></span></div><div class="body"><span class="t">환승 도보 5분</span></div></div>
+              <div class="body"><span class="linechip l9" style="--c:var(--l9)">9 급행</span><b>가양</b> <span class="t">9:12</span><br><span class="t">신논현 9:37 · 7정거장 정차 · 빠른 칸 안내</span></div></div>
+            <div class="leg"><div class="rail"><span class="walk"></span></div><div class="body"><span class="t">환승 · 걸어서 5분 · 여유 4분</span></div></div>
             <div class="leg" style="--c:var(--lsb)"><div class="rail"><span class="node"></span><span class="track"></span></div>
               <div class="body"><span class="linechip" style="--c:var(--lsb)">신분당</span><b>신논현</b> <span class="t">9:42</span><br><span class="t">강남 9:43 · 1정거장</span></div></div>
             <div class="leg" style="--c:var(--lsb)"><div class="rail"><span class="node"></span></div>
@@ -1240,7 +1242,7 @@ flowchart LR
             <div class="item">집 → 승강장<span class="muted">9분 ›</span></div>
             <div class="item">미리 알림<span class="muted">10분 전</span></div>
             <div class="item">승강장 여유<span class="muted">4분</span></div>
-            <div class="item">목적지 일찍 도착<span class="muted">10분 ›</span></div>
+            <div class="item">일찍 도착<span class="muted">안 함 ›</span></div>
             <div class="item">강남역 → 회사<span class="muted">4분 30초 · 실측 6회</span></div>
             <div class="item">내 걸음 속도<span class="muted">표준보다 8% 빠름</span></div>
             <div class="item">강남 경로 오차<span class="muted">평소 +2분 · 주로 한 대 보냄</span></div>
