@@ -109,6 +109,7 @@ struct TripHomeView: View {
                                 .init(title: "다른 곳 가기") { onNew() },
                                 .init(title: "이번 이동 취소", role: .destructive) {
                                     trip.cancelled = true
+                                    try? trip.modelContext?.save()
                                     TripNotifier.cancelAll()
                                 },
                               ])
@@ -151,7 +152,42 @@ struct TripHomeView: View {
                      night: false,
                      buttonTitle: recalculating ? "다시 계산하는 중…" : "지금 기준으로 다시 계산",
                      note: late ? "마감보다 늦게 도착해요 · \(Fmt.time.string(from: arrive)) 예상" : nil,
-                     noteIsWarning: late)
+                     noteIsWarning: late,
+                     details: details(plan: plan, origin: origin, arrive: arrive, now: now))
+    }
+
+    private func details(plan: TripPlan, origin: OriginInfo, arrive: Date, now: Date) -> WaterHomeView.SheetDetails {
+        let t = { (d: Date) in Fmt.time.string(from: d) }
+        let lead = plan.leaveBy.addingTimeInterval(TimeInterval(-profile.leadMinutes * 60))
+        let early = Int(trip.deadline.timeIntervalSince(arrive) / 60)
+        let doorToDoor = Int(arrive.timeIntervalSince(plan.leaveBy) / 60)
+        let car = RouteStops.fastCar(plan)
+        var compact: [WaterHomeView.SheetDetails.Item] = [.init(symbol: "bell.fill", text: "알림 \(t(lead)) · \(t(plan.leaveBy))")]
+        if let car { compact.append(.init(symbol: "tram.fill", text: "\(car.car)칸 타기")) }
+
+        let walk = TimeInterval(trip.walkFromStation * 60)
+        let alternatives = (plan.alternatives ?? []).map { alt -> WaterHomeView.SheetDetails.Option in
+            let first = alt.rides.first
+            let label = first.map { "\(t($0.departure)) \($0.express ? "급행" : LineStyle.short($0.line) + (Int(LineStyle.short($0.line)) != nil ? "호선" : ""))" } ?? t(alt.departure)
+            let placeArrive = alt.arrival.addingTimeInterval(walk)
+            let diff = Int(placeArrive.timeIntervalSince(trip.deadline) / 60)
+            let status = diff > 0 ? "\(diff)분 늦음" : (diff == 0 ? "딱 맞음" : "\(-diff)분 일찍")
+            return .init(left: label, right: "\(trip.placeName) \(t(placeArrive)) · \(status)", warning: diff > 0)
+        }
+        var alerts: [WaterHomeView.SheetDetails.Item] = []
+        if lead > now { alerts.append(.init(symbol: "bell", text: "\(t(lead)) 미리 알림 · \(profile.leadMinutes)분 뒤 현관")) }
+        if plan.leaveBy > now { alerts.append(.init(symbol: "bell.badge", text: "\(t(plan.leaveBy)) 지금 현관을 나서요")) }
+
+        var chips = [plan.trip.transferCount == 0 ? "환승 없음" : "환승 \(plan.trip.transferCount)회", "도어 투 도어 \(doorToDoor)분"]
+        if plan.trip.rides.first?.express == true { chips.append("급행") }
+        return .init(compact: compact,
+                     leaveTime: t(plan.leaveBy),
+                     leaveLabel: origin.label == "지금 여기" ? "출발" : "\(origin.label)에서 출발",
+                     arriveLine: "\(trip.placeName) \(t(arrive)) 도착 · \(early >= 0 ? "\(early)분 일찍" : "\(-early)분 늦음")",
+                     chips: chips,
+                     fastCar: car.map { ("\($0.station)에서 \($0.car)칸에 타세요", "\($0.transfer) 환승 통로가 가까워요") },
+                     alternatives: alternatives,
+                     alerts: alerts)
     }
 
     private func recalculate(origin: OriginInfo) async {
@@ -164,6 +200,7 @@ struct TripHomeView: View {
                                                            stationArrivalTarget: target,
                                                            bufferMinutes: profile.platformBuffer, mode: mode) {
             trip.update(plan: plan)
+            try? trip.modelContext?.save()
             TripNotifier.schedule(placeName: trip.placeName, plan: plan, leadMinutes: profile.leadMinutes)
         }
     }

@@ -84,6 +84,7 @@ struct ContentView: View {
                 if flag == "-seedTrip" {
                     context.insert(PlannedTrip(placeName: to, destinationStation: to, walkFromStation: 0,
                                                deadline: deadline, origin: origin, plan: plan))
+                    try? context.save()
                 }
             } catch {
                 print("PLAN 오류 \(error.localizedDescription)")

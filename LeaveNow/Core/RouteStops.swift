@@ -2,6 +2,16 @@ import SwiftUI
 
 /// 계획을 노선도 칸들로 바꾼다
 enum RouteStops {
+    /// 첫 환승을 위한 빠른 칸: (탈 역, 칸, 환승역)
+    static func fastCar(_ plan: TripPlan) -> (station: String, car: String, transfer: String)? {
+        let rides = plan.trip.rides
+        guard rides.count >= 2 else { return nil }
+        let a = rides[0], b = rides[1]
+        guard let car = TransferData.shared.fastCar(station: a.to, fromLine: a.line, prevStation: a.penultimateStation,
+                                                    toLine: b.line, nextStation: b.secondStation) else { return nil }
+        return (a.from, car.alight, a.to)
+    }
+
     static func make(plan: TripPlan, origin: OriginInfo, placeName: String, walkFromStation: Int,
                      arriveEarly: Int, deadline: Date, now: Date = .now, includeNow: Bool = true) -> [RouteStop] {
         var stops: [RouteStop] = []

@@ -156,6 +156,7 @@ struct RouteResultView: View {
         for t in trips where !t.cancelled { t.cancelled = true }
         context.insert(PlannedTrip(placeName: placeName, destinationStation: stationName, walkFromStation: walkFromStation,
                                    deadline: deadline, origin: origin, plan: plan))
+        try? context.save()
         Task {
             if await TripNotifier.requestAuthorization() {
                 TripNotifier.schedule(placeName: placeName, plan: plan, leadMinutes: profile.leadMinutes)

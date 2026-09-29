@@ -45,7 +45,7 @@ struct SettingsView: View {
                                     .font(.caption).foregroundStyle(Theme.mute)
                             }
                         }
-                        .onDelete { offsets in offsets.forEach { context.delete(places[$0]) } }
+                        .onDelete { offsets in offsets.forEach { context.delete(places[$0]) }; try? context.save() }
                     }
                 }
                 Section {

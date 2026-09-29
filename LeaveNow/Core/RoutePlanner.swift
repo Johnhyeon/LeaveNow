@@ -15,6 +15,8 @@ struct TripPlan: Codable, Hashable {
     let platformBy: Date         // 승강장 도착 목표
     let stationArrivalTarget: Date
     let isLate: Bool
+    /// 이 열차를 놓치면 탈 수 있는 다음 열차들 (믿을 만한 연결만)
+    var alternatives: [RouteTrip]? = nil
 }
 
 /// 경로 API로 열차를 훑어 '마감에 맞는 가장 늦은 열차'를 찾는다.
@@ -39,7 +41,8 @@ actor RoutePlanner {
             let plan = try await makePlan(trips: trips, from: from, to: to, mode: .fewestTransfers, origin: origin,
                                           target: stationArrivalTarget, bufferMinutes: bufferMinutes, now: now)
             let fast = TripPlan(mode: .fastest, trip: plan.trip, leaveBy: plan.leaveBy, platformBy: plan.platformBy,
-                                stationArrivalTarget: plan.stationArrivalTarget, isLate: plan.isLate)
+                                stationArrivalTarget: plan.stationArrivalTarget, isLate: plan.isLate,
+                                alternatives: plan.alternatives)
             return [.fastest: fast, .fewestTransfers: plan]
         }
         async let t1 = trips(from: from, to: to, mode: .fastest, target: stationArrivalTarget, probe: a)
@@ -71,10 +74,11 @@ actor RoutePlanner {
 
         // 마감에 맞는 가장 늦은 열차
         if let best = Self.latestOnTime(trips, target: target), best.departure >= readyAfter {
+            let more = try await after(best, in: trips, from: from, to: to, mode: mode)
             return TripPlan(mode: mode, trip: best,
                             leaveBy: best.departure.addingTimeInterval(-buffer - toPlatform),
                             platformBy: best.departure.addingTimeInterval(-buffer),
-                            stationArrivalTarget: target, isLate: false)
+                            stationArrivalTarget: target, isLate: false, alternatives: more)
         }
         // 이미 늦었으면: 지금 나가서 탈 수 있는 열차 중 가장 빨리 도착하는 것
         var candidates = trips.filter { $0.departure >= readyAfter }
@@ -86,10 +90,29 @@ actor RoutePlanner {
         // 늦었을 때도 빠듯한 연결은 피하되, 그것밖에 없으면 쓴다
         guard let fastest = candidates.filter({ !$0.isTight }).min(by: { $0.arrival < $1.arrival })
                 ?? candidates.min(by: { $0.arrival < $1.arrival }) else { throw RouteError.noRoute }
+        let more = try await after(fastest, in: candidates, from: from, to: to, mode: mode)
         return TripPlan(mode: mode, trip: fastest,
                         leaveBy: fastest.departure.addingTimeInterval(-buffer - toPlatform),
                         platformBy: fastest.departure.addingTimeInterval(-buffer),
-                        stationArrivalTarget: target, isLate: fastest.arrival > target)
+                        stationArrivalTarget: target, isLate: fastest.arrival > target, alternatives: more)
+    }
+
+    /// chosen 을 놓쳤을 때 가장 빨리 도착하는 다음 열차 두 개. 모자라면 뒤를 더 조회한다
+    private func after(_ chosen: RouteTrip, in trips: [RouteTrip], from: String, to: String, mode: RouteMode) async throws -> [RouteTrip] {
+        var pool = trips.filter { $0.departure > chosen.departure && !$0.isTight }
+        if pool.count < 2 {
+            let more = try await grid(from: from, to: to, mode: mode, start: chosen.departure.addingTimeInterval(1),
+                                      end: chosen.departure.addingTimeInterval(15 * 60))
+            pool = Self.merge(pool, more).filter { $0.departure > chosen.departure && !$0.isTight }
+        }
+        // 먼저 떠나도 늦게 도착하는 열차(급행에 추월당하는 일반)는 빼고, 도착 순으로 두 개
+        var result: [RouteTrip] = []
+        for trip in pool.sorted(by: { $0.arrival < $1.arrival }) where result.count < 2 {
+            if !result.contains(where: { $0.arrival <= trip.arrival && $0.departure >= trip.departure }) {
+                result.append(trip)
+            }
+        }
+        return result.sorted { $0.departure < $1.departure }
     }
 
     // MARK: 열차 모으기

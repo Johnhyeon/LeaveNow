@@ -15,6 +15,21 @@ struct WaterHomeView: View {
         let buttonTitle: String
         var note: String? = nil         // 시트 위쪽 안내 한 줄 (예: 늦음)
         var noteIsWarning = false
+        var details: SheetDetails? = nil
+    }
+
+    /// 시트를 채우는 정보. 미리보기처럼 없으면 경로 한 줄만 보인다
+    struct SheetDetails {
+        struct Item: Hashable { let symbol: String; let text: String }
+        struct Option: Hashable { let left: String; let right: String; let warning: Bool }
+        var compact: [Item] = []          // 접었을 때 한 줄: 알림 시각, 탈 칸
+        var leaveTime: String             // "18:23"
+        var leaveLabel: String            // "집에서 출발"
+        var arriveLine: String            // "시청 19:12 도착 · 1분 일찍"
+        var chips: [String] = []          // "환승 1회", "도어 투 도어 49분"
+        var fastCar: (title: String, subtitle: String)? = nil
+        var alternatives: [Option] = []   // 놓치면 다음 열차
+        var alerts: [Item] = []           // 알림 시각
     }
 
     struct SheetAction: Identifiable {
@@ -31,7 +46,8 @@ struct WaterHomeView: View {
     var extraActions: [SheetAction] = []
 
     @State private var showSheet = true
-    @State private var detent: PresentationDetent = .height(128)
+    // 개발용: -sheetLarge 로 실행하면 시트를 펼친 채로 시작
+    @State private var detent: PresentationDetent = ProcessInfo.processInfo.arguments.contains("-sheetLarge") ? .large : .height(128)
 
     var body: some View {
         TimelineView(.periodic(from: .now, by: 1)) { context in
@@ -109,10 +125,13 @@ private struct RouteSheet: View {
     var primaryAction: (() -> Void)? = nil
     var extraActions: [WaterHomeView.SheetAction] = []
 
+    private var ink: Color { content.night ? .white : Theme.ink }
+    private var mute: Color { content.night ? Theme.nightMute : Theme.mute }
+    private var card: Color { content.night ? Color.white.opacity(0.06) : Theme.card }
+
     var body: some View {
-        let ink = content.night ? Color.white : Theme.ink
-        let mute = content.night ? Theme.nightMute : Theme.mute
-        VStack(alignment: .leading, spacing: 14) {
+        VStack(alignment: .leading, spacing: 12) {
+            // 접었을 때도 보이는 부분
             HStack {
                 Text(content.peekLeft).font(.subheadline.weight(.bold)).foregroundStyle(ink)
                 Spacer()
@@ -124,36 +143,135 @@ private struct RouteSheet: View {
                     .font(.caption.weight(.bold))
                     .foregroundStyle(content.noteIsWarning ? Color.orange : mute)
             }
+            if let d = content.details, !d.compact.isEmpty, detent != .large {
+                HStack(spacing: 14) {
+                    ForEach(d.compact, id: \.self) { item in
+                        Label(item.text, systemImage: item.symbol)
+                            .font(.caption.weight(.semibold))
+                            .foregroundStyle(mute)
+                            .lineLimit(1)
+                    }
+                }
+            }
+
             if detent == .large {
-                Divider().padding(.vertical, 4)
                 ScrollView {
-                    RouteMapView(stops: content.stops, night: content.night)
-                        .foregroundStyle(ink)
-                        .padding(.top, 8)
+                    VStack(alignment: .leading, spacing: 16) {
+                        if let d = content.details { summary(d) }
+                        RouteMapView(stops: content.stops, night: content.night)
+                            .foregroundStyle(ink)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                            .padding(16)
+                            .background(card, in: RoundedRectangle(cornerRadius: 20))
+                        if let d = content.details { extras(d) }
+                        buttons
+                    }
+                    .padding(.top, 8)
+                    .padding(.bottom, 24)
                 }
-                Button {
-                    primaryAction?()
-                } label: {
-                    Text(content.buttonTitle)
-                        .font(.headline.weight(.heavy))
-                        .frame(maxWidth: .infinity)
-                        .padding(.vertical, 6)
-                }
-                .buttonStyle(.borderedProminent)
-                .tint(content.night ? .white : Theme.ink)
-                .foregroundStyle(content.night ? Theme.nightPaper : Theme.onInk)
-                .controlSize(.large)
-                .buttonBorderShape(.capsule)
-                ForEach(extraActions) { action in
-                    Button(action.title, role: action.role, action: action.action)
-                        .font(.subheadline.weight(.semibold))
-                        .frame(maxWidth: .infinity)
-                }
+                .scrollIndicators(.hidden)
             }
             Spacer(minLength: 0)
         }
         .padding(.horizontal, 20)
         .padding(.top, 22)
+    }
+
+    @ViewBuilder
+    private func summary(_ d: WaterHomeView.SheetDetails) -> some View {
+        VStack(alignment: .leading, spacing: 6) {
+            HStack(alignment: .firstTextBaseline, spacing: 8) {
+                Text(d.leaveTime).font(Theme.number(40)).foregroundStyle(ink)
+                Text(d.leaveLabel).font(.title3.weight(.heavy)).foregroundStyle(ink)
+            }
+            Text(d.arriveLine).font(.subheadline.weight(.semibold)).foregroundStyle(mute)
+            if !d.chips.isEmpty {
+                HStack(spacing: 6) {
+                    ForEach(d.chips, id: \.self) { chip in
+                        Text(chip)
+                            .font(.caption.weight(.bold))
+                            .padding(.horizontal, 9).padding(.vertical, 4)
+                            .background(Color(.secondarySystemFill), in: Capsule())
+                            .foregroundStyle(ink)
+                    }
+                }
+                .padding(.top, 2)
+            }
+        }
+        if let car = d.fastCar {
+            HStack(spacing: 12) {
+                Image(systemName: "tram.fill")
+                    .font(.title3)
+                    .foregroundStyle(Theme.now)
+                    .frame(width: 40, height: 40)
+                    .background(Theme.now.opacity(0.14), in: RoundedRectangle(cornerRadius: 12))
+                VStack(alignment: .leading, spacing: 2) {
+                    Text(car.title).font(.subheadline.weight(.bold)).foregroundStyle(ink)
+                    Text(car.subtitle).font(.caption).foregroundStyle(mute)
+                }
+                Spacer(minLength: 0)
+            }
+            .padding(12)
+            .background(card, in: RoundedRectangle(cornerRadius: 16))
+        }
+    }
+
+    @ViewBuilder
+    private func extras(_ d: WaterHomeView.SheetDetails) -> some View {
+        if !d.alternatives.isEmpty {
+            VStack(alignment: .leading, spacing: 8) {
+                Text("이 열차를 놓치면").font(.caption.weight(.bold)).foregroundStyle(mute)
+                ForEach(d.alternatives, id: \.self) { option in
+                    HStack {
+                        Text(option.left).font(.subheadline.weight(.semibold)).foregroundStyle(ink)
+                        Spacer()
+                        Text(option.right)
+                            .font(.subheadline.weight(.semibold))
+                            .foregroundStyle(option.warning ? Color.orange : mute)
+                    }
+                }
+            }
+            .padding(14)
+            .background(card, in: RoundedRectangle(cornerRadius: 16))
+        }
+        if !d.alerts.isEmpty {
+            VStack(alignment: .leading, spacing: 8) {
+                Text("알림").font(.caption.weight(.bold)).foregroundStyle(mute)
+                ForEach(d.alerts, id: \.self) { item in
+                    Label(item.text, systemImage: item.symbol)
+                        .font(.subheadline.weight(.semibold))
+                        .foregroundStyle(ink)
+                }
+            }
+            .frame(maxWidth: .infinity, alignment: .leading)
+            .padding(14)
+            .background(card, in: RoundedRectangle(cornerRadius: 16))
+        }
+    }
+
+    private var buttons: some View {
+        VStack(spacing: 10) {
+            Button {
+                primaryAction?()
+            } label: {
+                Text(content.buttonTitle)
+                    .font(.headline.weight(.heavy))
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 6)
+            }
+            .buttonStyle(.borderedProminent)
+            .tint(content.night ? .white : Theme.ink)
+            .foregroundStyle(content.night ? Theme.nightPaper : Theme.onInk)
+            .controlSize(.large)
+            .buttonBorderShape(.capsule)
+            ForEach(extraActions) { action in
+                Button(action.title, role: action.role, action: action.action)
+                    .font(.subheadline.weight(.semibold))
+                    .frame(maxWidth: .infinity)
+                    .padding(.vertical, 4)
+            }
+        }
+        .padding(.top, 4)
     }
 }
 
