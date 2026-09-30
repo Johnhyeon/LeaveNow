@@ -54,14 +54,17 @@ struct WaterHomeView: View {
     var onSettings: (() -> Void)? = nil
     var primaryAction: (() -> Void)? = nil
     var extraActions: [SheetAction] = []
+    /// 물 화면 위쪽 '취소'를 누르면 고르는 것들. 비어 있으면 버튼을 숨긴다
+    var cancelActions: [SheetAction] = []
 
     init(live makeContent: @escaping (Date) -> Content, onClose: (() -> Void)? = nil, onSettings: (() -> Void)? = nil,
-         primaryAction: (() -> Void)? = nil, extraActions: [SheetAction] = []) {
+         primaryAction: (() -> Void)? = nil, extraActions: [SheetAction] = [], cancelActions: [SheetAction] = []) {
         self.makeContent = makeContent
         self.onClose = onClose
         self.onSettings = onSettings
         self.primaryAction = primaryAction
         self.extraActions = extraActions
+        self.cancelActions = cancelActions
     }
 
     /// 미리보기처럼 내용이 고정일 때
@@ -72,6 +75,7 @@ struct WaterHomeView: View {
     }
 
     @State private var showSheet = true
+    @State private var showCancel = false
     // 개발용: -sheetLarge 로 실행하면 시트를 펼친 채로 시작
     @State private var detent: PresentationDetent = ProcessInfo.processInfo.arguments.contains("-sheetLarge") ? .large : .height(128)
 
@@ -93,6 +97,12 @@ struct WaterHomeView: View {
                             .font(.subheadline.weight(.semibold))
                             .foregroundStyle(secondary)
                         Spacer()
+                        if !cancelActions.isEmpty {
+                            Button("취소") { showCancel = true }
+                                .font(.subheadline.weight(.semibold))
+                                .foregroundStyle(secondary)
+                                .padding(.horizontal, 6)
+                        }
                         if let onClose {
                             Button("닫기", action: onClose)
                                 .font(.subheadline.weight(.semibold))
@@ -157,6 +167,13 @@ struct WaterHomeView: View {
             TimelineView(.periodic(from: .now, by: 1)) { context in
                 RouteSheet(content: makeContent(context.date), detent: detent,
                            primaryAction: primaryAction, extraActions: extraActions)
+            }
+            // 시트가 늘 떠 있어서, 확인 창은 시트 쪽에서 띄워야 보인다
+            .confirmationDialog("이번 이동을 어떻게 할까요?", isPresented: $showCancel, titleVisibility: .visible) {
+                ForEach(cancelActions) { action in
+                    Button(action.title, role: action.role, action: action.action)
+                }
+                Button("그대로 두기", role: .cancel) {}
             }
             .presentationDetents([.height(128), .large], selection: $detent)
             .presentationBackgroundInteraction(.enabled(upThrough: .height(128)))

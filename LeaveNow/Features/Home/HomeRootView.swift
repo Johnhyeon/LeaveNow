@@ -113,21 +113,8 @@ struct TripHomeView: View {
             WaterHomeView(live: { now in content(plan: trip.plan ?? fallbackPlan, origin: origin, now: now) },
                           onSettings: onSettings,
                           primaryAction: { Task { await recalculate(origin: origin) } },
-                          extraActions: (trip.departedAt == nil ? [] : [
-                            WaterHomeView.SheetAction(title: "출발 취소") { undoDeparture() },
-                          ]) + (routinePlace.map { place in [
-                            WaterHomeView.SheetAction(title: "오늘은 안 가요 · \(place.repeatText ?? "") 반복은 그대로") {
-                                Routines.skipToday(place, context: context)
-                            },
-                          ] } ?? []) + [
-                            .init(title: "다른 곳 가기") { onNew() },
-                            .init(title: "이번 이동 취소", role: .destructive) {
-                                trip.cancelled = true
-                                try? trip.modelContext?.save()
-                                TripNotifier.cancelAll()
-                                TripActivity.endAll()
-                            },
-                          ])
+                          extraActions: [.init(title: "다른 곳 가기") { onNew() }] + cancelActions,
+                          cancelActions: cancelActions)
             .task {
                 // 개발용: -departNow 로 실행하면 출발 버튼을 누른 것처럼
                 if ProcessInfo.processInfo.arguments.contains("-departNow"), trip.departedAt == nil {
@@ -137,6 +124,26 @@ struct TripHomeView: View {
         } else {
             Text("계획을 읽지 못했어요").onAppear { trip.cancelled = true }
         }
+    }
+
+    /// 물 화면 '취소'와 시트 아래에 같이 두는 것들
+    private var cancelActions: [WaterHomeView.SheetAction] {
+        var actions: [WaterHomeView.SheetAction] = []
+        if trip.departedAt != nil {
+            actions.append(.init(title: "출발 취소 · 경로는 그대로") { undoDeparture() })
+        }
+        if let place = routinePlace {
+            actions.append(.init(title: "오늘은 안 가요 · \(place.repeatText ?? "") 반복은 그대로") {
+                Routines.skipToday(place, context: context)
+            })
+        }
+        actions.append(.init(title: "이번 이동 취소", role: .destructive) {
+            trip.cancelled = true
+            try? trip.modelContext?.save()
+            TripNotifier.cancelAll()
+            TripActivity.endAll()
+        })
+        return actions
     }
 
     /// 이 이동이 반복 일정에서 나왔으면 그 장소
