@@ -2,7 +2,7 @@ import SwiftData
 import SwiftUI
 
 /// 자주 가는 곳(직접 등록)과 최근 간 곳 칩. 누르면 그곳으로 바로 채운다.
-/// 길게 누르면 자주 가는 곳에 넣거나 빼고, 지울 수 있다.
+/// 길게 누르면 편집(이름·시각·반복), 자주 가는 곳에 넣거나 빼기, 지우기.
 struct PlaceShortcuts: View {
     var selectedStation: String? = nil
     var showsTime = false
@@ -11,6 +11,13 @@ struct PlaceShortcuts: View {
     @Query(sort: \Place.lastUsedAt, order: .reverse) private var places: [Place]
     @Environment(\.modelContext) private var context
     @State private var showSearch = false
+    @State private var picked: Station?
+    @State private var editing: EditTarget?
+
+    private struct EditTarget: Identifiable {
+        let id = UUID()
+        let target: PlaceEditor.Target
+    }
 
     private var favorites: [Place] { places.filter(\.favorite) }
     private var recents: [Place] { Array(places.filter { !$0.favorite }.prefix(6)) }
@@ -37,10 +44,26 @@ struct PlaceShortcuts: View {
                 }
             }
         }
-        .sheet(isPresented: $showSearch) {
+        .sheet(isPresented: $showSearch, onDismiss: {
+            // 역을 고르면 이어서 이름·시각·반복을 정한다
+            if let station = picked {
+                picked = nil
+                if let existing = places.first(where: { $0.stationName == station.name && $0.favorite }) {
+                    editing = EditTarget(target: .edit(existing))
+                } else {
+                    editing = EditTarget(target: .new(station))
+                }
+            }
+        }) {
             StationSearchSheet { station in
-                register(station)
+                picked = station
                 showSearch = false
+            }
+        }
+        .sheet(item: $editing) { item in
+            NavigationStack {
+                PlaceEditor(target: item.target) { editing = nil }
+                    .toolbar { ToolbarItem(placement: .cancellationAction) { Button("취소") { editing = nil } } }
             }
         }
     }
@@ -56,7 +79,7 @@ struct PlaceShortcuts: View {
 
     private func chip(_ p: Place, symbol: String?) -> some View {
         let selected = selectedStation == p.stationName
-        let title = showsTime ? [p.name, p.deadlineText].compactMap { $0 }.joined(separator: " · ") : p.name
+        let title = showsTime ? p.chipText : p.name
         return Button {
             onPick(p)
         } label: {
@@ -72,6 +95,7 @@ struct PlaceShortcuts: View {
         }
         .buttonStyle(.plain)
         .contextMenu {
+            Button("편집", systemImage: "pencil") { editing = EditTarget(target: .edit(p)) }
             Button(p.favorite ? "자주 가는 곳에서 빼기" : "자주 가는 곳에 넣기",
                    systemImage: p.favorite ? "star.slash" : "star") {
                 p.favorite.toggle()
@@ -80,19 +104,9 @@ struct PlaceShortcuts: View {
             Button("지우기", systemImage: "trash", role: .destructive) {
                 context.delete(p)
                 try? context.save()
+                let context = context
+                Task { await Routines.refresh(context: context, force: true) }
             }
         }
-    }
-
-    /// 역을 자주 가는 곳으로 등록. 이미 있으면 별만 붙인다
-    private func register(_ station: Station) {
-        if let existing = places.first(where: { $0.stationName == station.name }) {
-            existing.favorite = true
-        } else {
-            let p = Place(name: station.name, stationName: station.name, walkFromStation: 0, deadlineMinutes: -1)
-            p.favorite = true
-            context.insert(p)
-        }
-        try? context.save()
     }
 }

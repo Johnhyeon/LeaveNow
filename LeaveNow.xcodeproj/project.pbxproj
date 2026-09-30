@@ -34,12 +34,14 @@
 		8BC1DBC750A4A273EFB160DB /* RoutePlanner.swift in Sources */ = {isa = PBXBuildFile; fileRef = D9FD67CC168C148AF63A8D72 /* RoutePlanner.swift */; };
 		98A73BE15BE31E5F15FE3507 /* LiveActivitySpike.swift in Sources */ = {isa = PBXBuildFile; fileRef = C1FDF0215E4EBDA0DB2C12AA /* LiveActivitySpike.swift */; };
 		9B212A1FBAE3FD52AD521F48 /* GeofenceSpike.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6012B31F5EFF3DAF57EB838A /* GeofenceSpike.swift */; };
+		A2635ECDC4883CA740E9EB0C /* Routines.swift in Sources */ = {isa = PBXBuildFile; fileRef = B554ADAEAEF95842BE1DA302 /* Routines.swift */; };
 		A396039B4E20BAD4C600DC83 /* OnboardingFlow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 7E16275D04A109D1EB6BB17F /* OnboardingFlow.swift */; };
 		A52852A948CF82FB56D1BBE6 /* LocationHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2D86742170AFC022480EAD05 /* LocationHelper.swift */; };
 		B4B35C9614565066E9A5CD5D /* Secrets.example.plist in Resources */ = {isa = PBXBuildFile; fileRef = F2C521C24713A3C217304B5C /* Secrets.example.plist */; };
 		BFA6E055D0EFE399675EE6FE /* LeaveNowApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE88F84D5AE2A209F7927B53 /* LeaveNowApp.swift */; };
 		DC4B5947F42B703F1A50348E /* WaterHomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 35654059C9A149B117938339 /* WaterHomeView.swift */; };
 		DC808FC3EA2C3F21F8533AF1 /* stations.json in Resources */ = {isa = PBXBuildFile; fileRef = 4225F85A15797745BB0468D1 /* stations.json */; };
+		E00EAB7AEB2DA4C889A47F0E /* PlaceEditor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC1F6AE7EC61681E8F0A139 /* PlaceEditor.swift */; };
 		E672D4DCC39D869DBB3FFA45 /* RouteResultView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C7F293F645258ACA0CD11A1D /* RouteResultView.swift */; };
 		E6C3E02CA78DACBDDD630553 /* LeaveNowWidgetsBundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = D59DE84B94DD4F74D31473AE /* LeaveNowWidgetsBundle.swift */; };
 		EE1AD0E09E917D4C901A0AE6 /* Segment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DBC54FBA782A119A41E8C3A /* Segment.swift */; };
@@ -93,10 +95,12 @@
 		7E16275D04A109D1EB6BB17F /* OnboardingFlow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingFlow.swift; sourceTree = "<group>"; };
 		85A6D2BDEE578E06C9B6AEF2 /* TripActivity.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TripActivity.swift; sourceTree = "<group>"; };
 		88DE9B55E6D87B6079297B0E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
+		8AC1F6AE7EC61681E8F0A139 /* PlaceEditor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaceEditor.swift; sourceTree = "<group>"; };
 		93524A19C3B12C21840B3C3A /* transfers.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = transfers.json; sourceTree = "<group>"; };
 		A288AD8762E080673506DAC8 /* Stations.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stations.swift; sourceTree = "<group>"; };
 		AE88F84D5AE2A209F7927B53 /* LeaveNowApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaveNowApp.swift; sourceTree = "<group>"; };
 		AF0934E8DCDA393B7EF6A3EF /* LeaveNowWidgets.appex */ = {isa = PBXFileReference; includeInIndex = 0; lastKnownFileType = "wrapper.app-extension"; path = LeaveNowWidgets.appex; sourceTree = BUILT_PRODUCTS_DIR; };
+		B554ADAEAEF95842BE1DA302 /* Routines.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Routines.swift; sourceTree = "<group>"; };
 		B888F0C471F302B94D915332 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 		C1A2DE891F717A6199D53055 /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
 		C1FDF0215E4EBDA0DB2C12AA /* LiveActivitySpike.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LiveActivitySpike.swift; sourceTree = "<group>"; };
@@ -168,6 +172,7 @@
 				516EA4F710331CC0D6282A73 /* RouteAPI.swift */,
 				D9FD67CC168C148AF63A8D72 /* RoutePlanner.swift */,
 				C55E63987C546E1004076E4A /* RouteStops.swift */,
+				B554ADAEAEF95842BE1DA302 /* Routines.swift */,
 				A288AD8762E080673506DAC8 /* Stations.swift */,
 				C274C966E5C38A65E053D680 /* Transfers.swift */,
 				85A6D2BDEE578E06C9B6AEF2 /* TripActivity.swift */,
@@ -286,6 +291,7 @@
 			isa = PBXGroup;
 			children = (
 				E91E758ABCE84C39A17DEAF1 /* DestinationFormView.swift */,
+				8AC1F6AE7EC61681E8F0A139 /* PlaceEditor.swift */,
 				6543FD38301AC18CFD9D2937 /* PlaceShortcuts.swift */,
 				C7F293F645258ACA0CD11A1D /* RouteResultView.swift */,
 			);
@@ -412,6 +418,7 @@
 				A52852A948CF82FB56D1BBE6 /* LocationHelper.swift in Sources */,
 				32C6206F4DB5BB74BF5FA9ED /* Models.swift in Sources */,
 				A396039B4E20BAD4C600DC83 /* OnboardingFlow.swift in Sources */,
+				E00EAB7AEB2DA4C889A47F0E /* PlaceEditor.swift in Sources */,
 				74B8ECABDE44C127228E2AEC /* PlaceShortcuts.swift in Sources */,
 				198095BB3C5E2F1878F5A059 /* Profile.swift in Sources */,
 				6C07F62967F1B66527D5E3E8 /* RouteAPI.swift in Sources */,
@@ -419,6 +426,7 @@
 				E672D4DCC39D869DBB3FFA45 /* RouteResultView.swift in Sources */,
 				EF58B06B41E7BAECBB68FBBB /* RouteStops.swift in Sources */,
 				F76AFD9BBDD8D7A9DFEB10B5 /* RouteViews.swift in Sources */,
+				A2635ECDC4883CA740E9EB0C /* Routines.swift in Sources */,
 				0CB93DE46F7E01C3360DB309 /* Secrets.swift in Sources */,
 				EE1AD0E09E917D4C901A0AE6 /* Segment.swift in Sources */,
 				3B3F6D338886BFEAAF9121E0 /* SettingsView.swift in Sources */,

@@ -38,12 +38,17 @@ struct SettingsView: View {
                 if !places.isEmpty {
                     Section("저장한 곳") {
                         ForEach(places) { p in
-                            VStack(alignment: .leading, spacing: 2) {
-                                TextField("이름", text: Binding(get: { p.name }, set: { p.name = $0 }))
-                                    .font(.body.weight(.semibold))
-                                Text([p.favorite ? "★ 자주 가는 곳" : nil, p.stationName, p.deadlineText.map { "\($0)까지" }, "역에서 \(p.walkFromStation)분"]
-                                    .compactMap { $0 }.joined(separator: " · "))
-                                    .font(.caption).foregroundStyle(Theme.mute)
+                            NavigationLink {
+                                PlaceEditor(target: .edit(p))
+                            } label: {
+                                VStack(alignment: .leading, spacing: 2) {
+                                    Text(p.name).font(.body.weight(.semibold)).foregroundStyle(Theme.ink)
+                                    Text([p.favorite ? "★" : nil, p.stationName,
+                                          p.deadlineText.map { [p.repeatText, "\($0)까지"].compactMap { $0 }.joined(separator: " ") },
+                                          p.walkFromStation > 0 ? "역에서 \(p.walkFromStation)분" : nil]
+                                        .compactMap { $0 }.joined(separator: " · "))
+                                        .font(.caption).foregroundStyle(Theme.mute)
+                                }
                             }
                         }
                         .onDelete { offsets in offsets.forEach { context.delete(places[$0]) }; try? context.save() }

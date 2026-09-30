@@ -1,10 +1,13 @@
 import SwiftData
 import SwiftUI
+import UserNotifications
 
 struct ContentView: View {
     private let profile = Profile.shared
     @Environment(\.modelContext) private var context
+    @Environment(\.scenePhase) private var scenePhase
     @State private var designPreview: WaterHomeView.Content?
+    @State private var editPlace: Place?
     @State private var routePreview: (from: String, to: String, deadline: Date)?
 
     var body: some View {
@@ -16,6 +19,12 @@ struct ContentView: View {
             }
         }
         .task { await runDebugArguments() }
+        .onChange(of: scenePhase, initial: true) { _, phase in
+            // 앱을 열 때마다: 오늘 반복 일정을 홈에 띄우고 앞으로 7일 알림을 걸어 둔다
+            if phase == .active, profile.onboarded {
+                Task { await Routines.refresh(context: context) }
+            }
+        }
         .sheet(isPresented: Binding(get: { routePreview != nil }, set: { if !$0 { routePreview = nil } })) {
             if let r = routePreview {
                 NavigationStack {
@@ -23,6 +32,9 @@ struct ContentView: View {
                                     placeName: r.to, stationName: r.to, deadline: r.deadline, walkFromStation: 5) { routePreview = nil }
                 }
             }
+        }
+        .sheet(item: $editPlace) { place in
+            NavigationStack { PlaceEditor(target: .edit(place)) { editPlace = nil } }
         }
         .fullScreenCover(isPresented: Binding(
             get: { designPreview != nil },
@@ -38,6 +50,8 @@ struct ContentView: View {
     /// -seedTrip 가양 강남 10:00 : 그 계획을 실제 이동으로 저장해 홈에 띄운다
     /// -resetOnboarding
     /// -departNow : 진행 중인 이동에서 출발 버튼을 누른 것처럼
+    /// -listNotifications : 걸려 있는 알림을 콘솔에 출력
+    /// -editPlace 회사 : 그 장소 편집 화면을 띄운다
     /// -seedPlaces : 자주 가는 곳 둘, 최근 셋을 넣는다 (화면 확인용)
     private func runDebugArguments() async {
         let args = ProcessInfo.processInfo.arguments
@@ -46,6 +60,18 @@ struct ContentView: View {
             return args[i + offset]
         }
         if args.contains("-resetOnboarding") { profile.onboarded = false }
+        if args.contains("-listNotifications") {
+            try? await Task.sleep(for: .seconds(10))   // 반복 일정 계산이 끝나기를 기다린다
+            let pending = await UNUserNotificationCenter.current().pendingNotificationRequests()
+            for r in pending.sorted(by: { $0.identifier < $1.identifier }) {
+                let date = (r.trigger as? UNCalendarNotificationTrigger)?.nextTriggerDate().map { Fmt.dateTime.string(from: $0) } ?? "-"
+                print("NOTI \(r.identifier) · \(date) · \(r.content.title) · \(r.content.body)")
+            }
+            print("NOTI 총 \(pending.count)개")
+        }
+        if let name = value("-editPlace") {
+            editPlace = (try? context.fetch(FetchDescriptor<Place>()))?.first { $0.name == name }
+        }
         if args.contains("-seedPlaces") {
             let samples: [(String, String, Int, Bool)] = [("회사", "강남", 600, true), ("헬스장", "마곡나루", -1, true),
                                                           ("시청", "시청", 1155, false), ("홍대입구", "홍대입구", 1140, false),

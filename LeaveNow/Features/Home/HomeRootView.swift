@@ -38,6 +38,8 @@ struct HomeRootView: View {
 struct NoTripHomeView: View {
     let onGo: (Place?) -> Void
     let onSettings: () -> Void
+    @Query private var places: [Place]
+    @Environment(\.modelContext) private var context
 
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
@@ -54,6 +56,11 @@ struct NoTripHomeView: View {
             Text("오늘은 정해진\n이동이 없어요")
                 .font(.system(size: 30, weight: .heavy, design: .rounded))
                 .foregroundStyle(Theme.ink)
+            if let next = Routines.next(in: places) {
+                Text("다음 일정은 \(dayText(next.deadline)) \(Fmt.time.string(from: next.deadline)) \(next.place.name)")
+                    .font(.subheadline.weight(.semibold))
+                    .foregroundStyle(Theme.mute)
+            }
             Spacer()
             Button {
                 onGo(nil)
@@ -72,6 +79,17 @@ struct NoTripHomeView: View {
         .padding(24)
         .foregroundStyle(Theme.ink)
         .background(Theme.paper.ignoresSafeArea())
+        .task {
+            // 아침 이동이 끝난 뒤 저녁 반복 일정 같은 것을 이어서 띄운다
+            await Routines.ensureToday(context: context)
+        }
+    }
+
+    private func dayText(_ date: Date) -> String {
+        let cal = Calendar.current
+        if cal.isDateInToday(date) { return "오늘" }
+        if cal.isDateInTomorrow(date) { return "내일" }
+        return Place.weekdayNames[cal.component(.weekday, from: date)] + "요일"
     }
 }
 
@@ -82,6 +100,8 @@ struct TripHomeView: View {
     let onNew: () -> Void
 
     private let profile = Profile.shared
+    @Query private var places: [Place]
+    @Environment(\.modelContext) private var context
     @State private var recalculating = false
     @State private var departing = false
     /// 출발했는데 원래 열차가 어려워 바꿨을 때 한동안 띄우는 안내
@@ -95,7 +115,11 @@ struct TripHomeView: View {
                           primaryAction: { Task { await recalculate(origin: origin) } },
                           extraActions: (trip.departedAt == nil ? [] : [
                             WaterHomeView.SheetAction(title: "출발 취소") { undoDeparture() },
-                          ]) + [
+                          ]) + (routinePlace.map { place in [
+                            WaterHomeView.SheetAction(title: "오늘은 안 가요 · \(place.repeatText ?? "") 반복은 그대로") {
+                                Routines.skipToday(place, context: context)
+                            },
+                          ] } ?? []) + [
                             .init(title: "다른 곳 가기") { onNew() },
                             .init(title: "이번 이동 취소", role: .destructive) {
                                 trip.cancelled = true
@@ -113,6 +137,11 @@ struct TripHomeView: View {
         } else {
             Text("계획을 읽지 못했어요").onAppear { trip.cancelled = true }
         }
+    }
+
+    /// 이 이동이 반복 일정에서 나왔으면 그 장소
+    private var routinePlace: Place? {
+        places.first { $0.repeats(on: trip.deadline) && Routines.isSame(trip, $0) }
     }
 
     private enum Phase: String { case beforeLeaving, toTrain, riding }

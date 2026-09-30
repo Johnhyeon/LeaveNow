@@ -16,6 +16,11 @@ enum TripNotifier {
 
     static func schedule(placeName: String, plan: TripPlan, leadMinutes: Int) {
         cancelAll()
+        add(prefix: "trip", placeName: placeName, plan: plan, leadMinutes: leadMinutes)
+    }
+
+    /// 알림 두 개를 prefix.lead, prefix.go 로 건다. 반복 일정은 날짜마다 prefix 를 달리해 미리 걸어 둔다
+    static func add(prefix: String, placeName: String, plan: TripPlan, leadMinutes: Int) {
         let center = UNUserNotificationCenter.current()
         let train = trainLabel(plan)
         let leave = Fmt.time.string(from: plan.leaveBy)
@@ -28,7 +33,7 @@ enum TripNotifier {
             c.body = "\(leave)에 나서야 \(train)을 탈 수 있어요."
             c.sound = .default
             c.interruptionLevel = .timeSensitive
-            center.add(UNNotificationRequest(identifier: "trip.lead", content: c, trigger: trigger(lead)))
+            center.add(UNNotificationRequest(identifier: "\(prefix).lead", content: c, trigger: trigger(lead)))
         }
         if plan.leaveBy > .now {
             let c = UNMutableNotificationContent()
@@ -36,7 +41,7 @@ enum TripNotifier {
             c.body = "\(train) · 승강장에 \(platform)까지 · \(placeName)"
             c.sound = .default
             c.interruptionLevel = .timeSensitive
-            center.add(UNNotificationRequest(identifier: "trip.go", content: c, trigger: trigger(plan.leaveBy)))
+            center.add(UNNotificationRequest(identifier: "\(prefix).go", content: c, trigger: trigger(plan.leaveBy)))
         }
     }
 
